@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: adalat_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: adalat123
+      POSTGRES_DB: adalat_ai
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    container_name: adalat_api
+    ports:
+      - "8001:8001"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - POSTGRES_URL=postgresql://postgres:adalat123@postgres:5432/adalat_ai
+      - CHROMA_PATH=/app/data/embeddings/chroma
+      - FAISS_PATH=/app/data/embeddings/faiss
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  ui:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.ui
+    container_name: adalat_ui
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8001
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
