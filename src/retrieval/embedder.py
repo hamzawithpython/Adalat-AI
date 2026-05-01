@@ -7,6 +7,8 @@ from sentence_transformers import SentenceTransformer
 import chromadb
 from chromadb.config import Settings
 
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -17,12 +19,16 @@ COLLECTION_NAME = "adalat_legal_docs"
 BATCH_SIZE = 64
 
 
-def get_embedding_model():
-    logger.info(f"Loading embedding model: {MODEL_NAME}")
-    model = SentenceTransformer(MODEL_NAME)
-    logger.info("Model loaded.")
-    return model
+# Add this at module level (after imports)
+_model = None
 
+def get_embedding_model():
+    global _model
+    if _model is None:
+        logger.info(f"Loading embedding model: {MODEL_NAME}")
+        _model = SentenceTransformer(MODEL_NAME)
+        logger.info("Model loaded.")
+    return _model
 
 def get_chroma_client():
     Path(CHROMA_PATH).mkdir(parents=True, exist_ok=True)

@@ -41,21 +41,19 @@ def detect_language(state: AgentState) -> AgentState:
     query = state["query"]
 
     prompt = ChatPromptTemplate.from_template("""
-Analyze this text and respond with ONLY a JSON object, nothing else.
+You are a language detector. Analyze the text and return ONLY a JSON object.
 
 Text: "{query}"
 
-Rules:
-- If text contains Roman-Urdu (Urdu written in English letters like "mera", "kya", "hai", "nahi", "wapas", "landlord", "deposit"), language = "roman_urdu"
-- If text is in German (words like "Vermieter", "Kaution", "Miete"), language = "german"  
-- Otherwise language = "english"
+Detection Rules (apply in order):
+1. If text contains German words (Vermieter, Kaution, Miete, nicht, zurück, gibt, mein, ist, das, der, die) → language = "german"
+2. If text contains Roman-Urdu words (mera, meri, kya, hai, nahi, wapas, nahi, karo, landlord ke saath, deposit, ghar, rent) → language = "roman_urdu"
+3. Otherwise → language = "english"
 
-Respond ONLY with this exact format:
-{{"language": "roman_urdu"}}
-or
-{{"language": "english"}}
-or
+Return ONLY one of these three exact JSON objects:
 {{"language": "german"}}
+{{"language": "roman_urdu"}}
+{{"language": "english"}}
 """)
 
     llm = get_llm()
@@ -125,14 +123,14 @@ def translate_query(state: AgentState) -> AgentState:
     query = state["query"]
     language = state["language"]
 
-    if language != "roman_urdu":
+    if language == "english":
         return {**state, "translated_query": query}
 
     prompt = ChatPromptTemplate.from_template("""
-Translate this Roman-Urdu legal query to clear English.
-Keep legal terms intact. Be concise.
+Translate this text to English. Return ONLY the English translation, nothing else.
+No explanations, no prefixes, no quotes.
 
-Roman-Urdu: "{query}"
+Text: "{query}"
 
 English translation:
 """)
@@ -141,6 +139,19 @@ English translation:
     chain = prompt | llm | StrOutputParser()
     translated = chain.invoke({"query": query}).strip()
 
+    # Remove any prefix patterns the LLM might add
+    prefixes = [
+        "the roman-urdu query translates to:",
+        "the translation of the roman-urdu query is:",
+        "the translation is:",
+        "translation:",
+        "english translation:",
+    ]
+    for prefix in prefixes:
+        if translated.lower().startswith(prefix):
+            translated = translated[len(prefix):].strip()
+
+    translated = translated.strip('"').strip("'").strip()
     logger.info(f"Translated: '{query}' → '{translated}'")
     return {**state, "translated_query": translated}
 
@@ -159,8 +170,8 @@ def run_rag_node(state: AgentState) -> AgentState:
             "answer": result["answer"],
             "citations": result["citations"]
         }
-    except Exception as e:
-        logger.error(f"RAG error: {e}")
+    except BaseException as e:
+        logger.exception(f"RAG error: {e}")
         return {
             **state,
             "answer": "An error occurred. Please consult a qualified lawyer.",
@@ -189,9 +200,19 @@ def build_router():
 
 def ask(query: str) -> dict:
     """Main entry point — just pass any query, router handles everything."""
+    from src.schemas.extractor import extract_rights
+    from src.schemas.legal_response import build_legal_response
+
     router = build_router()
     result = router.invoke({"query": query})
-    return result
+
+    # Extract structured rights from answer
+    rights = extract_rights(result.get("answer", ""))
+
+    # Build validated Pydantic response
+    response = build_legal_response(result, rights)
+
+    return response.model_dump()
 
 
 if __name__ == "__main__":
@@ -209,9 +230,17 @@ if __name__ == "__main__":
         result = ask(q)
         print(f"Language:     {result['language']}")
         print(f"Jurisdiction: {result['jurisdiction']}")
-        if result.get('translated_query') != q:
+        print(f"Confidence:   {result['confidence']}")
+        if result.get('translated_query'):
             print(f"Translated:   {result['translated_query']}")
-        print(f"\nANSWER:\n{result['answer']}")
-        print("\nCITATIONS:")
-        for c in (result.get('citations') or []):
+        print(f"\nANSWER:\n{result['answer'][:300]}...")
+        print(f"\nRIGHTS EXTRACTED: {len(result['rights'])}")
+        for r in result['rights']:
+            print(f"  Right:       {r['right']}")
+            print(f"  Legal Basis: {r['legal_basis']}")
+            print(f"  Deadline:    {r['deadline']}")
+            print(f"  Recourse:    {r['recourse']}")
+            print()
+        print(f"CITATIONS: {len(result['citations'])}")
+        for c in result['citations']:
             print(f"  - {c['source']} | Page {c['page']} | Score: {c['relevance_score']}")
