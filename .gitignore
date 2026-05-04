@@ -1,14 +1,44 @@
+# Virtual Environment
 venv/
+env/
+.venv/
+
+# Python cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment variables
 .env
+
+# Data files (too large for git)
+data/raw/
+data/embeddings/
+data/processed/chunks.json
+
+# Chroma DB
+.chroma/
+*.db
+
+# Logs
+logs/*.log
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Build
 *.egg-info/
 dist/
 build/
-logs/
-*.log
-data/raw/
-data/embeddings/
-.chroma/
-*.db
-.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
