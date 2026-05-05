@@ -39,27 +39,32 @@ ANSWER (with citations):
 """)
 
 def format_context(results: list[dict]) -> str:
-    """Format retrieved chunks into context string with citations."""
     context_parts = []
     for i, r in enumerate(results):
         meta = r["metadata"]
+        breadcrumb = r.get("breadcrumb", meta.get("source", ""))
+        warning = r.get("currency_warning", "")
+        warning_str = f"\n⚠️ {warning}" if warning else ""
         context_parts.append(
-            f"[Source {i+1}: {meta['source']} | Page {meta['page_num']} | {meta['jurisdiction']}]\n"
+            f"[Source {i+1}: {breadcrumb} | "
+            f"Page {meta.get('page_start', '?')}]{warning_str}\n"
             f"{r['text']}\n"
         )
     return "\n---\n".join(context_parts)
 
 
 def format_citations(results: list[dict]) -> list[dict]:
-    """Extract citation list from results."""
     citations = []
     for r in results:
         meta = r["metadata"]
         citations.append({
-            "source": meta["source"],
-            "page": meta["page_num"],
-            "jurisdiction": meta["jurisdiction"],
-            "relevance_score": r["score"]
+            "source": meta.get("source", ""),
+            "page": meta.get("page_start", 0),
+            "jurisdiction": meta.get("country", ""),
+            "relevance_score": r["score"],
+            "breadcrumb": r.get("breadcrumb", ""),
+            "currency_warning": r.get("currency_warning"),
+            "requires_escalation_cue": r.get("requires_escalation_cue", False),
         })
     return citations
 
@@ -81,7 +86,7 @@ def run_rag(query: str, jurisdiction: str = None, top_k: int = 5) -> dict:
     logger.info(f"Query: {query} | Jurisdiction: {jurisdiction}")
 
     # Step 1: Retrieve relevant chunks
-    results = search(query, jurisdiction=jurisdiction, top_k=top_k)
+    results = search(query, country=jurisdiction, top_k=top_k)
 
     if not results:
         return {
