@@ -1,0 +1,8 @@
+[phases.install]
+cmds = [
+  "pip install --upgrade pip",
+  "pip install -r requirements.railway.txt"
+]
+
+[start]
+cmd = "python run.py"
