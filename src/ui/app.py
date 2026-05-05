@@ -4,7 +4,7 @@ import requests
 import uuid
 import json
 
-API_URL = os.getenv("API_URL", "http://127.0.0.1:8001")
+API_URL = os.getenv("API_URL", "https://web-production-0b32a.up.railway.app")
 
 # ── Page Config ───────────────────────────────────────────────
 st.set_page_config(
