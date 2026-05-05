@@ -332,17 +332,17 @@
       "schedule": "Schedule 3 — Services and public functions: exceptions"
     },
     "cross_references": [
-      "Part 2",
-      "Part 10",
-      "Part 1",
-      "Part 4",
-      "Part 3",
       "Part 8",
-      "Part 5",
-      "Part 9",
-      "Part 6",
+      "Part 7",
       "Schedule 3",
-      "Part 7"
+      "Part 10",
+      "Part 4",
+      "Part 6",
+      "Part 9",
+      "Part 5",
+      "Part 1",
+      "Part 2",
+      "Part 3"
     ],
     "token_count": 107,
     "page_start": 10,
@@ -392,16 +392,16 @@
       "part": "PART 1"
     },
     "cross_references": [
-      "section 18",
+      "section 4",
       "section 1(2)",
+      "section 1",
+      "section 104",
       "section 103",
+      "section 18",
       "Part 1",
       "section 13",
-      "section 104",
-      "section 4",
       "section 1(3)",
-      "section 115(9)",
-      "section 1"
+      "section 115(9)"
     ],
     "token_count": 791,
     "page_start": 13,
@@ -426,16 +426,16 @@
       "part": "PART 1"
     },
     "cross_references": [
-      "section 18",
+      "section 4",
       "section 1(2)",
+      "section 1",
+      "section 104",
       "section 103",
+      "section 18",
       "Part 1",
       "section 13",
-      "section 104",
-      "section 4",
       "section 1(3)",
-      "section 115(9)",
-      "section 1"
+      "section 115(9)"
     ],
     "token_count": 706,
     "page_start": 13,
@@ -486,9 +486,9 @@
       "chapter": "Chapter 1 — Protected characteristics"
     },
     "cross_references": [
-      "Chapter 1",
       "section 190",
-      "Part 12"
+      "Part 12",
+      "Chapter 1"
     ],
     "token_count": 197,
     "page_start": 17,
@@ -515,8 +515,8 @@
       "schedule": "Schedule 1 (disability: supplementary provision) has effect."
     },
     "cross_references": [
-      "Part 2",
-      "Schedule 1"
+      "Schedule 1",
+      "Part 2"
     ],
     "token_count": 365,
     "page_start": 17,
@@ -542,9 +542,9 @@
       "chapter": "Chapter 1 — Protected characteristics"
     },
     "cross_references": [
-      "section 207(4)",
+      "Chapter 1",
       "Part 2",
-      "Chapter 1"
+      "section 207(4)"
     ],
     "token_count": 526,
     "page_start": 18,
@@ -571,8 +571,8 @@
     },
     "cross_references": [
       "Part 2",
-      "Chapter 2",
-      "Part 5"
+      "Part 5",
+      "Chapter 2"
     ],
     "token_count": 507,
     "page_start": 19,
@@ -598,16 +598,16 @@
       "chapter": "Chapter 2 — Prohibited conduct"
     },
     "cross_references": [
+      "Part 7",
       "section 116",
-      "Part 2",
+      "section 7(1)",
       "Chapter 2",
       "Part 4",
-      "section 13",
-      "Part 3",
-      "Part 5",
-      "section 7(1)",
       "Part 6",
-      "Part 7"
+      "Part 5",
+      "section 13",
+      "Part 2",
+      "Part 3"
     ],
     "token_count": 610,
     "page_start": 20,
@@ -633,10 +633,10 @@
       "chapter": "Chapter 2 — Prohibited conduct"
     },
     "cross_references": [
-      "Part 2",
-      "Chapter 2",
       "Section 13",
-      "Part 5"
+      "Part 2",
+      "Part 5",
+      "Chapter 2"
     ],
     "token_count": 693,
     "page_start": 21,
@@ -718,12 +718,12 @@
       "chapter": "Chapter 2 — Prohibited conduct"
     },
     "cross_references": [
-      "Part 2",
-      "Chapter 2",
-      "section\n13(1)",
-      "section 13",
       "section 14",
-      "section\n14(1)"
+      "Chapter 2",
+      "section 13",
+      "section\n14(1)",
+      "Part 2",
+      "section\n13(1)"
     ],
     "token_count": 572,
     "page_start": 24,
@@ -749,13 +749,13 @@
       "chapter": "Chapter 2 — Prohibited conduct"
     },
     "cross_references": [
-      "section 17",
-      "Part 2",
       "section 16",
+      "section 17",
       "Chapter 2",
-      "section 13",
-      "section 19",
       "section 15",
+      "section 19",
+      "section 13",
+      "Part 2",
       "section 21"
     ],
     "token_count": 466,
@@ -834,14 +834,14 @@
       "part": "PART 3"
     },
     "cross_references": [
-      "Part 2",
-      "Part 4",
-      "section 55(7)",
       "Section 29(6)",
-      "Schedule 7",
-      "Part 3",
       "section 69",
-      "section 26"
+      "section 55(7)",
+      "section 26",
+      "Part 4",
+      "Schedule 7",
+      "Part 2",
+      "Part 3"
     ],
     "token_count": 794,
     "page_start": 27,
@@ -866,8 +866,8 @@
       "part": "PART 3"
     },
     "cross_references": [
-      "Part 3",
-      "section 29(6)"
+      "section 29(6)",
+      "Part 3"
     ],
     "token_count": 518,
     "page_start": 28,
@@ -892,14 +892,14 @@
       "part": "PART 4"
     },
     "cross_references": [
-      "Part 2",
-      "Part 4",
-      "Schedule 7",
-      "Part 3",
-      "Part 5",
-      "Part 6",
       "section 69",
-      "section 26"
+      "section 26",
+      "Part 4",
+      "Part 6",
+      "Part 5",
+      "Schedule 7",
+      "Part 2",
+      "Part 3"
     ],
     "token_count": 791,
     "page_start": 29,
@@ -924,14 +924,14 @@
       "part": "PART 4"
     },
     "cross_references": [
-      "Part 2",
-      "Part 4",
-      "Schedule 7",
-      "Part 3",
-      "Part 5",
-      "Part 6",
       "section 69",
-      "section 26"
+      "section 26",
+      "Part 4",
+      "Part 6",
+      "Part 5",
+      "Schedule 7",
+      "Part 2",
+      "Part 3"
     ],
     "token_count": 790,
     "page_start": 29,
@@ -956,14 +956,14 @@
       "part": "PART 4"
     },
     "cross_references": [
-      "Part 2",
-      "Part 4",
-      "Schedule 7",
-      "Part 3",
-      "Part 5",
-      "Part 6",
       "section 69",
-      "section 26"
+      "section 26",
+      "Part 4",
+      "Part 6",
+      "Part 5",
+      "Schedule 7",
+      "Part 2",
+      "Part 3"
     ],
     "token_count": 791,
     "page_start": 29,
@@ -988,14 +988,14 @@
       "part": "PART 4"
     },
     "cross_references": [
-      "Part 2",
-      "Part 4",
-      "Schedule 7",
-      "Part 3",
-      "Part 5",
-      "Part 6",
       "section 69",
-      "section 26"
+      "section 26",
+      "Part 4",
+      "Part 6",
+      "Part 5",
+      "Schedule 7",
+      "Part 2",
+      "Part 3"
     ],
     "token_count": 316,
     "page_start": 29,
@@ -1099,10 +1099,10 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "section 42",
-      "section 55(2)",
       "Chapter 1",
-      "Part 5"
+      "Part 5",
+      "section 55(2)",
+      "section 42"
     ],
     "token_count": 641,
     "page_start": 36,
@@ -1129,8 +1129,8 @@
     },
     "cross_references": [
       "Schedule 2",
-      "Chapter 1",
-      "Part 5"
+      "Part 5",
+      "Chapter 1"
     ],
     "token_count": 638,
     "page_start": 37,
@@ -1156,8 +1156,8 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "Part 5"
+      "Part 5",
+      "Chapter 1"
     ],
     "token_count": 564,
     "page_start": 38,
@@ -1183,8 +1183,8 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "Part 5"
+      "Part 5",
+      "Chapter 1"
     ],
     "token_count": 579,
     "page_start": 39,
@@ -1210,8 +1210,8 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "Part 5"
+      "Part 5",
+      "Chapter 1"
     ],
     "token_count": 596,
     "page_start": 40,
@@ -1237,8 +1237,8 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "Part 5"
+      "Part 5",
+      "Chapter 1"
     ],
     "token_count": 653,
     "page_start": 41,
@@ -1264,8 +1264,8 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "Part 5"
+      "Part 5",
+      "Chapter 1"
     ],
     "token_count": 570,
     "page_start": 42,
@@ -1292,9 +1292,9 @@
     },
     "cross_references": [
       "section 51",
+      "Part 5",
       "Chapter 1",
-      "section 13",
-      "Part 5"
+      "section 13"
     ],
     "token_count": 629,
     "page_start": 43,
@@ -1320,8 +1320,8 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "Part 5"
+      "Part 5",
+      "Chapter 1"
     ],
     "token_count": 680,
     "page_start": 44,
@@ -1347,11 +1347,11 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "section 50(2)",
-      "section 13",
+      "section 49",
       "Part 5",
-      "section 49"
+      "section 50(2)",
+      "Chapter 1",
+      "section 13"
     ],
     "token_count": 658,
     "page_start": 45,
@@ -1405,8 +1405,8 @@
       "schedule": "Schedule 6 (excluded offices) has effect."
     },
     "cross_references": [
-      "Schedule 6",
-      "Part 5"
+      "Part 5",
+      "Schedule 6"
     ],
     "token_count": 240,
     "page_start": 46,
@@ -1432,13 +1432,13 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "section 96",
-      "section 53",
       "section 91",
+      "section 85",
       "section 19",
       "Part 5",
-      "section 85"
+      "Chapter 1",
+      "section 96",
+      "section 53"
     ],
     "token_count": 544,
     "page_start": 47,
@@ -1465,8 +1465,8 @@
     },
     "cross_references": [
       "section 29(7)",
-      "Chapter 1",
       "Part 5",
+      "Chapter 1",
       "Part 9"
     ],
     "token_count": 582,
@@ -1493,15 +1493,15 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "section 55",
       "section 10",
       "section 2",
-      "section 53",
+      "section 55",
+      "section 2(3)",
       "section 91",
-      "Part 5",
       "section 85",
-      "section 2(3)"
+      "Part 5",
+      "Chapter 1",
+      "section 53"
     ],
     "token_count": 656,
     "page_start": 49,
@@ -1527,8 +1527,8 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "Part 5"
+      "Part 5",
+      "Chapter 1"
     ],
     "token_count": 523,
     "page_start": 50,
@@ -1554,10 +1554,10 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "section 2",
       "Chapter 1",
       "section 58",
-      "Part 5"
+      "Part 5",
+      "section 2"
     ],
     "token_count": 544,
     "page_start": 51,
@@ -1583,13 +1583,13 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "Part 1",
-      "section 111",
       "section 136",
-      "Part 5",
       "section 120(8)",
-      "section 158"
+      "section 158",
+      "Part 5",
+      "Part 1",
+      "Chapter 1",
+      "section 111"
     ],
     "token_count": 651,
     "page_start": 52,
@@ -1615,19 +1615,19 @@
       "chapter": "Chapter 1 — Employment, etc."
     },
     "cross_references": [
+      "section 55(1)",
       "section 39(1)",
       "section 47(1)",
-      "Chapter 1",
-      "section 51(1)",
-      "section 13",
-      "section 50(3)",
-      "section 55(1)",
       "section 45(1)",
-      "section 48(1)",
       "section 44(1)",
-      "Part 5",
+      "section 51(1)",
+      "section 49(3)",
       "section 41(1)",
-      "section 49(3)"
+      "section 50(3)",
+      "Part 5",
+      "Chapter 1",
+      "section 13",
+      "section 48(1)"
     ],
     "token_count": 610,
     "page_start": 53,
@@ -1653,10 +1653,10 @@
       "chapter": "Chapter 2 — Occupational pension schemes"
     },
     "cross_references": [
-      "Part 2",
       "Chapter 2",
-      "Schedule 7",
       "Part 5",
+      "Schedule 7",
+      "Part 2",
       "Part 9"
     ],
     "token_count": 609,
@@ -1683,13 +1683,13 @@
       "chapter": "Chapter 2 — Occupational pension schemes"
     },
     "cross_references": [
-      "section 61(3)",
       "Chapter 2",
+      "section 61",
+      "section 61(3)",
       "section 120",
-      "Schedule 8",
-      "section 126",
       "Part 5",
-      "section 61"
+      "section 126",
+      "Schedule 8"
     ],
     "token_count": 469,
     "page_start": 55,
@@ -1716,8 +1716,8 @@
     },
     "cross_references": [
       "Chapter 3",
-      "section 65(1)",
-      "Part 5"
+      "Part 5",
+      "section 65(1)"
     ],
     "token_count": 691,
     "page_start": 56,
@@ -1770,10 +1770,10 @@
       "chapter": "Chapter 3 — Equality of terms"
     },
     "cross_references": [
-      "Part 2",
+      "Chapter 3",
       "section 69",
-      "section 67",
-      "Chapter 3"
+      "Part 2",
+      "section 67"
     ],
     "token_count": 403,
     "page_start": 58,
@@ -1800,12 +1800,12 @@
       "schedule": "Schedule 7."
     },
     "cross_references": [
-      "Section 39(2)",
       "section 66(2)",
-      "Schedule 7",
-      "Part 5",
+      "Section 49(6)",
       "Section 50(6)",
-      "Section 49(6)"
+      "Section 39(2)",
+      "Part 5",
+      "Schedule 7"
     ],
     "token_count": 190,
     "page_start": 58,
@@ -1831,11 +1831,11 @@
       "chapter": "Chapter 3 — Equality of terms"
     },
     "cross_references": [
-      "Chapter 3",
       "section 70",
-      "section 13",
       "section 74(1)",
-      "Part 5"
+      "Chapter 3",
+      "Part 5",
+      "section 13"
     ],
     "token_count": 583,
     "page_start": 59,
@@ -1914,12 +1914,12 @@
       "chapter": "Chapter 3 — Equality of terms"
     },
     "cross_references": [
-      "Chapter 3",
-      "Section 39(2)",
       "section 73(2)",
-      "Part 5",
+      "Section 49(6)",
+      "Chapter 3",
       "Section 50(6)",
-      "Section 49(6)"
+      "Section 39(2)",
+      "Part 5"
     ],
     "token_count": 527,
     "page_start": 61,
@@ -1945,13 +1945,13 @@
       "chapter": "Chapter 3 — Equality of terms"
     },
     "cross_references": [
-      "Chapter 3",
       "Section 39(3)",
-      "Section 49(5)",
       "section 27",
+      "Section 49(5)",
+      "Chapter 3",
+      "Part 5",
       "Schedule 19",
-      "Section 50(5)",
-      "Part 5"
+      "Section 50(5)"
     ],
     "token_count": 555,
     "page_start": 62,
@@ -1978,9 +1978,9 @@
     },
     "cross_references": [
       "Chapter 3",
-      "section 195",
+      "Section 42",
       "Part 5",
-      "Section 42"
+      "section 195"
     ],
     "token_count": 579,
     "page_start": 63,
@@ -2006,9 +2006,9 @@
       "chapter": "Chapter 3 — Equality of terms"
     },
     "cross_references": [
-      "section 191(4)",
+      "section 124(1)",
       "Chapter 3",
-      "section 124(1)"
+      "section 191(4)"
     ],
     "token_count": 379,
     "page_start": 64,
@@ -2035,8 +2035,8 @@
       "schedule": "Schedule 7 (exceptions) has effect."
     },
     "cross_references": [
-      "Schedule 7",
-      "Part 5"
+      "Part 5",
+      "Schedule 7"
     ],
     "token_count": 193,
     "page_start": 64,
@@ -2063,10 +2063,10 @@
     },
     "cross_references": [
       "section 3",
-      "section 11",
-      "Part 5",
       "section 87(1)",
-      "Chapter 4"
+      "section 11",
+      "Chapter 4",
+      "Part 5"
     ],
     "token_count": 602,
     "page_start": 65,
@@ -2094,10 +2094,10 @@
     "cross_references": [
       "section 52",
       "section 191",
-      "section 195",
-      "section 212(11)",
+      "Chapter 4",
       "section 194",
-      "Chapter 4"
+      "section 212(11)",
+      "section 195"
     ],
     "token_count": 457,
     "page_start": 66,
@@ -2148,9 +2148,9 @@
       "chapter": "Chapter 1 — Schools"
     },
     "cross_references": [
-      "Part 6",
+      "section 73",
       "Chapter 1",
-      "section 73"
+      "Part 6"
     ],
     "token_count": 583,
     "page_start": 67,
@@ -2176,11 +2176,11 @@
       "chapter": "Chapter 1 — Schools"
     },
     "cross_references": [
-      "Chapter 1",
-      "section 27",
       "section\n85(4)",
+      "section 27",
       "section 85",
-      "section 26"
+      "section 26",
+      "Chapter 1"
     ],
     "token_count": 509,
     "page_start": 68,
@@ -2206,16 +2206,16 @@
       "chapter": "Chapter 1 — Schools"
     },
     "cross_references": [
-      "section\n135(1)",
-      "Chapter 1",
-      "section 135(1)",
-      "section 4",
-      "section 463",
       "section 3(1)",
-      "section 337",
       "section 162",
+      "section 4",
+      "section\n135(1)",
+      "section 135(1)",
       "Part\n4",
-      "section 579(1)"
+      "section 579(1)",
+      "Chapter 1",
+      "section 337",
+      "section 463"
     ],
     "token_count": 516,
     "page_start": 69,
@@ -2295,9 +2295,9 @@
       "chapter": "Chapter 2 — Further and higher education"
     },
     "cross_references": [
-      "section 80",
-      "Part 6",
       "Chapter 2",
+      "Part 6",
+      "section 80",
       "section 20(7)"
     ],
     "token_count": 559,
@@ -2324,11 +2324,11 @@
       "chapter": "Chapter 2 — Further and higher education"
     },
     "cross_references": [
+      "section 507A",
       "Chapter 2",
       "section 508",
-      "section 91",
-      "section 507A",
-      "Part 6"
+      "Part 6",
+      "section 91"
     ],
     "token_count": 558,
     "page_start": 73,
@@ -2354,13 +2354,13 @@
       "chapter": "Chapter 2 — Further and higher education"
     },
     "cross_references": [
-      "section 44",
-      "Chapter 2",
-      "section 135(1)",
-      "section 2",
-      "section 36",
       "section 38",
       "section 162",
+      "section 2",
+      "Chapter 2",
+      "section 135(1)",
+      "section 36",
+      "section 44",
       "section 1(3)",
       "Schedule 6"
     ],
@@ -2389,8 +2389,8 @@
       "schedule": "Schedule 12 (exceptions) has effect."
     },
     "cross_references": [
-      "Part 6",
-      "Schedule 12"
+      "Schedule 12",
+      "Part 6"
     ],
     "token_count": 246,
     "page_start": 74,
@@ -2416,8 +2416,8 @@
       "chapter": "Chapter 3 — General qualifications bodies"
     },
     "cross_references": [
-      "Part 6",
       "Chapter 3",
+      "Part 6",
       "section 96"
     ],
     "token_count": 581,
@@ -2444,11 +2444,11 @@
       "chapter": "Chapter 3 — General qualifications bodies"
     },
     "cross_references": [
+      "section 85",
       "Chapter 3",
-      "section 96",
       "section 96(8)",
-      "section 91",
-      "section 85"
+      "section 96",
+      "section 91"
     ],
     "token_count": 356,
     "page_start": 76,
@@ -2473,19 +2473,19 @@
       "part": "PART 7"
     },
     "cross_references": [
-      "Part 2",
-      "section 191",
+      "Part 7",
+      "section 101(4)",
       "section 3",
       "Section 104(7)",
-      "section 104(3)",
+      "section 26",
       "Part 4",
-      "Part 3",
       "Part 6",
-      "Part 5",
-      "section 101(4)",
       "section 6(3)",
-      "Part 7",
-      "section 26"
+      "section 191",
+      "Part 2",
+      "Part 5",
+      "section 104(3)",
+      "Part 3"
     ],
     "token_count": 791,
     "page_start": 76,
@@ -2510,19 +2510,19 @@
       "part": "PART 7"
     },
     "cross_references": [
-      "Part 2",
-      "section 191",
+      "Part 7",
+      "section 101(4)",
       "section 3",
       "Section 104(7)",
-      "section 104(3)",
+      "section 26",
       "Part 4",
-      "Part 3",
       "Part 6",
-      "Part 5",
-      "section 101(4)",
       "section 6(3)",
-      "Part 7",
-      "section 26"
+      "section 191",
+      "Part 2",
+      "Part 5",
+      "section 104(3)",
+      "Part 3"
     ],
     "token_count": 791,
     "page_start": 76,
@@ -2547,19 +2547,19 @@
       "part": "PART 7"
     },
     "cross_references": [
-      "Part 2",
-      "section 191",
+      "Part 7",
+      "section 101(4)",
       "section 3",
       "Section 104(7)",
-      "section 104(3)",
+      "section 26",
       "Part 4",
-      "Part 3",
       "Part 6",
-      "Part 5",
-      "section 101(4)",
       "section 6(3)",
-      "Part 7",
-      "section 26"
+      "section 191",
+      "Part 2",
+      "Part 5",
+      "section 104(3)",
+      "Part 3"
     ],
     "token_count": 791,
     "page_start": 76,
@@ -2584,19 +2584,19 @@
       "part": "PART 7"
     },
     "cross_references": [
-      "Part 2",
-      "section 191",
+      "Part 7",
+      "section 101(4)",
       "section 3",
       "Section 104(7)",
-      "section 104(3)",
+      "section 26",
       "Part 4",
-      "Part 3",
       "Part 6",
-      "Part 5",
-      "section 101(4)",
       "section 6(3)",
-      "Part 7",
-      "section 26"
+      "section 191",
+      "Part 2",
+      "Part 5",
+      "section 104(3)",
+      "Part 3"
     ],
     "token_count": 393,
     "page_start": 76,
@@ -2621,16 +2621,16 @@
       "part": "PART 8"
     },
     "cross_references": [
-      "section 109(1)",
-      "Chapter 1",
-      "Part 8",
-      "section 20",
-      "Part 12",
-      "Part 3",
-      "Part 9",
       "section 108(1)",
+      "Part 8",
+      "section 109(1)",
+      "section 20",
+      "Part 3",
+      "section 109(4)",
       "Part 6",
-      "section 109(4)"
+      "Part 12",
+      "Chapter 1",
+      "Part 9"
     ],
     "token_count": 791,
     "page_start": 81,
@@ -2655,16 +2655,16 @@
       "part": "PART 8"
     },
     "cross_references": [
-      "section 109(1)",
-      "Chapter 1",
-      "Part 8",
-      "section 20",
-      "Part 12",
-      "Part 3",
-      "Part 9",
       "section 108(1)",
+      "Part 8",
+      "section 109(1)",
+      "section 20",
+      "Part 3",
+      "section 109(4)",
       "Part 6",
-      "section 109(4)"
+      "Part 12",
+      "Chapter 1",
+      "Part 9"
     ],
     "token_count": 791,
     "page_start": 81,
@@ -2689,16 +2689,16 @@
       "part": "PART 8"
     },
     "cross_references": [
-      "section 109(1)",
-      "Chapter 1",
-      "Part 8",
-      "section 20",
-      "Part 12",
-      "Part 3",
-      "Part 9",
       "section 108(1)",
+      "Part 8",
+      "section 109(1)",
+      "section 20",
+      "Part 3",
+      "section 109(4)",
       "Part 6",
-      "section 109(4)"
+      "Part 12",
+      "Chapter 1",
+      "Part 9"
     ],
     "token_count": 265,
     "page_start": 81,
@@ -2752,16 +2752,16 @@
       "chapter": "Chapter 2 — Civil courts"
     },
     "cross_references": [
-      "section 116",
-      "Chapter 2",
-      "section 115(1)",
-      "Part 4",
-      "section 108",
       "section 106",
-      "Part 3",
+      "Part 7",
+      "section 116",
       "section 115",
+      "Chapter 2",
+      "Part 4",
       "Part 6",
-      "Part 7"
+      "section 108",
+      "section 115(1)",
+      "Part 3"
     ],
     "token_count": 333,
     "page_start": 85,
@@ -2787,10 +2787,10 @@
       "chapter": "Chapter 2 — Civil courts"
     },
     "cross_references": [
-      "Part 3",
+      "Part 9",
       "Schedule 1",
       "section 63(1)",
-      "Part 9"
+      "Part 3"
     ],
     "token_count": 322,
     "page_start": 85,
@@ -2816,16 +2816,16 @@
       "chapter": "Chapter 2 — Civil courts"
     },
     "cross_references": [
-      "Part 2",
+      "section 2(2)",
       "Chapter 2",
+      "section 33(1)",
       "Part 4",
       "Schedule 17",
       "section 104",
-      "Part 3",
-      "section 114(1)",
-      "section 2(2)",
       "Part 5",
-      "section 33(1)"
+      "section 114(1)",
+      "Part 2",
+      "Part 3"
     ],
     "token_count": 430,
     "page_start": 86,
@@ -2852,8 +2852,8 @@
       "schedule": "Schedule 17 (disabled pupils: enforcement) has effect."
     },
     "cross_references": [
-      "Schedule 17",
       "section 114",
+      "Schedule 17",
       "Part 9"
     ],
     "token_count": 158,
@@ -2880,13 +2880,13 @@
       "chapter": "Chapter 2 — Civil courts"
     },
     "cross_references": [
-      "Chapter 2",
       "section 27",
-      "section 114",
-      "Part 3",
-      "Part 9",
       "section\n114(1)",
-      "section 114(2)"
+      "Chapter 2",
+      "section 114(2)",
+      "section 114",
+      "Part 9",
+      "Part 3"
     ],
     "token_count": 635,
     "page_start": 87,
@@ -2912,14 +2912,14 @@
       "chapter": "Chapter 2 — Civil courts"
     },
     "cross_references": [
+      "section 115",
       "Chapter 2",
       "section 11",
-      "section 13(5)",
+      "section 12",
       "section 19",
-      "section 115",
+      "section 13(5)",
       "section 114(1)",
-      "Part 9",
-      "section 12"
+      "Part 9"
     ],
     "token_count": 550,
     "page_start": 88,
@@ -2945,16 +2945,16 @@
       "chapter": "Chapter 3 — Employment tribunals"
     },
     "cross_references": [
-      "Chapter 3",
-      "Section 120(1)",
       "section 121",
-      "Part 9",
-      "section 108",
-      "section 53",
-      "section\n60(1)",
-      "Part 5",
+      "section 122",
+      "Section 120(1)",
       "section 61",
-      "section 122"
+      "section\n60(1)",
+      "Chapter 3",
+      "section 108",
+      "Part 5",
+      "section 53",
+      "Part 9"
     ],
     "token_count": 582,
     "page_start": 89,
@@ -3036,15 +3036,15 @@
       "chapter": "Chapter 3 — Employment tribunals"
     },
     "cross_references": [
-      "Chapter 3",
-      "section 119",
-      "section 10(4)",
-      "section 120(1)",
-      "section 10(5)",
-      "section 19",
       "section 10(3)",
+      "section 19",
+      "Chapter 3",
+      "section 10(4)",
       "Part 9",
-      "section 124"
+      "section 124",
+      "section 10(5)",
+      "section 120(1)",
+      "section 119"
     ],
     "token_count": 600,
     "page_start": 91,
@@ -3070,11 +3070,11 @@
       "chapter": "Chapter 3 — Employment tribunals"
     },
     "cross_references": [
+      "section\n10(6)",
       "Chapter 3",
-      "section 120(1)",
-      "Part 9",
       "section 124",
-      "section\n10(6)"
+      "section 120(1)",
+      "Part 9"
     ],
     "token_count": 551,
     "page_start": 92,
@@ -3101,10 +3101,10 @@
     },
     "cross_references": [
       "section 121",
-      "section 127(3)",
       "section 128(2)",
-      "Part 9",
-      "Chapter 4"
+      "Chapter 4",
+      "section 127(3)",
+      "Part 9"
     ],
     "token_count": 564,
     "page_start": 93,
@@ -3130,10 +3130,10 @@
       "chapter": "Chapter 4 — Equality of terms"
     },
     "cross_references": [
-      "Section 129",
-      "Chapter 4",
+      "Part 9",
       "section 129",
-      "Part 9"
+      "Chapter 4",
+      "Section 129"
     ],
     "token_count": 512,
     "page_start": 94,
@@ -3186,10 +3186,10 @@
       "chapter": "Chapter 4 — Equality of terms"
     },
     "cross_references": [
-      "section 80(5)",
       "Part 9",
+      "section 128(2)",
       "Chapter 4",
-      "section 128(2)"
+      "section 80(5)"
     ],
     "token_count": 612,
     "page_start": 96,
@@ -3215,9 +3215,9 @@
       "chapter": "Chapter 4 — Equality of terms"
     },
     "cross_references": [
-      "Part 9",
+      "section 134",
       "Chapter 4",
-      "section 134"
+      "Part 9"
     ],
     "token_count": 563,
     "page_start": 97,
@@ -3270,8 +3270,8 @@
       "chapter": "Chapter 4 — Equality of terms"
     },
     "cross_references": [
-      "section 130",
       "Part 9",
+      "section 130",
       "Chapter 4",
       "section 132(5)"
     ],
@@ -3299,11 +3299,11 @@
       "chapter": "Chapter 4 — Equality of terms"
     },
     "cross_references": [
-      "Part 2",
       "section 19",
+      "Chapter 4",
       "section 6",
-      "Part 9",
-      "Chapter 4"
+      "Part 2",
+      "Part 9"
     ],
     "token_count": 535,
     "page_start": 100,
@@ -3356,13 +3356,13 @@
       "chapter": "Chapter 5 — Miscellaneous"
     },
     "cross_references": [
-      "Chapter 3",
-      "section 111",
-      "Chapter 5",
       "section 14",
-      "section 120(1)",
-      "section 114(1)",
+      "Chapter 3",
       "Part 5",
+      "Chapter 5",
+      "section 114(1)",
+      "section 111",
+      "section 120(1)",
       "Part 9"
     ],
     "token_count": 583,
@@ -3389,11 +3389,11 @@
       "chapter": "Chapter 5 — Miscellaneous"
     },
     "cross_references": [
-      "Chapter 3",
       "section 334",
+      "Chapter 3",
+      "Part 5",
       "Chapter 5",
-      "section 337",
-      "Part 5"
+      "section 337"
     ],
     "token_count": 288,
     "page_start": 103,
@@ -3418,18 +3418,18 @@
       "part": "PART 10"
     },
     "cross_references": [
-      "section 5",
-      "Part 10",
-      "Part 1",
-      "section 70(2)",
       "section\n56(2)",
-      "section 120",
+      "Part 10",
       "section 142",
-      "section 148(2)",
-      "section 145",
-      "section 212A",
       "section\n70(2)",
-      "section\n114"
+      "section 70(2)",
+      "section 212A",
+      "section 145",
+      "section 120",
+      "Part 1",
+      "section 148(2)",
+      "section\n114",
+      "section 5"
     ],
     "token_count": 791,
     "page_start": 103,
@@ -3454,18 +3454,18 @@
       "part": "PART 10"
     },
     "cross_references": [
-      "section 5",
-      "Part 10",
-      "Part 1",
-      "section 70(2)",
       "section\n56(2)",
-      "section 120",
+      "Part 10",
       "section 142",
-      "section 148(2)",
-      "section 145",
-      "section 212A",
       "section\n70(2)",
-      "section\n114"
+      "section 70(2)",
+      "section 212A",
+      "section 145",
+      "section 120",
+      "Part 1",
+      "section 148(2)",
+      "section\n114",
+      "section 5"
     ],
     "token_count": 791,
     "page_start": 103,
@@ -3490,18 +3490,18 @@
       "part": "PART 10"
     },
     "cross_references": [
-      "section 5",
-      "Part 10",
-      "Part 1",
-      "section 70(2)",
       "section\n56(2)",
-      "section 120",
+      "Part 10",
       "section 142",
-      "section 148(2)",
-      "section 145",
-      "section 212A",
       "section\n70(2)",
-      "section\n114"
+      "section 70(2)",
+      "section 212A",
+      "section 145",
+      "section 120",
+      "Part 1",
+      "section 148(2)",
+      "section\n114",
+      "section 5"
     ],
     "token_count": 791,
     "page_start": 103,
@@ -3526,18 +3526,18 @@
       "part": "PART 10"
     },
     "cross_references": [
-      "section 5",
-      "Part 10",
-      "Part 1",
-      "section 70(2)",
       "section\n56(2)",
-      "section 120",
+      "Part 10",
       "section 142",
-      "section 148(2)",
-      "section 145",
-      "section 212A",
       "section\n70(2)",
-      "section\n114"
+      "section 70(2)",
+      "section 212A",
+      "section 145",
+      "section 120",
+      "Part 1",
+      "section 148(2)",
+      "section\n114",
+      "section 5"
     ],
     "token_count": 130,
     "page_start": 103,
@@ -3563,11 +3563,11 @@
       "chapter": "Chapter 1 of Part 11 (public sector equality duty)."
     },
     "cross_references": [
-      "Chapter 1",
-      "Part 11",
+      "section 178",
       "Part 10",
+      "Part 11",
       "Part 5",
-      "section 178"
+      "Chapter 1"
     ],
     "token_count": 278,
     "page_start": 107,
@@ -3645,12 +3645,12 @@
       "schedule": "Schedule 18 (exceptions) has effect."
     },
     "cross_references": [
+      "Schedule 19",
+      "section 149(1)",
+      "Part 1",
       "Schedule 18",
       "Part 2",
-      "Part 1",
-      "Schedule 19",
-      "Part 3",
-      "section 149(1)"
+      "Part 3"
     ],
     "token_count": 129,
     "page_start": 109,
@@ -3677,10 +3677,10 @@
       "schedule": "Schedule 18 (exceptions) has effect."
     },
     "cross_references": [
-      "Part 2",
+      "Schedule 19",
       "Part 11",
       "Part 1",
-      "Schedule 19",
+      "Part 2",
       "Part 3"
     ],
     "token_count": 302,
@@ -3707,16 +3707,16 @@
       "chapter": "Chapter 1 — Public sector equality duty"
     },
     "cross_references": [
-      "section 151(3)",
       "section 149",
-      "section 151(2)",
-      "Schedule 18",
+      "Section 151(1)",
       "Part 11",
-      "Chapter 1",
       "Part 4",
-      "Schedule 19",
       "Section 151(5)",
-      "Section 151(1)"
+      "Chapter 1",
+      "section 151(3)",
+      "Schedule 18",
+      "Schedule 19",
+      "section 151(2)"
     ],
     "token_count": 558,
     "page_start": 110,
@@ -3742,15 +3742,15 @@
       "chapter": "Chapter 1 — Public sector equality duty"
     },
     "cross_references": [
-      "section 151(5)",
-      "Part 2",
-      "Chapter 1",
-      "Part 11",
-      "Part 1",
-      "Part 4",
       "Schedule 19",
-      "Part 3",
-      "section 149(1)"
+      "section 149(1)",
+      "Part 11",
+      "section 151(5)",
+      "Part 4",
+      "Part 1",
+      "Chapter 1",
+      "Part 2",
+      "Part 3"
     ],
     "token_count": 508,
     "page_start": 111,
@@ -3776,9 +3776,9 @@
       "chapter": "Chapter 1 — Public sector equality duty"
     },
     "cross_references": [
-      "Chapter 1",
+      "section 153",
       "Part 11",
-      "section 153"
+      "Chapter 1"
     ],
     "token_count": 422,
     "page_start": 112,
@@ -3804,9 +3804,9 @@
       "chapter": "Chapter 1 — Public sector equality duty"
     },
     "cross_references": [
-      "Chapter 1",
+      "section 153",
       "Part 11",
-      "section 153"
+      "Chapter 1"
     ],
     "token_count": 563,
     "page_start": 113,
@@ -3859,12 +3859,12 @@
       "chapter": "Chapter 1 — Public sector equality duty"
     },
     "cross_references": [
+      "section 159(3)",
+      "section 104(7)",
       "Part 11",
       "section 104",
-      "section 159(3)",
-      "section 105",
-      "section 104(7)",
-      "Part 5"
+      "Part 5",
+      "section 105"
     ],
     "token_count": 239,
     "page_start": 114,
@@ -3941,12 +3941,12 @@
       "chapter": "Chapter 1 — Taxis, etc."
     },
     "cross_references": [
-      "Chapter 1",
       "section 16",
-      "section\n161",
-      "section\n37",
+      "Section 16",
       "Part 12",
-      "Section 16"
+      "section\n37",
+      "section\n161",
+      "Chapter 1"
     ],
     "token_count": 623,
     "page_start": 116,
@@ -3972,10 +3972,10 @@
       "chapter": "Chapter 1 — Taxis, etc."
     },
     "cross_references": [
-      "Chapter 1",
-      "section 20",
       "Part 12",
-      "section 2(2)"
+      "section 2(2)",
+      "Chapter 1",
+      "section 20"
     ],
     "token_count": 538,
     "page_start": 117,
@@ -4002,8 +4002,8 @@
     },
     "cross_references": [
       "section 163",
-      "Chapter 1",
-      "Part 12"
+      "Part 12",
+      "Chapter 1"
     ],
     "token_count": 583,
     "page_start": 118,
@@ -4029,12 +4029,12 @@
       "chapter": "Chapter 1 — Taxis, etc."
     },
     "cross_references": [
-      "section 167",
-      "Chapter 1",
       "section 10",
       "section 48",
-      "section 7",
-      "Part 12"
+      "section 167",
+      "Part 12",
+      "Chapter 1",
+      "section 7"
     ],
     "token_count": 592,
     "page_start": 119,
@@ -4060,12 +4060,12 @@
       "chapter": "Chapter 1 — Taxis, etc."
     },
     "cross_references": [
-      "section 167",
-      "Chapter 1",
-      "section\n165",
       "section 165",
+      "section 167",
+      "section 12",
+      "section\n165",
       "Part 12",
-      "section 12"
+      "Chapter 1"
     ],
     "token_count": 615,
     "page_start": 120,
@@ -4091,8 +4091,8 @@
       "chapter": "Chapter 1 — Taxis, etc."
     },
     "cross_references": [
-      "Chapter 1",
       "Part 12",
+      "Chapter 1",
       "section 168"
     ],
     "token_count": 564,
@@ -4147,10 +4147,10 @@
       "section": "1998 Act”),"
     },
     "cross_references": [
-      "section 3",
-      "section 55",
       "section 48",
       "section 170(3)",
+      "section 3",
+      "section 55",
       "section 51",
       "section 6",
       "Part 12"
@@ -4179,16 +4179,16 @@
       "chapter": "Chapter 1 — Taxis, etc."
     },
     "cross_references": [
-      "section 167",
-      "Chapter 1",
-      "section 167(5)",
       "section 10",
+      "section 167(5)",
+      "section 167",
+      "section 170",
       "section 6",
       "section 37",
       "Part 12",
-      "section 170",
-      "section 166",
-      "section 160(1)"
+      "Chapter 1",
+      "section 160(1)",
+      "section 166"
     ],
     "token_count": 633,
     "page_start": 123,
@@ -4214,9 +4214,9 @@
       "chapter": "Chapter 1 — Taxis, etc."
     },
     "cross_references": [
+      "section\n176",
       "Part 12",
-      "Chapter 1",
-      "section\n176"
+      "Chapter 1"
     ],
     "token_count": 540,
     "page_start": 124,
@@ -4243,8 +4243,8 @@
     },
     "cross_references": [
       "section 177",
-      "Chapter 2",
-      "Part 12"
+      "Part 12",
+      "Chapter 2"
     ],
     "token_count": 553,
     "page_start": 125,
@@ -4270,9 +4270,9 @@
       "chapter": "Chapter 2 — Public service vehicles"
     },
     "cross_references": [
+      "Part 12",
       "section 176",
-      "Chapter 2",
-      "Part 12"
+      "Chapter 2"
     ],
     "token_count": 568,
     "page_start": 126,
@@ -4298,12 +4298,12 @@
       "chapter": "Chapter 2 — Public service vehicles"
     },
     "cross_references": [
-      "section 180",
-      "Section 207(2)",
       "Chapter 2",
       "section 179",
-      "section 177(1)",
-      "Part 12"
+      "section 180",
+      "Part 12",
+      "Section 207(2)",
+      "section 177(1)"
     ],
     "token_count": 516,
     "page_start": 127,
@@ -4331,10 +4331,10 @@
     "cross_references": [
       "Chapter 2",
       "section 176(1)",
-      "section 174(3)",
-      "section 174(1)",
       "Part 12",
-      "section 177(4)"
+      "section 177(4)",
+      "section 174(3)",
+      "section 174(1)"
     ],
     "token_count": 520,
     "page_start": 128,
@@ -4360,11 +4360,11 @@
       "chapter": "Chapter 3 — Rail vehicles"
     },
     "cross_references": [
-      "section 207(4)",
       "Chapter 3",
-      "section 183(1)",
+      "Part 12",
+      "section 207(4)",
       "section 183",
-      "Part 12"
+      "section 183(1)"
     ],
     "token_count": 626,
     "page_start": 129,
@@ -4390,9 +4390,9 @@
       "chapter": "Chapter 3 — Rail vehicles"
     },
     "cross_references": [
-      "section 183(1)",
       "section 184(1)",
       "section\n183(1)",
+      "section 183(1)",
       "Chapter 3"
     ],
     "token_count": 531,
@@ -4419,13 +4419,13 @@
       "chapter": "Chapter 3 — Rail vehicles"
     },
     "cross_references": [
+      "section 166(3)",
       "Chapter 3",
-      "section 177",
-      "section 176",
       "section\n182(1)",
+      "section 176",
       "section 182(4)",
-      "section 166",
-      "section 166(3)"
+      "section 177",
+      "section 166"
     ],
     "token_count": 434,
     "page_start": 131,
@@ -4451,10 +4451,10 @@
       "schedule": "Schedule 21 (reasonable adjustments: supplementary) has effect."
     },
     "cross_references": [
-      "section 2",
       "Schedule 21",
-      "Part 13",
+      "section 2",
       "section 1",
+      "Part 13",
       "section 79"
     ],
     "token_count": 653,
@@ -4481,17 +4481,17 @@
       "schedule": "Schedule 22 (statutory provisions) has effect."
     },
     "cross_references": [
-      "section 41",
-      "section 55",
-      "section 193",
       "section 39",
-      "Schedule 22",
-      "Part 14",
+      "section 40",
       "section 1(1)",
-      "Section 107(5)",
-      "section 15",
       "section 29",
-      "section 40"
+      "section 55",
+      "section 15",
+      "Section 107(5)",
+      "section 193",
+      "Part 14",
+      "section 41",
+      "Schedule 22"
     ],
     "token_count": 790,
     "page_start": 133,
@@ -4517,17 +4517,17 @@
       "schedule": "Schedule 22 (statutory provisions) has effect."
     },
     "cross_references": [
-      "section 41",
-      "section 55",
-      "section 193",
       "section 39",
-      "Schedule 22",
-      "Part 14",
+      "section 40",
       "section 1(1)",
-      "Section 107(5)",
-      "section 15",
       "section 29",
-      "section 40"
+      "section 55",
+      "section 15",
+      "Section 107(5)",
+      "section 193",
+      "Part 14",
+      "section 41",
+      "Schedule 22"
     ],
     "token_count": 593,
     "page_start": 133,
@@ -4553,9 +4553,9 @@
       "schedule": "Schedule 23 (general exceptions) has effect."
     },
     "cross_references": [
-      "Part 14",
+      "Schedule 23",
       "Part 5",
-      "Schedule 23"
+      "Part 14"
     ],
     "token_count": 541,
     "page_start": 135,
@@ -4580,10 +4580,10 @@
       "part": "PART 15"
     },
     "cross_references": [
-      "section 1",
       "Section 1",
+      "Part 15",
       "section 70",
-      "Part 15"
+      "section 1"
     ],
     "token_count": 494,
     "page_start": 136,
@@ -4609,16 +4609,16 @@
     },
     "cross_references": [
       "section 208",
-      "section 6A",
-      "Part 1",
+      "Schedule\n24",
       "section 258(2)",
       "section 6(1)",
-      "section\n203(3)",
-      "Part 16",
-      "Part 3",
-      "Schedule\n24",
       "section 2(2)",
-      "section 203"
+      "Part 16",
+      "section 6A",
+      "Part 1",
+      "section\n203(3)",
+      "section 203",
+      "Part 3"
     ],
     "token_count": 791,
     "page_start": 137,
@@ -4644,16 +4644,16 @@
     },
     "cross_references": [
       "section 208",
-      "section 6A",
-      "Part 1",
+      "Schedule\n24",
       "section 258(2)",
       "section 6(1)",
-      "section\n203(3)",
-      "Part 16",
-      "Part 3",
-      "Schedule\n24",
       "section 2(2)",
-      "section 203"
+      "Part 16",
+      "section 6A",
+      "Part 1",
+      "section\n203(3)",
+      "section 203",
+      "Part 3"
     ],
     "token_count": 672,
     "page_start": 137,
@@ -4679,13 +4679,13 @@
       "chapter": "Chapter 1 of Part 11 (public sector equality duty)."
     },
     "cross_references": [
-      "section 44",
-      "Part 2",
-      "Part 11",
-      "Chapter 1",
       "section 23",
       "Part 16",
-      "Part 5"
+      "Part 11",
+      "Part 5",
+      "Chapter 1",
+      "section 44",
+      "Part 2"
     ],
     "token_count": 353,
     "page_start": 139,
@@ -4712,32 +4712,32 @@
       "schedule": "Schedule 25 (information society services) has effect."
     },
     "cross_references": [
-      "Schedule 20",
-      "section 59",
-      "Schedule 14",
-      "Schedule 25",
-      "section 30",
-      "section 82",
-      "Part 16",
-      "section 37",
-      "section 78",
-      "Part 1",
-      "section 2",
-      "section 183(1)",
-      "section 81",
-      "section 153",
-      "Schedule 12",
-      "section 184(4)",
-      "section 207(7)",
-      "section 203",
-      "section 155(5)",
-      "section 151",
       "section 106",
+      "Schedule 12",
+      "Part 16",
+      "section 82",
       "section 105",
       "section 197",
+      "section 59",
+      "section 153",
+      "section 78",
+      "Schedule 20",
+      "Part 1",
       "section 163(4)",
+      "section 183(1)",
+      "section 203",
       "Schedule 11",
-      "section 216"
+      "section 2",
+      "Schedule 25",
+      "section 155(5)",
+      "section 151",
+      "section 216",
+      "section 207(7)",
+      "section 81",
+      "section 37",
+      "section 184(4)",
+      "Schedule 14",
+      "section 30"
     ],
     "token_count": 790,
     "page_start": 140,
@@ -4764,32 +4764,32 @@
       "schedule": "Schedule 25 (information society services) has effect."
     },
     "cross_references": [
-      "Schedule 20",
-      "section 59",
-      "Schedule 14",
-      "Schedule 25",
-      "section 30",
-      "section 82",
-      "Part 16",
-      "section 37",
-      "section 78",
-      "Part 1",
-      "section 2",
-      "section 183(1)",
-      "section 81",
-      "section 153",
-      "Schedule 12",
-      "section 184(4)",
-      "section 207(7)",
-      "section 203",
-      "section 155(5)",
-      "section 151",
       "section 106",
+      "Schedule 12",
+      "Part 16",
+      "section 82",
       "section 105",
       "section 197",
+      "section 59",
+      "section 153",
+      "section 78",
+      "Schedule 20",
+      "Part 1",
       "section 163(4)",
+      "section 183(1)",
+      "section 203",
       "Schedule 11",
-      "section 216"
+      "section 2",
+      "Schedule 25",
+      "section 155(5)",
+      "section 151",
+      "section 216",
+      "section 207(7)",
+      "section 81",
+      "section 37",
+      "section 184(4)",
+      "Schedule 14",
+      "section 30"
     ],
     "token_count": 789,
     "page_start": 140,
@@ -4816,32 +4816,32 @@
       "schedule": "Schedule 25 (information society services) has effect."
     },
     "cross_references": [
-      "Schedule 20",
-      "section 59",
-      "Schedule 14",
-      "Schedule 25",
-      "section 30",
-      "section 82",
-      "Part 16",
-      "section 37",
-      "section 78",
-      "Part 1",
-      "section 2",
-      "section 183(1)",
-      "section 81",
-      "section 153",
-      "Schedule 12",
-      "section 184(4)",
-      "section 207(7)",
-      "section 203",
-      "section 155(5)",
-      "section 151",
       "section 106",
+      "Schedule 12",
+      "Part 16",
+      "section 82",
       "section 105",
       "section 197",
+      "section 59",
+      "section 153",
+      "section 78",
+      "Schedule 20",
+      "Part 1",
       "section 163(4)",
+      "section 183(1)",
+      "section 203",
       "Schedule 11",
-      "section 216"
+      "section 2",
+      "Schedule 25",
+      "section 155(5)",
+      "section 151",
+      "section 216",
+      "section 207(7)",
+      "section 81",
+      "section 37",
+      "section 184(4)",
+      "Schedule 14",
+      "section 30"
     ],
     "token_count": 670,
     "page_start": 140,
@@ -4868,23 +4868,23 @@
       "schedule": "Schedule 27 (repeals and revocations) has effect."
     },
     "cross_references": [
-      "section 28",
-      "section 83",
-      "section 578",
-      "section 75",
-      "section 67",
-      "section 73(1)",
-      "section 66",
-      "section 13",
-      "section 71(1)",
-      "section 124",
+      "section 73",
       "section 73(2)",
       "Schedule 27",
+      "section 66",
+      "section 75",
       "Part 16",
-      "section 72(1)",
+      "section 71(1)",
       "section 61",
+      "section 72(1)",
       "section 1",
-      "section 73"
+      "section 124",
+      "section 73(1)",
+      "section 83",
+      "section 578",
+      "section 67",
+      "section 28",
+      "section 13"
     ],
     "token_count": 790,
     "page_start": 143,
@@ -4911,23 +4911,23 @@
       "schedule": "Schedule 27 (repeals and revocations) has effect."
     },
     "cross_references": [
-      "section 28",
-      "section 83",
-      "section 578",
-      "section 75",
-      "section 67",
-      "section 73(1)",
-      "section 66",
-      "section 13",
-      "section 71(1)",
-      "section 124",
+      "section 73",
       "section 73(2)",
       "Schedule 27",
+      "section 66",
+      "section 75",
       "Part 16",
-      "section 72(1)",
+      "section 71(1)",
       "section 61",
+      "section 72(1)",
       "section 1",
-      "section 73"
+      "section 124",
+      "section 73(1)",
+      "section 83",
+      "section 578",
+      "section 67",
+      "section 28",
+      "section 13"
     ],
     "token_count": 606,
     "page_start": 143,
@@ -4955,12 +4955,12 @@
     },
     "cross_references": [
       "section 105(3)",
-      "section 190",
-      "Schedule 28",
+      "section 199",
       "section 186(2)",
       "Part 15",
-      "section 199",
-      "section 82"
+      "section 82",
+      "section 190",
+      "Schedule 28"
     ],
     "token_count": 358,
     "page_start": 146,
@@ -5177,8 +5177,8 @@
       "schedule": "Schedule 1 — Disability: supplementary provision"
     },
     "cross_references": [
-      "Part 2",
-      "Schedule 1"
+      "Schedule 1",
+      "Part 2"
     ],
     "token_count": 103,
     "page_start": 150,
@@ -5328,10 +5328,10 @@
       "schedule": "Schedule 2 — Services and public functions: reasonable adjustments"
     },
     "cross_references": [
-      "section 1",
+      "section 23",
       "section 48",
-      "section 7",
-      "section 23"
+      "section 1",
+      "section 7"
     ],
     "token_count": 350,
     "page_start": 151,
@@ -5558,9 +5558,9 @@
       "part": "PART 2"
     },
     "cross_references": [
+      "section 14",
       "section 17",
       "section 13",
-      "section 14",
       "section 29"
     ],
     "token_count": 181,
@@ -5587,12 +5587,12 @@
       "schedule": "Schedule 3 — Services and public functions: exceptions"
     },
     "cross_references": [
-      "Part 2",
+      "Schedule 3",
       "section 2",
       "section 4",
-      "Schedule 3",
       "section 1",
-      "section 50"
+      "section 50",
+      "Part 2"
     ],
     "token_count": 189,
     "page_start": 155,
@@ -5618,9 +5618,9 @@
       "schedule": "Schedule 3 — Services and public functions: exceptions"
     },
     "cross_references": [
-      "section 17",
       "Section 29",
       "section 14",
+      "section 17",
       "section 29"
     ],
     "token_count": 146,
@@ -5648,8 +5648,8 @@
     },
     "cross_references": [
       "Section 29",
-      "Part 6",
-      "Chapter 1"
+      "Chapter 1",
+      "Part 6"
     ],
     "token_count": 224,
     "page_start": 155,
@@ -5870,8 +5870,8 @@
     },
     "cross_references": [
       "Schedule 3",
-      "section 2(2)",
-      "Part 4"
+      "Part 4",
+      "section 2(2)"
     ],
     "token_count": 84,
     "page_start": 158,
@@ -6170,8 +6170,8 @@
       "part": "PART 6"
     },
     "cross_references": [
-      "section 29",
-      "section 44(1)"
+      "section 44(1)",
+      "section 29"
     ],
     "token_count": 107,
     "page_start": 161,
@@ -6247,8 +6247,8 @@
       "schedule": "Schedule 3 — Services and public functions: exceptions"
     },
     "cross_references": [
-      "Schedule 3",
-      "Part 7"
+      "Part 7",
+      "Schedule 3"
     ],
     "token_count": 100,
     "page_start": 162,
@@ -6543,11 +6543,11 @@
       "part": "PART 9"
     },
     "cross_references": [
-      "Section 29",
-      "section 48",
-      "section 7",
       "section 23",
-      "section 1"
+      "section 48",
+      "section 1",
+      "section 7",
+      "Section 29"
     ],
     "token_count": 294,
     "page_start": 164,
@@ -7270,12 +7270,12 @@
       "schedule": "Schedule 5 — Premises: exceptions"
     },
     "cross_references": [
-      "section 41",
+      "section 48",
+      "section 39",
+      "section 47",
       "section 44",
       "section 45",
-      "section 39",
-      "section 48",
-      "section 47"
+      "section 41"
     ],
     "token_count": 82,
     "page_start": 171,
@@ -7301,9 +7301,9 @@
       "schedule": "Schedule 6 — Office-holders: excluded offices"
     },
     "cross_references": [
-      "Schedule 6",
       "section 55",
-      "section 56(2)"
+      "section 56(2)",
+      "Schedule 6"
     ],
     "token_count": 79,
     "page_start": 172,
@@ -7381,8 +7381,8 @@
       "part": "PART 1"
     },
     "cross_references": [
-      "section 2",
-      "section 51"
+      "section 51",
+      "section 2"
     ],
     "token_count": 234,
     "page_start": 173,
@@ -7408,8 +7408,8 @@
       "schedule": "Schedule 7 — Equality of terms: exceptions"
     },
     "cross_references": [
-      "Schedule 7",
-      "Part 1"
+      "Part 1",
+      "Schedule 7"
     ],
     "token_count": 74,
     "page_start": 174,
@@ -7607,8 +7607,8 @@
       "schedule": "Schedule 8 — Work: reasonable adjustments"
     },
     "cross_references": [
-      "section 41",
-      "section 20(5)"
+      "section 20(5)",
+      "section 41"
     ],
     "token_count": 162,
     "page_start": 177,
@@ -7711,8 +7711,8 @@
       "schedule": "Schedule 8 — Work: reasonable adjustments"
     },
     "cross_references": [
-      "Schedule 8",
-      "Part 2"
+      "Part 2",
+      "Schedule 8"
     ],
     "token_count": 401,
     "page_start": 179,
@@ -7738,9 +7738,9 @@
       "schedule": "Schedule 8 — Work: reasonable adjustments"
     },
     "cross_references": [
-      "section 56(6)",
+      "section 55",
       "section 57",
-      "section 55"
+      "section 56(6)"
     ],
     "token_count": 327,
     "page_start": 180,
@@ -7838,8 +7838,8 @@
       "schedule": "Schedule 8 — Work: reasonable adjustments"
     },
     "cross_references": [
-      "section 56(6)",
       "section 55",
+      "section 56(6)",
       "Section 83"
     ],
     "token_count": 83,
@@ -7912,15 +7912,15 @@
       "schedule": "Schedule 9 — Work: exceptions"
     },
     "cross_references": [
+      "Schedule 9",
       "section 39(1)",
+      "section 45(1)",
       "section 44(1)",
       "section 51(1)",
-      "Part 1",
-      "section 50(3)",
-      "section 45(1)",
       "section 49(3)",
-      "Schedule 9",
-      "section 41(1)"
+      "section 41(1)",
+      "section 50(3)",
+      "Part 1"
     ],
     "token_count": 171,
     "page_start": 183,
@@ -7946,8 +7946,8 @@
       "schedule": "Schedule 9 — Work: exceptions"
     },
     "cross_references": [
-      "section 8(2)",
-      "section 7(3)"
+      "section 7(3)",
+      "section 8(2)"
     ],
     "token_count": 126,
     "page_start": 183,
@@ -7997,9 +7997,9 @@
       "schedule": "Schedule 9 — Work: exceptions"
     },
     "cross_references": [
-      "section 39(1)",
       "section 50(3)",
       "section 51(1)",
+      "section 39(1)",
       "section 49(3)"
     ],
     "token_count": 106,
@@ -8405,14 +8405,14 @@
       "schedule": "Schedule 9 — Work: exceptions"
     },
     "cross_references": [
-      "section 44(2)",
-      "section 47(2)",
-      "section 45(2)",
       "section 48(2)",
+      "section 45(2)",
+      "section 44(2)",
       "section 49(6)",
+      "section 41(1)",
+      "section 47(2)",
       "section 50(6)",
-      "section 39(2)",
-      "section 41(1)"
+      "section 39(2)"
     ],
     "token_count": 107,
     "page_start": 188,
@@ -8438,10 +8438,10 @@
       "schedule": "Schedule 9 — Work: exceptions"
     },
     "cross_references": [
-      "section 58(3)",
+      "section 57(2)",
       "Schedule 9",
       "Part 2",
-      "section 57(2)"
+      "section 58(3)"
     ],
     "token_count": 55,
     "page_start": 189,
@@ -8588,8 +8588,8 @@
       "schedule": "Schedule 9 — Work: exceptions"
     },
     "cross_references": [
-      "section 39(2)",
-      "section 41(1)"
+      "section 41(1)",
+      "section 39(2)"
     ],
     "token_count": 100,
     "page_start": 190,
@@ -8639,11 +8639,11 @@
       "schedule": "Schedule 9 — Work: exceptions"
     },
     "cross_references": [
-      "section 44(2)",
       "section 45(2)",
+      "section 44(2)",
       "section 49(6)",
-      "section 39(2)",
-      "section 41(1)"
+      "section 41(1)",
+      "section 39(2)"
     ],
     "token_count": 162,
     "page_start": 190,
@@ -8669,8 +8669,8 @@
       "schedule": "Schedule 9 — Work: exceptions"
     },
     "cross_references": [
-      "Part 3",
-      "Schedule 9"
+      "Schedule 9",
+      "Part 3"
     ],
     "token_count": 63,
     "page_start": 191,
@@ -9015,8 +9015,8 @@
       "schedule": "Schedule 10 — Accessibility for disabled pupils"
     },
     "cross_references": [
-      "Chapter 2",
-      "Part 10"
+      "Part 10",
+      "Chapter 2"
     ],
     "token_count": 144,
     "page_start": 194,
@@ -9172,8 +9172,8 @@
       "schedule": "Schedule 10 — Accessibility for disabled pupils"
     },
     "cross_references": [
-      "Section 89",
       "section 22",
+      "Section 89",
       "section 20"
     ],
     "token_count": 103,
@@ -9468,10 +9468,10 @@
       "part": "PART 2"
     },
     "cross_references": [
-      "section 17(2)",
       "section 16",
-      "Section 85(1)",
-      "section 69(3)"
+      "section 17(2)",
+      "section 69(3)",
+      "Section 85(1)"
     ],
     "token_count": 244,
     "page_start": 197,
@@ -9498,8 +9498,8 @@
     },
     "cross_references": [
       "Schedule 11",
-      "Part 2",
-      "Section 85(2)"
+      "Section 85(2)",
+      "Part 2"
     ],
     "token_count": 169,
     "page_start": 198,
@@ -9525,8 +9525,8 @@
       "schedule": "Schedule 11 — Schools: exceptions"
     },
     "cross_references": [
-      "section 85",
-      "section 19(2)"
+      "section 19(2)",
+      "section 85"
     ],
     "token_count": 83,
     "page_start": 198,
@@ -9874,8 +9874,8 @@
       "schedule": "Schedule 12 — Further and higher education exceptions"
     },
     "cross_references": [
-      "Part 2",
-      "Schedule 12"
+      "Schedule 12",
+      "Part 2"
     ],
     "token_count": 64,
     "page_start": 201,
@@ -10356,8 +10356,8 @@
     "cross_references": [
       "section 108(1)",
       "section 39",
-      "section\n122(4)",
-      "Part 6"
+      "Part 6",
+      "section\n122(4)"
     ],
     "token_count": 212,
     "page_start": 206,
@@ -10692,8 +10692,8 @@
       "part": "PART 2"
     },
     "cross_references": [
-      "Part 6",
-      "Chapter 1"
+      "Chapter 1",
+      "Part 6"
     ],
     "token_count": 91,
     "page_start": 209,
@@ -10719,8 +10719,8 @@
       "schedule": "Schedule 17 — Disabled pupils: enforcement"
     },
     "cross_references": [
-      "Part 2",
-      "Schedule 17"
+      "Schedule 17",
+      "Part 2"
     ],
     "token_count": 83,
     "page_start": 210,
@@ -10818,8 +10818,8 @@
       "schedule": "Schedule 17 — Disabled pupils: enforcement"
     },
     "cross_references": [
-      "Part 2",
-      "Schedule 17"
+      "Schedule 17",
+      "Part 2"
     ],
     "token_count": 75,
     "page_start": 211,
@@ -10868,8 +10868,8 @@
       "part": "PART 3"
     },
     "cross_references": [
-      "Part 6",
-      "Chapter 1"
+      "Chapter 1",
+      "Part 6"
     ],
     "token_count": 99,
     "page_start": 211,
@@ -10968,8 +10968,8 @@
       "part": "PART 4"
     },
     "cross_references": [
-      "section 94",
-      "section 482"
+      "section 482",
+      "section 94"
     ],
     "token_count": 83,
     "page_start": 213,
@@ -11020,8 +11020,8 @@
       "schedule": "Schedule 17 — Disabled pupils: enforcement"
     },
     "cross_references": [
-      "section 52(3)",
-      "section 482"
+      "section 482",
+      "section 52(3)"
     ],
     "token_count": 92,
     "page_start": 214,
@@ -11100,8 +11100,8 @@
     "cross_references": [
       "section 26(1)",
       "section 53(1)",
-      "section 82(5)",
-      "Section 149"
+      "Section 149",
+      "section 82(5)"
     ],
     "token_count": 190,
     "page_start": 214,
@@ -11205,8 +11205,8 @@
       "schedule": "Schedule 18 — Public sector equality duty: exceptions"
     },
     "cross_references": [
-      "Section 149(2)",
-      "section 149(1)"
+      "section 149(1)",
+      "Section 149(2)"
     ],
     "token_count": 91,
     "page_start": 215,
@@ -11332,24 +11332,24 @@
       "schedule": "Schedule 19 — Public authorities"
     },
     "cross_references": [
-      "section 28",
-      "section\n10(1)",
-      "Part 2",
-      "section 246",
-      "section 67",
-      "section 102(1)",
-      "section 30",
       "section 2",
-      "section 25",
-      "section 13",
-      "Part 1",
-      "section 63",
       "section 4",
-      "Schedule 19",
+      "section 67",
       "Part 4",
-      "Part 5",
       "section 1",
-      "section 77(9)"
+      "section 77(9)",
+      "section 25",
+      "Part 2",
+      "section 28",
+      "section 13",
+      "section\n10(1)",
+      "section 63",
+      "section 102(1)",
+      "Part 1",
+      "section 30",
+      "Schedule 19",
+      "Part 5",
+      "section 246"
     ],
     "token_count": 576,
     "page_start": 217,
@@ -11375,14 +11375,14 @@
       "schedule": "Schedule 19 — Public authorities"
     },
     "cross_references": [
-      "section 91(5)",
+      "section 162",
       "section 3",
       "section 5B",
+      "section 91(5)",
       "Part 1",
-      "Schedule 19",
-      "section 162",
       "section 91(3)",
-      "section 263(1)"
+      "section 263(1)",
+      "Schedule 19"
     ],
     "token_count": 214,
     "page_start": 218,
@@ -11407,13 +11407,13 @@
       "part": "PART 2"
     },
     "cross_references": [
-      "section 18",
-      "section 22",
-      "section 246",
-      "section 11",
-      "section\n134(4)",
       "section 2",
-      "section 4"
+      "section 4",
+      "section 11",
+      "section 22",
+      "section 18",
+      "section\n134(4)",
+      "section 246"
     ],
     "token_count": 242,
     "page_start": 218,
@@ -11439,17 +11439,17 @@
       "schedule": "Schedule 19 — Public authorities"
     },
     "cross_references": [
-      "Part 2",
-      "section 91(5)",
-      "section 102(1)",
-      "section 2",
-      "Part 4",
-      "section 63",
-      "Schedule 19",
       "section 162",
+      "section 2",
+      "section 91(5)",
+      "Part 4",
       "section 1",
+      "Part 2",
       "section 91(3)",
-      "section 263(1)"
+      "section 63",
+      "section 263(1)",
+      "section 102(1)",
+      "Schedule 19"
     ],
     "token_count": 308,
     "page_start": 219,
@@ -11474,13 +11474,13 @@
       "part": "PART 3"
     },
     "cross_references": [
-      "section 5",
-      "section 2(1)",
       "section 2",
       "section 51",
       "section 6",
+      "section 2(1)",
       "section 235(1)",
-      "section 126(7)"
+      "section 126(7)",
+      "section 5"
     ],
     "token_count": 242,
     "page_start": 219,
@@ -11506,13 +11506,13 @@
       "schedule": "Schedule 19 — Public authorities"
     },
     "cross_references": [
-      "Part 2",
-      "section 135(1)",
       "section 2",
-      "Schedule 19",
+      "section 135(1)",
+      "section 36(1)",
+      "Part 2",
       "Section 186",
-      "Part 3",
-      "section 36(1)"
+      "Schedule 19",
+      "Part 3"
     ],
     "token_count": 286,
     "page_start": 220,
@@ -12216,8 +12216,8 @@
       "schedule": "Schedule 21 — Reasonable adjustments: supplementary"
     },
     "cross_references": [
-      "Schedule 21",
-      "Section 189"
+      "Section 189",
+      "Schedule 21"
     ],
     "token_count": 83,
     "page_start": 228,
@@ -12610,8 +12610,8 @@
       "schedule": "Schedule 22 — Statutory provisions"
     },
     "cross_references": [
-      "Part 1",
-      "Section 29(6)"
+      "Section 29(6)",
+      "Part 1"
     ],
     "token_count": 274,
     "page_start": 231,
@@ -12781,10 +12781,10 @@
       "schedule": "Schedule 22 — Statutory provisions"
     },
     "cross_references": [
-      "section 28",
-      "section 44",
       "section 129",
-      "section 36"
+      "section 36",
+      "section 28",
+      "section 44"
     ],
     "token_count": 177,
     "page_start": 233,
@@ -12810,9 +12810,9 @@
       "schedule": "Schedule 22 — Statutory provisions"
     },
     "cross_references": [
-      "Schedule 9",
-      "section 124A",
       "section 60(4)",
+      "section 124A",
+      "Schedule 9",
       "section 58(6)"
     ],
     "token_count": 153,
@@ -13161,9 +13161,9 @@
       "schedule": "Schedule 23 — General exceptions"
     },
     "cross_references": [
-      "section 150(1)",
+      "Schedule 23",
       "section 38",
-      "Schedule 23"
+      "section 150(1)"
     ],
     "token_count": 61,
     "page_start": 236,
@@ -13359,8 +13359,8 @@
       "schedule": "Schedule 23 — General exceptions"
     },
     "cross_references": [
-      "section 41",
-      "Section 203"
+      "Section 203",
+      "section 41"
     ],
     "token_count": 75,
     "page_start": 237,
@@ -13386,11 +13386,11 @@
       "chapter": "Chapter 2 of Part 5 (occupational pensions)"
     },
     "cross_references": [
-      "Section 106",
-      "Chapter 2",
-      "Section 78",
       "section 136",
+      "Section 78",
+      "Chapter 2",
       "Part 5",
+      "Section 106",
       "Part 9"
     ],
     "token_count": 96,
@@ -13417,13 +13417,13 @@
       "chapter": "Chapter 1 of Part 11 (public sector equality duty)"
     },
     "cross_references": [
-      "Section 197",
-      "Chapter 1",
+      "Part 16",
       "Part 11",
       "Part 15",
+      "Part 12",
+      "Chapter 1",
       "Part 13",
-      "Part 16",
-      "Part 12"
+      "Section 197"
     ],
     "token_count": 79,
     "page_start": 237,
@@ -13450,16 +13450,16 @@
       "schedule": "Schedule 24 — Harmonisation: exceptions"
     },
     "cross_references": [
-      "Part 10",
-      "Schedule 24",
-      "Part 4",
-      "Part 3",
       "Part 8",
-      "Part 5",
-      "Part 9",
-      "Part 6",
+      "Part 7",
       "Schedule 3",
-      "Part 7"
+      "Schedule 24",
+      "Part 10",
+      "Part 4",
+      "Part 6",
+      "Part 9",
+      "Part 5",
+      "Part 3"
     ],
     "token_count": 151,
     "page_start": 238,
@@ -13486,11 +13486,11 @@
       "schedule": "Schedule 8 (work: reasonable adjustments)"
     },
     "cross_references": [
-      "Part 2",
-      "Part 1",
       "Schedule 8",
-      "Part 3",
-      "Schedule 9"
+      "Schedule 9",
+      "Part 1",
+      "Part 2",
+      "Part 3"
     ],
     "token_count": 106,
     "page_start": 238,
@@ -13669,9 +13669,9 @@
       "schedule": "Schedule 25 — Information society services"
     },
     "cross_references": [
-      "Article 15",
+      "Part 1",
       "Article 12",
-      "Part 1"
+      "Article 15"
     ],
     "token_count": 171,
     "page_start": 240,
@@ -13698,8 +13698,8 @@
       "schedule": "Schedule 25 — Information society services"
     },
     "cross_references": [
-      "Article 1",
-      "Article 2"
+      "Article 2",
+      "Article 1"
     ],
     "token_count": 162,
     "page_start": 240,
@@ -13753,11 +13753,11 @@
       "schedule": "Schedule 25 — Information society services"
     },
     "cross_references": [
-      "section 17",
-      "section\n153",
       "section 149",
-      "Part 2",
+      "section 17",
       "Section 212(4)",
+      "section\n153",
+      "Part 2",
       "Section 211"
     ],
     "token_count": 246,
@@ -13811,8 +13811,8 @@
     },
     "cross_references": [
       "section 11(3)",
-      "section 7",
-      "section 10(2)"
+      "section 10(2)",
+      "section 7"
     ],
     "token_count": 162,
     "page_start": 242,
@@ -13839,10 +13839,10 @@
       "schedule": "Schedule 26 — Amendments"
     },
     "cross_references": [
-      "section 190",
-      "section 190(7)",
       "Schedule 26",
-      "section 49G(7)"
+      "section 49G(7)",
+      "section 190",
+      "section 190(7)"
     ],
     "token_count": 113,
     "page_start": 243,
@@ -13869,18 +13869,18 @@
       "schedule": "Schedule 26 — Amendments"
     },
     "cross_references": [
-      "section 149",
-      "section 111",
-      "section 16(4)",
-      "section 24",
-      "section 25",
       "section 106",
-      "section 19",
-      "section 21(2)",
+      "section 149",
       "section 108(1)",
       "section 76A",
+      "section 19",
       "section 26",
-      "section 60(1)"
+      "section 16(4)",
+      "section 60(1)",
+      "section 25",
+      "section 24",
+      "section 111",
+      "section 21(2)"
     ],
     "token_count": 586,
     "page_start": 243,
@@ -14037,10 +14037,10 @@
       "schedule": "Schedule 26 — Amendments"
     },
     "cross_references": [
-      "section 1",
       "section 149",
       "section 190",
-      "Part 12"
+      "Part 12",
+      "section 1"
     ],
     "token_count": 143,
     "page_start": 245,
@@ -14067,13 +14067,13 @@
       "schedule": "Schedule 26 — Amendments"
     },
     "cross_references": [
-      "Part 2",
+      "section 94(3)",
+      "section 39(4)",
+      "section 12",
       "Part 4",
       "section 81",
-      "section 39(4)",
       "section 43",
-      "section 94(3)",
-      "section 12"
+      "Part 2"
     ],
     "token_count": 199,
     "page_start": 245,
@@ -14100,10 +14100,10 @@
       "schedule": "Schedule 26 — Amendments"
     },
     "cross_references": [
+      "Part 5",
       "Schedule 3",
-      "Section 211",
       "Part 2",
-      "Part 5"
+      "Section 211"
     ],
     "token_count": 107,
     "page_start": 246,
@@ -14128,24 +14128,24 @@
       "part": "PART 1"
     },
     "cross_references": [
-      "Section 19(10)",
-      "Section 33",
-      "Part 2",
-      "section 94(3)",
-      "Part 4",
-      "Section 25",
       "Section 404",
-      "Section 18",
-      "section 17(1)",
-      "Section 17(9)",
       "Section 1",
-      "Schedule 3",
-      "Section 6(1)",
       "Schedule 5",
-      "Section 43",
+      "Schedule 3",
       "Section 81",
       "Section 9",
-      "Section 26"
+      "section 94(3)",
+      "Section 18",
+      "Section 26",
+      "Section 25",
+      "Section 33",
+      "Part 4",
+      "Section 19(10)",
+      "section 17(1)",
+      "Section 17(9)",
+      "Section 6(1)",
+      "Section 43",
+      "Part 2"
     ],
     "token_count": 335,
     "page_start": 246,
@@ -14171,10 +14171,10 @@
     },
     "cross_references": [
       "Section 214",
-      "Section 213(8)",
+      "Section 213(6)",
       "Section 212(12)",
-      "Section 25(1)",
-      "Section 213(6)"
+      "Section 213(8)",
+      "Section 25(1)"
     ],
     "token_count": 356,
     "page_start": 247,
@@ -14200,28 +14200,28 @@
       "schedule": "Schedule 28 — Index of defined expressions"
     },
     "cross_references": [
-      "Section 26(1)",
-      "Section 10(2)",
-      "Section 107(2)",
-      "Section 6(1)",
-      "Section 20(11)",
-      "Section 83(9)",
-      "Schedule 28",
-      "Section 7(1)",
-      "Section 38(3)",
-      "Section 6(2)",
-      "Section 5(2)",
       "Section 46(2)",
+      "Section 20(11)",
+      "Section 25(2)",
+      "Section 10(2)",
+      "Section 41(7)",
+      "Section 25(3)",
+      "Section 26(1)",
+      "Section 213(3)",
+      "Section 5(2)",
+      "Section 107(2)",
       "Section 212(8)",
       "Section 212(11)",
-      "Section 38(7)",
-      "Section 41(7)",
-      "Section 213(3)",
-      "Section 25(3)",
-      "Section 41(6)",
       "Section 212(1)",
-      "Section 25(2)",
-      "Section 212(9)"
+      "Section 83(9)",
+      "Section 6(2)",
+      "Section 41(6)",
+      "Section 212(9)",
+      "Section 38(3)",
+      "Section 38(7)",
+      "Section 6(1)",
+      "Schedule 28",
+      "Section 7(1)"
     ],
     "token_count": 347,
     "page_start": 248,
@@ -14247,26 +14247,26 @@
       "schedule": "Schedule 28 — Index of defined expressions"
     },
     "cross_references": [
-      "Section 25(5)",
-      "Section 49(2)",
-      "Section 38(2)",
       "Section 213(4)",
-      "Section 25(4)",
-      "Schedule 28",
       "Section 89(4)",
       "Section 212(6)",
-      "Section 89(7)",
-      "Section 8",
-      "Section 212(11)",
-      "Section 82(3)",
-      "Section 46(4)",
-      "Section 212(10)",
       "Section 46(3)",
-      "Section 212(7)",
-      "Section 213(2)",
-      "Section 20(10)",
+      "Section 212(10)",
+      "Section 25(4)",
       "Section 46(5)",
-      "Section 212(1)"
+      "Section 212(11)",
+      "Section 25(5)",
+      "Section 212(1)",
+      "Section 89(7)",
+      "Section 213(2)",
+      "Section 49(2)",
+      "Section 8",
+      "Section 82(3)",
+      "Section 212(7)",
+      "Section 20(10)",
+      "Section 38(2)",
+      "Schedule 28",
+      "Section 46(4)"
     ],
     "token_count": 349,
     "page_start": 249,
@@ -14292,27 +14292,27 @@
       "schedule": "Schedule 28 — Index of defined expressions"
     },
     "cross_references": [
-      "Section 25(8)",
-      "Section 4",
-      "Schedule 28",
-      "Section 20",
-      "Section 83(6)",
-      "Section 89(3)",
-      "Section 25(7)",
-      "Section 89(5)",
-      "Section 85(9)",
-      "Section 11",
       "Section 91(12)",
       "Section 10(1)",
-      "Section 29(1)",
-      "Section 9(1)",
-      "Section 25(6)",
-      "Section 83(5)",
-      "Section 25(9)",
-      "Section 212(1)",
-      "Section 52(6)",
+      "Section 83(6)",
+      "Section 12(1)",
+      "Section 25(7)",
+      "Section 85(9)",
       "Section 18(6)",
-      "Section 12(1)"
+      "Section 212(1)",
+      "Section 11",
+      "Section 25(8)",
+      "Section 83(5)",
+      "Section 4",
+      "Section 20",
+      "Section 89(3)",
+      "Section 29(1)",
+      "Section 25(9)",
+      "Section 9(1)",
+      "Section 52(6)",
+      "Section 89(5)",
+      "Schedule 28",
+      "Section 25(6)"
     ],
     "token_count": 351,
     "page_start": 250,
@@ -14338,10 +14338,10 @@
       "schedule": "Schedule 28 — Index of defined expressions"
     },
     "cross_references": [
-      "Part 3",
       "Section 212(1)",
-      "Schedule 28",
-      "Section 94(3)"
+      "Section 94(3)",
+      "Part 3",
+      "Schedule 28"
     ],
     "token_count": 72,
     "page_start": 251,
@@ -14367,17 +14367,17 @@
       "schedule": "Schedule 2, paragraph 4"
     },
     "cross_references": [
-      "Section 27(1)",
-      "Chapter 1",
       "Section 212(11)",
-      "Section 7(2)",
       "Section 212(1)",
-      "Part 12",
-      "Schedule 2",
+      "Section 94(4)",
+      "Section 7(2)",
+      "Section 27(1)",
       "Section 38(6)",
-      "Section 56(6)",
+      "Part 12",
       "Section 173(1)",
-      "Section 94(4)"
+      "Chapter 1",
+      "Schedule 2",
+      "Section 56(6)"
     ],
     "token_count": 200,
     "page_start": 251,

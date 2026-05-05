@@ -392,26 +392,31 @@ if __name__ == "__main__":
     from configs.document_registry import get_pilot_documents, DOCUMENT_REGISTRY
     from collections import defaultdict
 
-    if "--all" in sys.argv:
+    OCR_DOCS = [
+        "pk-tenancy-kp-restriction-rented-buildings-security-act-2014.pdf",
+        "pk-consumer-islamabad-consumers-protection-act-1995.pdf",
+        "pk-labour-industrial-relations-act-2012.pdf",
+        "pk-labour-punjab-minimum-wages-act-2019.pdf",
+        "uk-housing-housing-act-1996.pdf",
+        "uk-housing-landlord-and-tenant-act-1985.pdf",
+        "uk-employment-employment-rights-act-1996.pdf",
+    ]
+
+    BORN_DIGITAL_SKIP = OCR_DOCS  # skip scanned when running --all
+
+    if "--ocr" in sys.argv:
+        filenames = OCR_DOCS
+        print(f"Chunking {len(filenames)} OCR'd documents...\n")
+    elif "--all" in sys.argv:
         all_docs = [d["file_name"] for d in DOCUMENT_REGISTRY]
-        # Skip scanned documents for now
-        scanned = [
-            "pk-tenancy-kp-restriction-rented-buildings-security-act-2014.pdf",
-            "pk-consumer-islamabad-consumers-protection-act-1995.pdf",
-            "pk-labour-industrial-relations-act-2012.pdf",
-            "pk-labour-punjab-minimum-wages-act-2019.pdf",
-            "uk-housing-housing-act-1996.pdf",
-            "uk-housing-landlord-and-tenant-act-1985.pdf",
-            "uk-employment-employment-rights-act-1996.pdf",
-        ]
-        filenames = [f for f in all_docs if f not in scanned]
+        filenames = [f for f in all_docs if f not in BORN_DIGITAL_SKIP]
         print(f"Chunking {len(filenames)} born-digital documents...")
-        print(f"Skipping {len(scanned)} scanned documents (OCR needed)\n")
+        print(f"Skipping {len(BORN_DIGITAL_SKIP)} scanned documents\n")
     else:
         pilots = get_pilot_documents()
         filenames = [d["file_name"] for d in pilots]
         print(f"Chunking {len(filenames)} pilot documents...")
-        print("Use --all flag to process all born-digital documents\n")
+        print("Use --all or --ocr flag\n")
 
     pages = load_all_pdfs("data/raw", filenames=filenames)
 
@@ -432,7 +437,7 @@ if __name__ == "__main__":
             print(f"✗ {doc_name}: ERROR — {e}")
 
     print(f"\n{'='*60}")
-    print(f"TOTAL: {len(all_chunks)} chunks across {len(by_doc)} documents")
+    print(f"TOTAL: {len(all_chunks)} chunks across {len(by_doc)} docs")
     if failed:
         print(f"FAILED: {failed}")
     print(f"{'='*60}")

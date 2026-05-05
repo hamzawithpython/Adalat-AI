@@ -599,9 +599,9 @@
       "chapter": "CHAPTER XXV"
     },
     "cross_references": [
-      "section 357",
+      "section 356",
       "section 355",
-      "section 356"
+      "section 357"
     ],
     "token_count": 319,
     "page_start": 11,
@@ -952,8 +952,8 @@
       "chapter": "CHAPTER XLIII"
     },
     "cross_references": [
-      "section 517",
-      "section 51"
+      "section 51",
+      "section 517"
     ],
     "token_count": 298,
     "page_start": 16,
@@ -1430,9 +1430,9 @@
       "section": "22A.  Powers  of  Justices  of  the  Peace.­(1)  A  Justice  of  the  Peace  for  any  local  area  shall,  for  the"
     },
     "cross_references": [
-      "section 22",
       "Section 22",
-      "section 5"
+      "section 5",
+      "section 22"
     ],
     "token_count": 593,
     "page_start": 25,
@@ -1920,8 +1920,8 @@
     },
     "cross_references": [
       "section 376",
-      "section 377B",
-      "section 377"
+      "section 377",
+      "section 377B"
     ],
     "token_count": 453,
     "page_start": 35,
@@ -2313,9 +2313,9 @@
       "section": "86.  Procedure  by  Magistrate  before  whom  person  arrested  is  brought.­(1)  Such  Magistrate  or"
     },
     "cross_references": [
-      "section 76",
       "section 497",
-      "section\n76"
+      "section\n76",
+      "section 76"
     ],
     "token_count": 543,
     "page_start": 45,
@@ -2342,8 +2342,8 @@
       "section": "86.  Procedure  by  Magistrate  before  whom  person  arrested  is  brought.­(1)  Such  Magistrate  or"
     },
     "cross_references": [
-      "section 85",
-      "section\n76"
+      "section\n76",
+      "section 85"
     ],
     "token_count": 432,
     "page_start": 45,
@@ -2651,8 +2651,8 @@
       "section": "96. When search­warrant may be issued.­(1) Where any Court has reason to believe that a person to"
     },
     "cross_references": [
-      "section 95",
-      "section 94"
+      "section 94",
+      "section 95"
     ],
     "token_count": 358,
     "page_start": 51,
@@ -2758,8 +2758,8 @@
       "section": "98. Search of house suspected to contain stolen property, forged documents, etc.­(1) If a [2* * *]"
     },
     "cross_references": [
-      "section 19",
-      "Section 16"
+      "Section 16",
+      "section 19"
     ],
     "token_count": 517,
     "page_start": 52,
@@ -2811,14 +2811,14 @@
       "section": "99.  Disposal  of  things  found  in  search  beyond  jurisdiction.  When,  in  the  execution  of  a"
     },
     "cross_references": [
+      "section  298A",
+      "section 123A",
+      "section  298B",
       "section 24",
       "section 124A",
-      "section  298B",
-      "section  295A",
+      "section  153A",
       "section  298C",
-      "section 123A",
-      "section  298A",
-      "section  153A"
+      "section  295A"
     ],
     "token_count": 791,
     "page_start": 53,
@@ -2845,14 +2845,14 @@
       "section": "99.  Disposal  of  things  found  in  search  beyond  jurisdiction.  When,  in  the  execution  of  a"
     },
     "cross_references": [
+      "section  298A",
+      "section 123A",
+      "section  298B",
       "section 24",
       "section 124A",
-      "section  298B",
-      "section  295A",
+      "section  153A",
       "section  298C",
-      "section 123A",
-      "section  298A",
-      "section  153A"
+      "section  295A"
     ],
     "token_count": 561,
     "page_start": 53,
@@ -2906,8 +2906,8 @@
       "section": "99B. Application to High Court to set aside order of forfeiture.__9[(1)] Any person having"
     },
     "cross_references": [
-      "section 99A",
-      "Section 99B"
+      "Section 99B",
+      "section 99A"
     ],
     "token_count": 763,
     "page_start": 54,
@@ -2959,10 +2959,10 @@
       "section": "101. Direction, etc., of search­warrants. The provisions of sections 43, 75, 77, 79, 82, 83 and 84 shall,"
     },
     "cross_references": [
-      "section 96",
-      "section 99A",
       "section\n100",
-      "section 98"
+      "section 96",
+      "section 98",
+      "section 99A"
     ],
     "token_count": 511,
     "page_start": 55,
@@ -2989,8 +2989,8 @@
       "section": "103. Search to be made in presence of witnesses.__(1) Before making a search under this"
     },
     "cross_references": [
-      "section 102",
-      "section 187"
+      "section 187",
+      "section 102"
     ],
     "token_count": 312,
     "page_start": 56,
@@ -3017,11 +3017,11 @@
       "section": "106.  Security  for  keeping  the  peace  on  conviction.—(1)  Whenever  any  person  accused  of  2[any"
     },
     "cross_references": [
-      "Chapter VIII",
-      "section  153A",
       "section  143",
-      "section  149",
-      "section  154"
+      "section  154",
+      "section  153A",
+      "Chapter VIII",
+      "section  149"
     ],
     "token_count": 455,
     "page_start": 57,
@@ -3200,10 +3200,10 @@
       "section": "110. Security for good behaviour from habitual offenders. Whenever a 1* *, 2[Magistrate of the first"
     },
     "cross_references": [
-      "section  107",
-      "section\n108",
       "section 109",
-      "section 110"
+      "section\n108",
+      "section 110",
+      "section  107"
     ],
     "token_count": 680,
     "page_start": 60,
@@ -3258,10 +3258,10 @@
       "section": "2116. Power to dispense with personal attendance. The Magistrate may, if he sees sufficient cause,"
     },
     "cross_references": [
-      "section 114",
       "section 112",
+      "Chapter\nXX",
       "section 113",
-      "Chapter\nXX"
+      "section 114"
     ],
     "token_count": 697,
     "page_start": 62,
@@ -3496,8 +3496,8 @@
       "section": "4124. Power to release persons imprisoned for failing to give security.__(1) Whenever the"
     },
     "cross_references": [
-      "section 109",
-      "section\n122"
+      "section\n122",
+      "section 109"
     ],
     "token_count": 791,
     "page_start": 65,
@@ -3524,8 +3524,8 @@
       "section": "4124. Power to release persons imprisoned for failing to give security.__(1) Whenever the"
     },
     "cross_references": [
-      "section 109",
-      "section\n122"
+      "section\n122",
+      "section 109"
     ],
     "token_count": 280,
     "page_start": 65,
@@ -3553,9 +3553,9 @@
     },
     "cross_references": [
       "section\n106",
+      "section 118",
       "section 122",
-      "section 126",
-      "section 118"
+      "section 126"
     ],
     "token_count": 700,
     "page_start": 66,
@@ -3813,8 +3813,8 @@
       "section": "139. Procedure where jury finds Magistrate's order to be reasonable.__(1) If the jury or a majority"
     },
     "cross_references": [
-      "section 137",
       "section 138",
+      "section 137",
       "section 133"
     ],
     "token_count": 444,
@@ -4123,10 +4123,10 @@
       "section": "148. Local inquiry.__(1) Whenever a local inquiry is necessary for the purposes of this Chapter, 4[a"
     },
     "cross_references": [
-      "section 145",
-      "section 147",
       "Chapter 5",
       "section 146",
+      "section 145",
+      "section 147",
       "Section 147"
     ],
     "token_count": 516,
@@ -4179,12 +4179,12 @@
       "section": "154. Information in cognizable cases. Every information relating to the commission of a cognizable"
     },
     "cross_references": [
-      "section 354A",
-      "section 354",
-      "section 336B",
       "section 376",
       "section\n354",
-      "section 509"
+      "section 354",
+      "section 509",
+      "section 336B",
+      "section 354A"
     ],
     "token_count": 714,
     "page_start": 77,
@@ -4211,10 +4211,10 @@
       "section": "156. Investigation into cognizable cases._(1) Any officer in charge of a police­station may, without the order of"
     },
     "cross_references": [
-      "section 498",
-      "section  295",
-      "section 497",
       "section 295",
+      "section 498",
+      "section 497",
+      "section  295",
       "section 190"
     ],
     "token_count": 369,
@@ -4319,12 +4319,12 @@
       "section": "161. Examination of witnesses by police.__ (1) Any police­officer making an investigation under this"
     },
     "cross_references": [
-      "section 354A",
       "Chapter 1",
       "section 376",
-      "section 509",
+      "section  354",
       "section  336B",
-      "section  354"
+      "section 509",
+      "section 354A"
     ],
     "token_count": 360,
     "page_start": 80,
@@ -4351,10 +4351,10 @@
       "section": "161. Examination of witnesses by police.__ (1) Any police­officer making an investigation under this"
     },
     "cross_references": [
-      "section 377B",
       "section  354A",
       "section 376",
       "section 377",
+      "section 377B",
       "section\n154"
     ],
     "token_count": 405,
@@ -4462,8 +4462,8 @@
     },
     "cross_references": [
       "section 376",
-      "section 377B",
-      "section 377"
+      "section 377",
+      "section 377B"
     ],
     "token_count": 791,
     "page_start": 81,
@@ -4491,8 +4491,8 @@
     },
     "cross_references": [
       "section 376",
-      "section 377B",
-      "section 377"
+      "section 377",
+      "section 377B"
     ],
     "token_count": 281,
     "page_start": 81,
@@ -4545,9 +4545,9 @@
     },
     "cross_references": [
       "section 376",
+      "section 377",
       "section 377B",
-      "section  164A",
-      "section 377"
+      "section  164A"
     ],
     "token_count": 273,
     "page_start": 83,
@@ -4624,8 +4624,8 @@
       "section": "165.  Search  by  police­officer.__1[(1)  Whenever  an  officer  in  charge  of  a  police­station  or  a  police­"
     },
     "cross_references": [
-      "section 102",
-      "section 103"
+      "section 103",
+      "section 102"
     ],
     "token_count": 318,
     "page_start": 84,
@@ -5577,10 +5577,10 @@
       "section": "194. Cognizance of offences by High Court.__(1) The High Court may take cognizance of any offence"
     },
     "cross_references": [
-      "section 463",
       "section 471",
-      "section 475",
-      "section\n476"
+      "section\n476",
+      "section 463",
+      "section 475"
     ],
     "token_count": 238,
     "page_start": 96,
@@ -5633,13 +5633,13 @@
     },
     "cross_references": [
       "section 505",
-      "Chapter VI",
-      "section 294A",
-      "section 153A",
+      "section 108A",
+      "section 127",
       "section 120B",
       "section 295A",
-      "section 127",
-      "section 108A"
+      "section 294A",
+      "section 153A",
+      "Chapter VI"
     ],
     "token_count": 791,
     "page_start": 96,
@@ -5667,13 +5667,13 @@
     },
     "cross_references": [
       "section 505",
-      "Chapter VI",
-      "section 294A",
-      "section 153A",
+      "section 108A",
+      "section 127",
       "section 120B",
       "section 295A",
-      "section 127",
-      "section 108A"
+      "section 294A",
+      "section 153A",
+      "Chapter VI"
     ],
     "token_count": 210,
     "page_start": 96,
@@ -5700,11 +5700,11 @@
       "section": "194. Cognizance of offences by High Court.__(1) The High Court may take cognizance of any offence"
     },
     "cross_references": [
-      "section\n12",
-      "section 195",
       "section 196A",
+      "section 196",
       "section 155",
-      "section 196"
+      "section 195",
+      "section\n12"
     ],
     "token_count": 791,
     "page_start": 97,
@@ -5731,11 +5731,11 @@
       "section": "194. Cognizance of offences by High Court.__(1) The High Court may take cognizance of any offence"
     },
     "cross_references": [
-      "section\n12",
-      "section 195",
       "section 196A",
+      "section 196",
       "section 155",
-      "section 196"
+      "section 195",
+      "section\n12"
     ],
     "token_count": 575,
     "page_start": 97,
@@ -5814,8 +5814,8 @@
       "section": "11198.  Prosecution  for  breach  of  contract,  defamation  and  offences  against  marriage.  No  Court"
     },
     "cross_references": [
-      "Chapter XIX",
       "section 494",
+      "Chapter XIX",
       "Chapter XXI"
     ],
     "token_count": 522,
@@ -5900,8 +5900,8 @@
     },
     "cross_references": [
       "section 497",
-      "section 498",
-      "section 198A"
+      "section 198A",
+      "section 498"
     ],
     "token_count": 265,
     "page_start": 99,
@@ -5928,11 +5928,11 @@
       "section": "2199. Prosecution for adultery or enticing a married woman."
     },
     "cross_references": [
-      "section\n198",
       "Section 199A",
+      "section\n198",
+      "section 199",
       "section 199B",
-      "section 198",
-      "section 199"
+      "section 198"
     ],
     "token_count": 790,
     "page_start": 100,
@@ -5959,11 +5959,11 @@
       "section": "2199. Prosecution for adultery or enticing a married woman."
     },
     "cross_references": [
-      "section\n198",
       "Section 199A",
+      "section\n198",
+      "section 199",
       "section 199B",
-      "section 198",
-      "section 199"
+      "section 198"
     ],
     "token_count": 606,
     "page_start": 100,
@@ -6017,12 +6017,12 @@
       "section": "201. Procedure by Magistrate not competent to take cognizance of the case.__(1) If the complaint"
     },
     "cross_references": [
+      "section 190",
       "section 476",
       "Section 202",
       "section 192",
-      "section 191",
       "section 200",
-      "section 190"
+      "section 191"
     ],
     "token_count": 693,
     "page_start": 101,
@@ -6129,8 +6129,8 @@
       "section": "203C.  Complaint  in  case  of  fornication.__(1)  No  court  shall  take  cognizance  of  an  offence  under"
     },
     "cross_references": [
-      "section 203A",
-      "section 5"
+      "section 5",
+      "section 203A"
     ],
     "token_count": 284,
     "page_start": 104,
@@ -6419,8 +6419,8 @@
       "section": "234.  Three  offences  of  same  kind  within  year  may  be  charged  together.­(1)  When  a  person  is"
     },
     "cross_references": [
-      "section 379",
-      "section 380"
+      "section 380",
+      "section 379"
     ],
     "token_count": 355,
     "page_start": 110,
@@ -6709,11 +6709,11 @@
       "section": "245. Acquittal.__(1)  If  the  Magistrate  upon  taking  the  evidence  referred  to  in  section  244  and  such"
     },
     "cross_references": [
-      "section  221",
       "section  243",
+      "section 349",
+      "section  221",
       "section  245",
-      "section  244",
-      "section 349"
+      "section  244"
     ],
     "token_count": 520,
     "page_start": 116,
@@ -6967,9 +6967,9 @@
       "section": "265C. Supply of statements and documents to the accused.__(1) In all cases instituted upon police"
     },
     "cross_references": [
+      "section 200",
       "section 202",
-      "Chapter XXII",
-      "section 200"
+      "Chapter XXII"
     ],
     "token_count": 491,
     "page_start": 122,
@@ -7100,8 +7100,8 @@
       "section": "339.  Commitment  of  person  to  whom  pardon  has  been  tendered.­(1)  Where  a  pardon  has­been"
     },
     "cross_references": [
-      "section 337",
-      "section 388"
+      "section 388",
+      "section 337"
     ],
     "token_count": 420,
     "page_start": 126,
@@ -7206,9 +7206,9 @@
       "section": "342.  Power  to  examine  the  accused.­(1)  For  the  purpose  of  enabling  the  accused  to  explain  any"
     },
     "cross_references": [
-      "section 339A",
       "section 340",
-      "Section 339A"
+      "Section 339A",
+      "section 339A"
     ],
     "token_count": 528,
     "page_start": 127,
@@ -7285,8 +7285,8 @@
       "section": "345. Compounding offences.­(1) The offences punishable under the sections of the Pakistan"
     },
     "cross_references": [
-      "section 311",
-      "Chapter XVI"
+      "Chapter XVI",
+      "section 311"
     ],
     "token_count": 791,
     "page_start": 128,
@@ -7313,8 +7313,8 @@
       "section": "345. Compounding offences.­(1) The offences punishable under the sections of the Pakistan"
     },
     "cross_references": [
-      "section 311",
-      "Chapter XVI"
+      "Chapter XVI",
+      "section 311"
     ],
     "token_count": 791,
     "page_start": 128,
@@ -7341,8 +7341,8 @@
       "section": "345. Compounding offences.­(1) The offences punishable under the sections of the Pakistan"
     },
     "cross_references": [
-      "section 311",
-      "Chapter XVI"
+      "Chapter XVI",
+      "section 311"
     ],
     "token_count": 790,
     "page_start": 128,
@@ -7369,8 +7369,8 @@
       "section": "345. Compounding offences.­(1) The offences punishable under the sections of the Pakistan"
     },
     "cross_references": [
-      "section 311",
-      "Chapter XVI"
+      "Chapter XVI",
+      "section 311"
     ],
     "token_count": 681,
     "page_start": 128,
@@ -7451,9 +7451,9 @@
       "section": "345. Compounding offences.­(1) The offences punishable under the sections of the Pakistan"
     },
     "cross_references": [
-      "section 346",
+      "section 347",
       "Chapter XVII",
-      "section 347"
+      "section 346"
     ],
     "token_count": 791,
     "page_start": 133,
@@ -7480,9 +7480,9 @@
       "section": "345. Compounding offences.­(1) The offences punishable under the sections of the Pakistan"
     },
     "cross_references": [
-      "section 346",
+      "section 347",
       "Chapter XVII",
-      "section 347"
+      "section 346"
     ],
     "token_count": 536,
     "page_start": 133,
@@ -7561,8 +7561,8 @@
       "section": "349.  Procedure  when  Magistrate  cannot  pass  sentence  sufficiently  severe.­(1)  Whenever  a"
     },
     "cross_references": [
-      "section 346",
       "Section 350",
+      "section 346",
       "section 349"
     ],
     "token_count": 612,
@@ -7616,8 +7616,8 @@
     },
     "cross_references": [
       "Chapter XXII",
-      "Chapter XX",
       "Chapter XVIII",
+      "Chapter XX",
       "section  514"
     ],
     "token_count": 518,
@@ -7799,8 +7799,8 @@
       "section": "366. Mode of delivering judgment._(1) The judgment in every trial in any Criminal Court of original"
     },
     "cross_references": [
-      "section\n537",
-      "section 362"
+      "section 362",
+      "section\n537"
     ],
     "token_count": 550,
     "page_start": 139,
@@ -8062,9 +8062,9 @@
       "section": "382. Postponement of capital sentence on pregnant woman. If a woman sentenced to death"
     },
     "cross_references": [
-      "section 382",
+      "section  381",
       "Section 382",
-      "section  381"
+      "section 382"
     ],
     "token_count": 767,
     "page_start": 143,
@@ -8091,8 +8091,8 @@
       "section": "383.  Execution  of  sentences  of  1[imprisonment  for  life]  or  imprisonment  in  other"
     },
     "cross_references": [
-      "section 381",
-      "section 382"
+      "section 382",
+      "section 381"
     ],
     "token_count": 251,
     "page_start": 144,
@@ -8554,14 +8554,14 @@
       "section": "2401. Power to suspend or remit sentences.­(1) When any person has been sentenced to punishment"
     },
     "cross_references": [
-      "section 401",
+      "section 3",
+      "Chapter XVI",
+      "section 402A",
       "section 402",
       "section 55",
-      "section 402A",
-      "section 3",
+      "section 401",
       "section 402B",
-      "section 54",
-      "Chapter XVI"
+      "section 54"
     ],
     "token_count": 791,
     "page_start": 150,
@@ -8588,14 +8588,14 @@
       "section": "2401. Power to suspend or remit sentences.­(1) When any person has been sentenced to punishment"
     },
     "cross_references": [
-      "section 401",
+      "section 3",
+      "Chapter XVI",
+      "section 402A",
       "section 402",
       "section 55",
-      "section 402A",
-      "section 3",
+      "section 401",
       "section 402B",
-      "section 54",
-      "Chapter XVI"
+      "section 54"
     ],
     "token_count": 748,
     "page_start": 150,
@@ -8649,10 +8649,10 @@
       "section": "405.  Appeal  from  order  rejecting  application  for  restoration  of  attached  property.  Any  person"
     },
     "cross_references": [
-      "section 118",
-      "section 123",
       "section 122",
-      "section 89"
+      "section 89",
+      "section 118",
+      "section 123"
     ],
     "token_count": 479,
     "page_start": 153,
@@ -8734,8 +8734,8 @@
     },
     "cross_references": [
       "section 423",
-      "section\n418",
-      "Article 185"
+      "Article 185",
+      "section\n418"
     ],
     "token_count": 310,
     "page_start": 154,
@@ -8763,11 +8763,11 @@
     },
     "cross_references": [
       "Article 58",
-      "Article 159",
-      "section 417",
       "section 418",
+      "section 417",
       "section 423",
-      "section 449"
+      "section 449",
+      "Article 159"
     ],
     "token_count": 501,
     "page_start": 154,
@@ -8897,8 +8897,8 @@
       "section": "415. Proviso to sections 413 and 414. Any appeal may be brought against any sentence referred to in"
     },
     "cross_references": [
-      "section  413",
-      "section  414"
+      "section  414",
+      "section  413"
     ],
     "token_count": 557,
     "page_start": 156,
@@ -8925,9 +8925,9 @@
       "section": "415. Proviso to sections 413 and 414. Any appeal may be brought against any sentence referred to in"
     },
     "cross_references": [
-      "section 354A",
+      "Section 415A",
       "section 417",
-      "Section 415A"
+      "section 354A"
     ],
     "token_count": 736,
     "page_start": 156,
@@ -8954,8 +8954,8 @@
       "section": "422.  Notice  of  appeal.  If  the  Appellate  Court  does  not  dismiss  the  appeal  summarily,  it  shall  cause"
     },
     "cross_references": [
-      "section  417",
-      "section  411A"
+      "section  411A",
+      "section  417"
     ],
     "token_count": 295,
     "page_start": 157,
@@ -8982,10 +8982,10 @@
       "section": "423. Powers of Appellate Court in disposing of appeal.­(1) The Appellate Court shall then send for"
     },
     "cross_references": [
-      "section 417",
-      "section  417",
+      "section  411A",
       "section 367",
-      "section  411A"
+      "section  417",
+      "section 417"
     ],
     "token_count": 422,
     "page_start": 157,
@@ -9141,8 +9141,8 @@
       "section": "431. Abatement of appeals. Every appeal under 1[section 411­A, sub­section (2), or section"
     },
     "cross_references": [
-      "section 417",
       "section 411",
+      "section 417",
       "section\n417"
     ],
     "token_count": 336,
@@ -9219,8 +9219,8 @@
       "section": "435. Power to call for records of inferior Courts.­(1) The High Court or any Sessions Judge or District"
     },
     "cross_references": [
-      "section  119",
-      "section 119"
+      "section 119",
+      "section  119"
     ],
     "token_count": 424,
     "page_start": 161,
@@ -9356,10 +9356,10 @@
       "section": "464. Procedure in case of accused being lunatic.­(1) When a Magistrate holding an inquiry or a trial"
     },
     "cross_references": [
-      "Section 443",
-      "section 466",
       "section 439A",
-      "Chapter XXXIII"
+      "Section 443",
+      "Chapter XXXIII",
+      "section 466"
     ],
     "token_count": 449,
     "page_start": 163,
@@ -9664,8 +9664,8 @@
     },
     "cross_references": [
       "section 195",
-      "Chapter XXII",
-      "Section 195"
+      "Section 195",
+      "Chapter XXII"
     ],
     "token_count": 211,
     "page_start": 167,
@@ -9768,10 +9768,10 @@
       "section": "480. Procedure in certain cases of contempt.­(1) When any such offence as is described in section"
     },
     "cross_references": [
-      "section 178",
-      "section\n175",
-      "section 228",
       "section 179",
+      "section 178",
+      "section 228",
+      "section\n175",
       "section 180"
     ],
     "token_count": 362,
@@ -10136,8 +10136,8 @@
       "section": "496. In what cases bail to be taken. When any person other than a person accused of a non­bailable"
     },
     "cross_references": [
-      "section 107",
-      "section 117"
+      "section 117",
+      "section 107"
     ],
     "token_count": 373,
     "page_start": 174,
@@ -10500,8 +10500,8 @@
       "section": "507. Return of commission._(1)  After  any  commission  issued  under  section  503  or  section"
     },
     "cross_references": [
-      "section  503",
-      "section\n506"
+      "section\n506",
+      "section  503"
     ],
     "token_count": 249,
     "page_start": 178,
@@ -10528,11 +10528,11 @@
       "section": "508. Adjournment of inquiry or trial. In every case in which a commission is issued under"
     },
     "cross_references": [
-      "section 503",
+      "section  503",
       "Section 508A",
+      "section 503",
       "section 506",
-      "section 504",
-      "section  503"
+      "section 504"
     ],
     "token_count": 791,
     "page_start": 178,
@@ -10559,11 +10559,11 @@
       "section": "508. Adjournment of inquiry or trial. In every case in which a commission is issued under"
     },
     "cross_references": [
-      "section 503",
+      "section  503",
       "Section 508A",
+      "section 503",
       "section 506",
-      "section 504",
-      "section  503"
+      "section 504"
     ],
     "token_count": 277,
     "page_start": 178,
@@ -10742,10 +10742,10 @@
       "section": "3514. Procedure on forfeiture of bond._ (1) Whenever it is proved to the satisfaction of the Court by"
     },
     "cross_references": [
-      "section 106",
       "section 514B",
-      "section  514",
-      "section 118"
+      "section 106",
+      "section 118",
+      "section  514"
     ],
     "token_count": 600,
     "page_start": 181,
@@ -11002,8 +11002,8 @@
       "section": "523. Procedure by police upon seizure of property taken under section 51 or stolen.­(1) The seizure"
     },
     "cross_references": [
-      "Section 522A",
       "Section 51",
+      "Section 522A",
       "section 51"
     ],
     "token_count": 698,
@@ -11186,8 +11186,8 @@
     },
     "cross_references": [
       "section 344",
-      "Chapter VIII",
-      "section 197"
+      "section 197",
+      "Chapter VIII"
     ],
     "token_count": 505,
     "page_start": 187,
@@ -11289,8 +11289,8 @@
       "section": "528. Sessions Judge may withdraw cases from Assistant Sessions Judge._1[(1) Any Sessions Judge"
     },
     "cross_references": [
-      "section 192",
-      "Chapter XLIV"
+      "Chapter XLIV",
+      "section 192"
     ],
     "token_count": 791,
     "page_start": 188,
@@ -11317,8 +11317,8 @@
       "section": "528. Sessions Judge may withdraw cases from Assistant Sessions Judge._1[(1) Any Sessions Judge"
     },
     "cross_references": [
-      "section 192",
-      "Chapter XLIV"
+      "Chapter XLIV",
+      "section 192"
     ],
     "token_count": 565,
     "page_start": 188,
@@ -11370,10 +11370,10 @@
       "section": "533.  Non­compliance  with  provisions  of  Section  164  or  364.­(1)  If  any  Court,  before  which  a"
     },
     "cross_references": [
-      "Section  164",
-      "section 364",
       "section 164",
-      "Section 91"
+      "Section 91",
+      "section 364",
+      "Section  164"
     ],
     "token_count": 329,
     "page_start": 190,
@@ -12082,9 +12082,9 @@
     },
     "cross_references": [
       "Section 489D",
-      "Section 489C",
+      "Chapter XVII",
       "Chapter XII",
-      "Chapter XVII"
+      "Section 489C"
     ],
     "token_count": 436,
     "page_start": 201,
@@ -12111,11 +12111,11 @@
       "section": "Section 489C, or Section 489D of the Pakistan Penal Code, (XLV of 1860), or of any offence punishable"
     },
     "cross_references": [
-      "section 10",
       "section  10",
-      "section\n186",
+      "section 188",
       "section 506",
-      "section 188"
+      "section 10",
+      "section\n186"
     ],
     "token_count": 791,
     "page_start": 201,
@@ -12142,11 +12142,11 @@
       "section": "Section 489C, or Section 489D of the Pakistan Penal Code, (XLV of 1860), or of any offence punishable"
     },
     "cross_references": [
-      "section 10",
       "section  10",
-      "section\n186",
+      "section 188",
       "section 506",
-      "section 188"
+      "section 10",
+      "section\n186"
     ],
     "token_count": 771,
     "page_start": 201,
@@ -12604,11 +12604,11 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 565",
-      "Chapter\nXXXV",
       "section 3",
-      "section 87",
+      "section 565",
       "Chapter XXXV",
+      "section 87",
+      "Chapter\nXXXV",
       "Chapter  XXXV"
     ],
     "token_count": 791,
@@ -12635,11 +12635,11 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 565",
-      "Chapter\nXXXV",
       "section 3",
-      "section 87",
+      "section 565",
       "Chapter XXXV",
+      "section 87",
+      "Chapter\nXXXV",
       "Chapter  XXXV"
     ],
     "token_count": 791,
@@ -12666,11 +12666,11 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 565",
-      "Chapter\nXXXV",
       "section 3",
-      "section 87",
+      "section 565",
       "Chapter XXXV",
+      "section 87",
+      "Chapter\nXXXV",
       "Chapter  XXXV"
     ],
     "token_count": 791,
@@ -12697,11 +12697,11 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 565",
-      "Chapter\nXXXV",
       "section 3",
-      "section 87",
+      "section 565",
       "Chapter XXXV",
+      "section 87",
+      "Chapter\nXXXV",
       "Chapter  XXXV"
     ],
     "token_count": 447,
@@ -12776,8 +12776,8 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 3",
-      "Part II"
+      "Part II",
+      "section 3"
     ],
     "token_count": 791,
     "page_start": 220,
@@ -12803,8 +12803,8 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 3",
-      "Part II"
+      "Part II",
+      "section 3"
     ],
     "token_count": 791,
     "page_start": 220,
@@ -12830,8 +12830,8 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 3",
-      "Part II"
+      "Part II",
+      "section 3"
     ],
     "token_count": 791,
     "page_start": 220,
@@ -12857,8 +12857,8 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 3",
-      "Part II"
+      "Part II",
+      "section 3"
     ],
     "token_count": 790,
     "page_start": 220,
@@ -12884,8 +12884,8 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 3",
-      "Part II"
+      "Part II",
+      "section 3"
     ],
     "token_count": 791,
     "page_start": 220,
@@ -12911,8 +12911,8 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 3",
-      "Part II"
+      "Part II",
+      "section 3"
     ],
     "token_count": 791,
     "page_start": 220,
@@ -12938,8 +12938,8 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 3",
-      "Part II"
+      "Part II",
+      "section 3"
     ],
     "token_count": 791,
     "page_start": 220,
@@ -12965,8 +12965,8 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 3",
-      "Part II"
+      "Part II",
+      "section 3"
     ],
     "token_count": 791,
     "page_start": 220,
@@ -12992,8 +12992,8 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 3",
-      "Part II"
+      "Part II",
+      "section 3"
     ],
     "token_count": 790,
     "page_start": 220,
@@ -13019,8 +13019,8 @@
       "chapter": "CHAPTER X.‑CONTEMPTS OF THE LAWFUL AUTHORITY OF PUBLIC SERVANTS"
     },
     "cross_references": [
-      "section 3",
-      "Part II"
+      "Part II",
+      "section 3"
     ],
     "token_count": 480,
     "page_start": 220,
@@ -14392,8 +14392,8 @@
       "chapter": "CHAPTER XVIII.‑OFFENCES RELATING TO DOCUMENTS AND TO TRADE OR PROPERTY"
     },
     "cross_references": [
-      "section 467",
-      "section\n466"
+      "section\n466",
+      "section 467"
     ],
     "token_count": 791,
     "page_start": 275,
@@ -14419,8 +14419,8 @@
       "chapter": "CHAPTER XVIII.‑OFFENCES RELATING TO DOCUMENTS AND TO TRADE OR PROPERTY"
     },
     "cross_references": [
-      "section 467",
-      "section\n466"
+      "section\n466",
+      "section 467"
     ],
     "token_count": 791,
     "page_start": 275,
@@ -14446,8 +14446,8 @@
       "chapter": "CHAPTER XVIII.‑OFFENCES RELATING TO DOCUMENTS AND TO TRADE OR PROPERTY"
     },
     "cross_references": [
-      "section 467",
-      "section\n466"
+      "section\n466",
+      "section 467"
     ],
     "token_count": 791,
     "page_start": 275,
@@ -14473,8 +14473,8 @@
       "chapter": "CHAPTER XVIII.‑OFFENCES RELATING TO DOCUMENTS AND TO TRADE OR PROPERTY"
     },
     "cross_references": [
-      "section 467",
-      "section\n466"
+      "section\n466",
+      "section 467"
     ],
     "token_count": 791,
     "page_start": 275,
@@ -14500,8 +14500,8 @@
       "chapter": "CHAPTER XVIII.‑OFFENCES RELATING TO DOCUMENTS AND TO TRADE OR PROPERTY"
     },
     "cross_references": [
-      "section 467",
-      "section\n466"
+      "section\n466",
+      "section 467"
     ],
     "token_count": 791,
     "page_start": 275,
@@ -14527,8 +14527,8 @@
       "chapter": "CHAPTER XVIII.‑OFFENCES RELATING TO DOCUMENTS AND TO TRADE OR PROPERTY"
     },
     "cross_references": [
-      "section 467",
-      "section\n466"
+      "section\n466",
+      "section 467"
     ],
     "token_count": 566,
     "page_start": 275,
@@ -14779,8 +14779,8 @@
       "section": "Section 7"
     },
     "cross_references": [
-      "Section 7",
-      "Section 36"
+      "Section 36",
+      "Section 7"
     ],
     "token_count": 147,
     "page_start": 286,
@@ -14832,12 +14832,12 @@
       "section": "Section 7"
     },
     "cross_references": [
-      "Section 100",
-      "Section 107",
-      "Section 109",
-      "Section 110",
       "Section\n108",
-      "Section 126"
+      "Section 107",
+      "Section 126",
+      "Section 109",
+      "Section 100",
+      "Section 110"
     ],
     "token_count": 242,
     "page_start": 288,
@@ -14864,9 +14864,9 @@
       "section": "Section 7"
     },
     "cross_references": [
-      "section 5",
+      "section 133",
       "section 143",
-      "section 133"
+      "section 5"
     ],
     "token_count": 329,
     "page_start": 288,
@@ -14949,32 +14949,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15001,32 +15001,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15053,32 +15053,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 790,
     "page_start": 290,
@@ -15105,32 +15105,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15157,32 +15157,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15209,32 +15209,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15261,32 +15261,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15313,32 +15313,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15365,32 +15365,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15417,32 +15417,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15469,32 +15469,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15521,32 +15521,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15573,32 +15573,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15625,32 +15625,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15677,32 +15677,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15729,32 +15729,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15781,32 +15781,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15833,32 +15833,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15885,32 +15885,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15937,32 +15937,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 791,
     "page_start": 290,
@@ -15989,32 +15989,32 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 88",
+      "Section 75",
+      "Section 114",
+      "Section 96",
       "Section 143",
-      "Part II",
       "Section 170",
-      "Section 145",
-      "Section 133",
-      "Section 87",
+      "Section 88",
+      "Part II",
       "Section 123",
-      "Section 146",
+      "Section 87",
+      "Section 2",
+      "Section 133",
       "Section 86",
-      "Section 90",
+      "Section 107",
+      "Section 140",
+      "Section 142",
       "Section 68",
       "Section 169",
-      "Section 138",
-      "Section 142",
-      "Section 2",
-      "Section 75",
-      "Section 76",
-      "Section 96",
-      "Section 144",
+      "Section 145",
       "section 190",
+      "Section 76",
       "Section 147",
-      "Section 140",
-      "Section 107",
-      "Section 114",
-      "Section 98"
+      "Section 138",
+      "Section 146",
+      "Section 98",
+      "Section 90",
+      "Section 144"
     ],
     "token_count": 358,
     "page_start": 290,
@@ -16098,9 +16098,9 @@
     },
     "cross_references": [
       "Section 379",
-      "section 304",
+      "section 302",
       "Section 302",
-      "section 302"
+      "section 304"
     ],
     "token_count": 372,
     "page_start": 306,
@@ -16157,22 +16157,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16199,22 +16199,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16241,22 +16241,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16283,22 +16283,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16325,22 +16325,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16367,22 +16367,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16409,22 +16409,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16451,22 +16451,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16493,22 +16493,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16535,22 +16535,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16577,22 +16577,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16619,22 +16619,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16661,22 +16661,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16703,22 +16703,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16745,22 +16745,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16787,22 +16787,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 791,
     "page_start": 307,
@@ -16829,22 +16829,22 @@
       "section": "8. Power to pass sentence on proceedings recorded by a Magistrate of the second or third class, section"
     },
     "cross_references": [
-      "Section 374",
-      "section 386",
-      "section 388",
-      "section 485",
-      "section 499",
-      "Section 69",
-      "section 381",
       "section 514",
-      "Section 514",
+      "section 381",
+      "Section 374",
       "section 500",
-      "section 250",
-      "section 193",
       "section 75",
+      "section 386",
+      "Section 514",
+      "Section 69",
       "Chapter XVII",
+      "section 250",
+      "section 499",
+      "section 388",
+      "section 193",
       "section 480",
-      "Section 245"
+      "Section 245",
+      "section 485"
     ],
     "token_count": 376,
     "page_start": 307,
