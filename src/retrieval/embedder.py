@@ -1,56 +1,59 @@
 import os
+import sys
 import json
 import logging
+import gc
 from pathlib import Path
 from dotenv import load_dotenv
-from sentence_transformers import SentenceTransformer
-import chromadb
-from chromadb.config import Settings
-
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.abspath(__file__)))))
+
+import chromadb
+from fastembed import TextEmbedding
+
 CHROMA_PATH = os.getenv("CHROMA_PATH", "./data/embeddings/chroma")
-MODEL_NAME = "paraphrase-multilingual-MiniLM-L12-v2"
 COLLECTION_NAME = "adalat_legal_docs"
-BATCH_SIZE = 64
+MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+BATCH_SIZE = 32
 
-
-# Add this at module level (after imports)
 _model = None
+
 
 def get_embedding_model():
     global _model
     if _model is None:
-        logger.info(f"Loading embedding model: {MODEL_NAME}")
-        _model = SentenceTransformer(MODEL_NAME)
+        logger.info(f"Loading fastembed model: {MODEL_NAME}")
+        _model = TextEmbedding(MODEL_NAME)
         logger.info("Model loaded.")
     return _model
 
+
 def get_chroma_client():
     Path(CHROMA_PATH).mkdir(parents=True, exist_ok=True)
-    client = chromadb.PersistentClient(path=CHROMA_PATH)
-    return client
+    return chromadb.PersistentClient(path=CHROMA_PATH)
 
 
-def build_vector_store(chunks_path: str = "data/processed/chunks.json"):
+def build_vector_store(chunks_path: str = None):
     """Embed all chunks and store in Chroma."""
+    import glob
 
-    # Load chunks
-    with open(chunks_path, "r", encoding="utf-8") as f:
-        chunks = json.load(f)
-    logger.info(f"Loaded {len(chunks)} chunks")
+    os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-    # Load model
+    if chunks_path is None:
+        chunk_files = sorted(glob.glob("data/processed/chunks/*.chunks.json"))
+    else:
+        chunk_files = [chunks_path]
+
+    logger.info(f"Found {len(chunk_files)} chunk files to embed")
+
     model = get_embedding_model()
-
-    # Connect to Chroma
     client = get_chroma_client()
 
-    # Delete existing collection if rebuilding
     try:
         client.delete_collection(COLLECTION_NAME)
         logger.info("Deleted existing collection")
@@ -62,47 +65,88 @@ def build_vector_store(chunks_path: str = "data/processed/chunks.json"):
         metadata={"hnsw:space": "cosine"}
     )
 
-    # Embed in batches
-    total = len(chunks)
-    for i in range(0, total, BATCH_SIZE):
-        batch = chunks[i:i + BATCH_SIZE]
+    total_embedded = 0
 
-        texts = [f"passage: {c['text']}" for c in batch]
-        ids = [c["chunk_id"] for c in batch]
-        metadatas = [{
-            "source": c["source"],
-            "jurisdiction": c["jurisdiction"],
-            "page_num": c["page_num"],
-            "doc_name": c["doc_name"]
-        } for c in batch]
+    for file_idx, chunk_file in enumerate(chunk_files):
+        with open(chunk_file, "r", encoding="utf-8") as f:
+            chunks = json.load(f)
 
-        embeddings = model.encode(texts, normalize_embeddings=True).tolist()
-
-        collection.add(
-            ids=ids,
-            embeddings=embeddings,
-            documents=[c["text"] for c in batch],
-            metadatas=metadatas
+        doc_name = Path(chunk_file).stem.replace(".chunks", "")
+        logger.info(
+            f"[{file_idx+1}/{len(chunk_files)}] "
+            f"{doc_name} ({len(chunks)} chunks)"
         )
 
-        logger.info(f"Embedded {min(i + BATCH_SIZE, total)}/{total} chunks")
+        for i in range(0, len(chunks), BATCH_SIZE):
+            batch = chunks[i:i + BATCH_SIZE]
 
-    logger.info(f"Vector store built. Total: {collection.count()} vectors")
+            texts = [f"passage: {c['text'][:1000]}" for c in batch]
+            ids = [c["chunk_id"] for c in batch]
+            metadatas = [{
+                "source":       c.get("source", ""),
+                "jurisdiction": c.get("jurisdiction", ""),
+                "country":      c.get("country", ""),
+                "category":     c.get("category", ""),
+                "province":     c.get("province") or "",
+                "page_start":   c.get("page_start", 0),
+                "page_end":     c.get("page_end", 0),
+                "doc_name":     c.get("doc_name", ""),
+                "breadcrumb":   c.get("breadcrumb", "")[:200],
+                "priority":     c.get("priority", 2),
+                "requires_escalation_cue": str(
+                    c.get("requires_escalation_cue", False)),
+                "currency_warning": (
+                    c.get("currency_warning") or "")[:200],
+            } for c in batch]
+
+            try:
+                embeddings = list(model.embed(texts))
+                embeddings = [e.tolist() for e in embeddings]
+
+                collection.add(
+                    ids=ids,
+                    embeddings=embeddings,
+                    documents=[c["text"][:1000] for c in batch],
+                    metadatas=metadatas
+                )
+                total_embedded += len(batch)
+
+            except Exception as e:
+                logger.error(f"Batch {i} failed: {e}")
+                continue
+
+        del chunks
+        gc.collect()
+        logger.info(f"Total embedded so far: {total_embedded}")
+
+    logger.info(f"DONE. Vector store: {collection.count()} vectors")
     return collection
 
 
-def search(query: str, jurisdiction: str = None, top_k: int = 5):
+def search(query: str, jurisdiction: str = None,
+           country: str = None, category: str = None,
+           top_k: int = 5):
     """Search vector store for relevant chunks."""
     model = get_embedding_model()
     client = get_chroma_client()
     collection = client.get_collection(COLLECTION_NAME)
 
-    query_embedding = model.encode(
-        [f"query: {query}"],
-        normalize_embeddings=True
-    ).tolist()
+    query_embedding = list(model.embed([f"query: {query}"]))
+    query_embedding = [query_embedding[0].tolist()]
 
-    where_filter = {"jurisdiction": jurisdiction} if jurisdiction else None
+    where_filter = None
+    conditions = []
+    if jurisdiction:
+        conditions.append({"jurisdiction": jurisdiction})
+    if country:
+        conditions.append({"country": country})
+    if category:
+        conditions.append({"category": category})
+
+    if len(conditions) == 1:
+        where_filter = conditions[0]
+    elif len(conditions) > 1:
+        where_filter = {"$and": conditions}
 
     results = collection.query(
         query_embeddings=query_embedding,
@@ -113,38 +157,38 @@ def search(query: str, jurisdiction: str = None, top_k: int = 5):
 
     output = []
     for i in range(len(results["documents"][0])):
+        meta = results["metadatas"][0][i]
         output.append({
-            "text": results["documents"][0][i],
-            "metadata": results["metadatas"][0][i],
-            "score": round(1 - results["distances"][0][i], 4)
+            "text":       results["documents"][0][i],
+            "metadata":   meta,
+            "score":      round(1 - results["distances"][0][i], 4),
+            "breadcrumb": meta.get("breadcrumb", ""),
+            "source":     meta.get("source", ""),
+            "page_start": meta.get("page_start", 0),
+            "currency_warning": meta.get("currency_warning") or None,
+            "requires_escalation_cue":
+                meta.get("requires_escalation_cue") == "True",
         })
 
     return output
 
 
 if __name__ == "__main__":
-    try:
+    import sys
+    os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
+    if "--test" in sys.argv:
+        print("TEST MODE: embedding 1 file only")
+        build_vector_store(
+            "data/processed/chunks/"
+            "pk-tenancy-punjab-rented-premises-act-2009.chunks.json"
+        )
+    else:
         build_vector_store()
-    except Exception as e:
-        print(f"ERROR: {e}")
-        import traceback
-        traceback.print_exc()
 
-    # Step 2: Test search
-    print("\n--- TEST QUERY 1 (PK) ---")
-    results = search("fundamental rights of citizens", jurisdiction="PK", top_k=3)
+    print("\n--- TEST SEARCH ---")
+    results = search("landlord deposit return", top_k=3)
     for r in results:
-        print(f"\nScore: {r['score']} | {r['metadata']['source']} | Page {r['metadata']['page_num']}")
-        print(r['text'][:200])
-
-    print("\n--- TEST QUERY 2 (UK) ---")
-    results = search("landlord deposit return rules", jurisdiction="UK", top_k=3)
-    for r in results:
-        print(f"\nScore: {r['score']} | {r['metadata']['source']} | Page {r['metadata']['page_num']}")
-        print(r['text'][:200])
-
-    print("\n--- TEST QUERY 3 (Roman Urdu) ---")
-    results = search("mera landlord deposit wapas nahi de raha", jurisdiction="PK", top_k=3)
-    for r in results:
-        print(f"\nScore: {r['score']} | {r['metadata']['source']} | Page {r['metadata']['page_num']}")
-        print(r['text'][:200])
+        print(f"Score: {r['score']} | "
+              f"{r['source']} | "
+              f"{r['breadcrumb'][:60]}")
