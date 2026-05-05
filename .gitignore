@@ -15,8 +15,8 @@ __pycache__/
 
 # Data files (too large for git)
 data/raw/
-data/embeddings/
-data/processed/chunks.json
+# data/embeddings/
+# data/processed/chunks.json
 
 # Chroma DB
 .chroma/
