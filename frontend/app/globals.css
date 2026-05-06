@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Adalat-AI brand colors */
+  --color-navy: #1A3557;
+  --color-navy-dark: #102338;
+  --color-gold: #C9A84C;
+  --color-gold-dark: #A88A33;
+  --color-gold-soft: #F5EBC9;
+  --color-gold-faint: #FBF6E5;
+
+  /* Fonts */
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Brand-specific shadows */
+  --shadow-brand-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 1px rgba(15, 23, 42, 0.03);
+  --shadow-brand: 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.04);
+  --shadow-brand-md: 0 2px 6px rgba(15, 23, 42, 0.06), 0 12px 28px rgba(15, 23, 42, 0.08);
+  --shadow-brand-lg: 0 8px 24px rgba(26, 53, 87, 0.12), 0 24px 60px rgba(26, 53, 87, 0.10);
+}
+
+:root {
+  --background: #F8FAFC; /* slate-50, your gray50 */
+  --foreground: #1E293B; /* slate-800, your gray800 */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
