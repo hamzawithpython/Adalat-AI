@@ -7,6 +7,7 @@ import { Flag } from "@/components/brand/flag";
 import { ConfidenceIndicator } from "./confidence-indicator";
 import { RightsCards } from "./rights-cards";
 import { CitationCards } from "./citation-cards";
+import { Markdown } from "@/components/ui/markdown";
 
 interface AnswerViewProps {
   response: LegalResponse;
@@ -43,14 +44,10 @@ export function AnswerView({ response }: AnswerViewProps) {
 
       {/* Main answer */}
       <Card padding="lg">
-        <div className="text-[10px] font-mono uppercase tracking-widest text-gold-dark mb-2">
+        <div className="text-[10px] font-mono uppercase tracking-widest text-gold-dark mb-3">
           Answer
         </div>
-        <div className="prose prose-sm max-w-none">
-          <p className="whitespace-pre-wrap leading-relaxed text-slate-800 text-[15px]">
-            {response.answer}
-          </p>
-        </div>
+        <Markdown content={response.answer} />
       </Card>
 
       {/* Rights */}

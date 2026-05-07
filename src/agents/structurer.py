@@ -20,9 +20,9 @@ logger = logging.getLogger(__name__)
 def _llm():
     return ChatGroq(
         api_key=os.getenv("GROQ_API_KEY"),
-        model_name="llama-3.1-8b-instant",
+        model_name="llama-3.3-70b-versatile",
         temperature=0.2,
-        max_tokens=2048,
+        max_tokens=3000,
     )
 
 
@@ -84,17 +84,20 @@ def _parse_json_array(text: str) -> list:
 
 
 # ── Sections ──────────────────────────────────────────────────────────
-SECTIONS_PROMPT = ChatPromptTemplate.from_template("""
-You are restructuring a legal answer into 3-6 well-organized sections.
+SECTIONS_PROMPT = ChatPromptTemplate.from_template("""You are restructuring a legal answer into 3-6 well-organized sections.
 
 LANGUAGE: {response_language}
-- Section HEADINGS stay in English (e.g. "Statutory Framework", "Practical Strategy") — these are universal labels.
-- Section CONTENT must be in {response_language} (matches the user's language).
+- Section HEADINGS stay in English ("Statutory Framework", "Practical Strategy", etc.) — universal labels.
+- Section CONTENT must be in {response_language}.
+
+If response_language is "roman_urdu":
+✓ Use Pakistani Roman-Urdu words: koshish, taluq, muqadma, adalat, faisla, haq, hukum, qanoon, hukumat
+✗ Avoid Hindi-leaning: prayas, sambandh, vivad, nyayalay, nirnay, adhikaar, aagya, kanoon, sarkar
 
 INPUT ANSWER:
 {answer}
 
-Pick 3-6 of these section types that best fit the content (or invent similar ones):
+Pick 3-6 of these section types that best fit (or invent similar):
 - "Legal Context" — background and applicable laws
 - "Statutory Framework" — specific statutes and provisions
 - "Key Legal Points" — bulleted analysis
@@ -103,10 +106,11 @@ Pick 3-6 of these section types that best fit the content (or invent similar one
 - "Important Warnings" — risks, deadlines, what NOT to do
 
 Each section content should be markdown:
-- Use **bold** for emphasis
-- Use bullet points (- ) where useful
-- Use numbered lists (1. ) for steps
+- **bold** for emphasis
+- bullet points (- )
+- numbered lists (1. ) for steps
 - 2-5 short paragraphs per section
+- DO NOT REPEAT content already in another section — each section must add NEW information
 
 Return ONLY a JSON array. No prose, no markdown fence, no preamble:
 [
@@ -114,8 +118,7 @@ Return ONLY a JSON array. No prose, no markdown fence, no preamble:
     "heading": "Statutory Framework",
     "content": "**Section 13** of the Punjab Rented Premises Act 2009 provides...",
     "icon_hint": "book"
-  }},
-  ...
+  }}
 ]
 
 icon_hint must be one of: scales, book, shield, gavel, globe
@@ -144,37 +147,40 @@ def generate_sections(answer: str, response_language: str = "english") -> list[d
 
 
 # ── Judgments ──────────────────────────────────────────────────────────
-JUDGMENTS_PROMPT = ChatPromptTemplate.from_template("""
-You are providing 3-5 ILLUSTRATIVE judgments that show how courts in {jurisdiction} have approached
-issues similar to the user's query. These are educational examples from your training knowledge —
-they will be displayed with a clear "illustrative only, verify before relying" disclaimer.
+JUDGMENTS_PROMPT = ChatPromptTemplate.from_template("""You are providing 3-5 ILLUSTRATIVE judgments showing how courts in {jurisdiction} have approached issues similar to the user's query. These are educational examples from your training knowledge — they will be displayed with a clear "illustrative only, verify before relying" disclaimer.
 
 USER QUERY: {query}
 JURISDICTION: {jurisdiction}
 
+CRITICAL — RELEVANCE:
+Every judgment you suggest MUST be directly relevant to the legal issue in the user's query.
+- A query about deposit recovery → judgments about tenancy deposits, rent recovery, landlord-tenant disputes
+- A query about divorce dowry → judgments about dowry, gifts to bride, matrimonial property
+- DO NOT suggest unrelated cases just to fill the list. If you cannot find 3 relevant cases, return fewer (minimum 2).
+
 Return ONLY a JSON array, no preamble, no markdown fence:
 [
   {{
-    "case_title": "Muhammad Sajid v. Mst. Shamsa Asghar",
-    "citation": "2025 SCP 125",
-    "court": "Supreme Court of Pakistan",
-    "outcome": "Petition Dismissed",
-    "sections": ["Section 5 of the Dowry and Bridal Gifts (Restriction) Act 1976"],
-    "summary": "The Court held that property given to the bride as dowry vests absolutely in her under Section 5. The husband cannot reclaim such property after divorce unless he can prove the items were not gifted but only entrusted for use.",
-    "cited_cases": ["Mst. Humaira Wazir v. Muhammad Faisal (2025)", "Begum v. Chaudhry (2018)"]
+    "case_title": "Realistic case naming for the jurisdiction",
+    "citation": "Realistic citation format",
+    "court": "Actual court name",
+    "outcome": "Brief outcome",
+    "sections": ["Statutory section invoked"],
+    "summary": "2-4 sentence factual neutral summary of the case and its holding",
+    "cited_cases": ["Other case 1", "Other case 2"]
   }}
 ]
 
-Rules:
-- Use realistic case naming conventions for {jurisdiction}:
-  - PK: "X v. Y", citations like "PLD 1980 SC 9", "2025 SCMR 1142", "2018 CLC 100"
-  - UK: "Smith v Jones [2020] EWCA Civ 123", "Re X (1995) 1 WLR 100"
-  - DE: "BGH VIII ZR 71/05", "OLG München 5 U 123/22"
+Citation conventions for {jurisdiction}:
+- PK: "X v. Y" with citations like "PLD 1980 SC 9", "2025 SCMR 1142", "2018 CLC 100"
+- UK: "Smith v Jones [2020] EWCA Civ 123", "Re X (1995) 1 WLR 100"
+- DE: "BGH VIII ZR 71/05", "OLG München 5 U 123/22"
+
 - summary: 2-4 sentences, factual and neutral
 - sections: list of statutory sections invoked (max 4)
 - cited_cases: list of other cases referenced (max 5, can be empty)
 - outcome: brief, e.g. "Appeal Allowed", "Petition Dismissed", "Eviction Upheld"
-- court must be the actual highest-relevant court for the jurisdiction
+- court must be the actual court relevant to the issue
 """)
 
 

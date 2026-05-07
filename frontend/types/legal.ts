@@ -3,10 +3,12 @@
 
 export type Jurisdiction = "PK" | "UK" | "DE";
 export type Language = "roman_urdu" | "english" | "german";
+export type IconHint = "scales" | "book" | "shield" | "gavel" | "globe";
 
 export interface Right {
   right: string;
   legal_basis: string;
+  obligation?: string | null;
   deadline: string | null;
   recourse: string;
 }
@@ -16,7 +18,25 @@ export interface Citation {
   page: number | null;
   jurisdiction: Jurisdiction;
   relevance_score: number; // 0.0 – 1.0
-  breadcrumb: string;
+  breadcrumb?: string;
+}
+
+// NEW: structured section of the answer
+export interface AnswerSection {
+  heading: string;
+  content: string; // markdown
+  icon_hint?: IconHint | null;
+}
+
+// NEW: illustrative judgment (LLM-suggested, not verified retrieval)
+export interface Judgment {
+  case_title: string;
+  citation: string;
+  court: string;
+  outcome: string;
+  sections: string[];
+  summary: string;
+  cited_cases: string[];
 }
 
 export interface LegalResponse {
@@ -28,23 +48,27 @@ export interface LegalResponse {
   answer: string;
   rights: Right[];
   citations: Citation[];
-  confidence: number; // 0.0 – 1.0
+  confidence: number;
+  // NEW
+  sections: AnswerSection[];
+  judgments: Judgment[];
+  response_language?: Language | null;
+  judgments_disclaimer?: string;
+  // existing
   disclaimer: string;
   schema_valid: boolean;
 }
 
-// Request body for POST /ask
 export interface AskRequest {
   query: string;
   session_id?: string;
 }
 
-// History list item from GET /history
 export interface HistoryItem {
   id: string;
   session_id: string;
   query: string;
   jurisdiction: Jurisdiction;
   language: Language;
-  created_at: string; // ISO datetime
+  created_at: string;
 }
