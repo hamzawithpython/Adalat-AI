@@ -30,7 +30,7 @@ function SectionCard({
   return (
     <div className="bg-white border border-slate-200 rounded-lg overflow-hidden hover:border-slate-300 transition-colors">
       {/* Header bar */}
-      <div className="flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-gold-faint to-transparent border-b border-slate-100">
+      <div className="flex items-center gap-3 px-3 sm:px-5 py-3 bg-gradient-to-r from-gold-faint to-transparent border-b border-slate-100">
         <div className="flex items-center justify-center w-9 h-9 rounded-md bg-white border border-gold-soft text-navy">
           <SectionIcon hint={section.icon_hint} size={18} />
         </div>
@@ -45,7 +45,7 @@ function SectionCard({
       </div>
 
       {/* Body */}
-      <div className="px-5 py-4">
+      <div className="px-3 sm:px-5 py-3 sm:py-4">
         <Markdown content={section.content} />
       </div>
     </div>

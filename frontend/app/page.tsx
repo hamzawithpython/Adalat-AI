@@ -59,7 +59,7 @@ function Hero() {
             <span className="w-1.5 h-1.5 rounded-full bg-gold" />
             BETA · PK / UK / DE
           </Badge>
-          <h1 className="font-serif font-bold text-5xl lg:text-6xl tracking-tight text-navy leading-[1.05] mb-6">
+          <h1 className="font-serif font-bold text-[40px] sm:text-5xl lg:text-6xl tracking-tight text-navy leading-[1.05] mb-6">
             Your Rights.
             <br />
             <span className="italic">In Your Language.</span>
@@ -114,7 +114,7 @@ function HowItWorks() {
           <div className="text-[11px] font-mono font-semibold text-gold uppercase tracking-[0.2em] mb-3">
             How it works
           </div>
-          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-navy tracking-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy tracking-tight mb-4">
             Three steps. No legalese.
           </h2>
           <p className="text-base text-slate-600 max-w-xl mx-auto">
@@ -154,7 +154,7 @@ function Jurisdictions() {
           <div className="text-[11px] font-mono font-semibold text-gold uppercase tracking-[0.2em] mb-3">
             Jurisdictions
           </div>
-          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-navy tracking-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy tracking-tight mb-4">
             Three legal systems.
             <br />
             One assistant.
@@ -195,7 +195,7 @@ function WhyAdalat() {
             <div className="text-[11px] font-mono font-semibold text-gold uppercase tracking-[0.2em] mb-3">
               Why Adalat
             </div>
-            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-navy tracking-tight mb-5 leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy tracking-tight mb-5 leading-tight">
               Built for people who can't afford a first consultation.
             </h2>
             <p className="text-slate-600 leading-relaxed">
@@ -235,7 +235,7 @@ function SampleQueries() {
           <div className="text-[11px] font-mono font-semibold text-gold uppercase tracking-[0.2em] mb-3">
             Try it
           </div>
-          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-navy tracking-tight mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy tracking-tight mb-4">
             Sample queries.
           </h2>
           <p className="text-slate-600">Click any query to try it on the live app.</p>
@@ -269,7 +269,7 @@ function FinalCTA() {
   return (
     <section className="px-6 lg:px-16 py-20 lg:py-24 bg-navy text-white">
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="font-serif text-4xl lg:text-5xl font-bold tracking-tight mb-4">
+        <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
           Know your rights. In <span className="italic text-gold">your</span> language.
         </h2>
         <p className="text-slate-300 mb-8 max-w-xl mx-auto">

@@ -40,12 +40,10 @@ function JudgmentCard({ judgment, index }: { judgment: Judgment; index: number }
         open ? "border-navy shadow-brand" : "border-slate-200"
       )}
     >
-      {/* Collapsed header — always visible */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full text-left flex items-start gap-3 px-4 py-3.5 hover:bg-slate-50 transition-colors"
+        className="w-full text-left flex items-start gap-3 px-3 sm:px-4 py-3.5 hover:bg-slate-50 transition-colors"
       >
-        {/* Number circle */}
         <div
           className={cn(
             "shrink-0 flex items-center justify-center w-8 h-8 rounded-md border",
@@ -57,7 +55,6 @@ function JudgmentCard({ judgment, index }: { judgment: Judgment; index: number }
           <GavelIcon size={16} className="text-current" />
         </div>
 
-        {/* Title + meta */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-0.5">
             <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
@@ -89,7 +86,6 @@ function JudgmentCard({ judgment, index }: { judgment: Judgment; index: number }
           </div>
         </div>
 
-        {/* Expand chevron */}
         <span
           className={cn(
             "shrink-0 text-slate-400 transition-transform mt-1.5",
@@ -101,9 +97,8 @@ function JudgmentCard({ judgment, index }: { judgment: Judgment; index: number }
         </span>
       </button>
 
-      {/* Expanded body */}
       {open && (
-        <div className="px-4 pb-4 pt-1 border-t border-slate-100 space-y-3">
+        <div className="px-3 sm:px-4 pb-3 sm:pb-4 pt-1 border-t border-slate-100 space-y-3">
           {judgment.sections && judgment.sections.length > 0 && (
             <JudgmentField label="Sections invoked">
               <div className="flex flex-wrap gap-1.5">
