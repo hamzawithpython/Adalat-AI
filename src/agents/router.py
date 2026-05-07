@@ -23,6 +23,9 @@ class AgentState(TypedDict):
     translated_query: Optional[str]
     answer: Optional[str]
     citations: Optional[list]
+    sections: Optional[list]
+    judgments: Optional[list]
+    response_language: Optional[str]
     error: Optional[str]
 
 
@@ -163,12 +166,19 @@ def run_rag_node(state: AgentState) -> AgentState:
     query_to_use = state.get("translated_query") or state["query"]
     jurisdiction = state["jurisdiction"]
 
+    response_language = state.get("language") or "english"
+
     try:
-        result = run_rag(query_to_use, jurisdiction=jurisdiction)
+        result = run_rag(
+            query_to_use,
+            jurisdiction=jurisdiction,
+            response_language=response_language,
+        )
         return {
             **state,
             "answer": result["answer"],
-            "citations": result["citations"]
+            "citations": result["citations"],
+            "response_language": response_language,
         }
     except BaseException as e:
         logger.exception(f"RAG error: {e}")
@@ -179,6 +189,24 @@ def run_rag_node(state: AgentState) -> AgentState:
             "error": str(e)
         }
 
+# ── Node 5: Structure Response ──────────────────────────────────────────
+def structure_response_node(state: AgentState) -> AgentState:
+    from src.agents.structurer import structure_response
+
+    if not state.get("answer") or state.get("error"):
+        return {**state, "sections": [], "judgments": []}
+
+    try:
+        result = structure_response(
+            answer=state["answer"],
+            query=state["query"],
+            jurisdiction=state["jurisdiction"],
+            response_language=state.get("response_language") or "english",
+        )
+        return {**state, "sections": result["sections"], "judgments": result["judgments"]}
+    except BaseException as e:
+        logger.exception(f"Structurer error: {e}")
+        return {**state, "sections": [], "judgments": []}
 
 # ── Build LangGraph ───────────────────────────────────────────
 def build_router():
@@ -188,12 +216,14 @@ def build_router():
     graph.add_node("detect_jurisdiction", detect_jurisdiction)
     graph.add_node("translate_query", translate_query)
     graph.add_node("run_rag", run_rag_node)
+    graph.add_node("structure_response", structure_response_node)
 
     graph.set_entry_point("detect_language")
     graph.add_edge("detect_language", "detect_jurisdiction")
     graph.add_edge("detect_jurisdiction", "translate_query")
     graph.add_edge("translate_query", "run_rag")
-    graph.add_edge("run_rag", END)
+    graph.add_edge("run_rag", "structure_response")
+    graph.add_edge("structure_response", END)
 
     return graph.compile()
 

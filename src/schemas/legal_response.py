@@ -80,7 +80,7 @@ class LegalResponse(BaseModel):
     )
 
     disclaimer: str = Field(
-        default="âš ï¸ This is informational only. Consult a qualified lawyer for legal advice.",
+        default="This is informational only. Consult a qualified lawyer for legal advice.",
         description="Legal disclaimer"
     )
     judgments_disclaimer: str = Field(
