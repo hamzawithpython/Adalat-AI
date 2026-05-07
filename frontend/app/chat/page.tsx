@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { Sidebar } from "@/components/chat/sidebar";
 import { EmptyState } from "@/components/chat/empty-state";
 import { QueryInput } from "@/components/chat/query-input";
@@ -8,12 +9,21 @@ import { TurnView } from "@/components/chat/turn-view";
 import { useChat } from "@/hooks/use-chat";
 import type { Jurisdiction } from "@/types/legal";
 
-export default function ChatPage() {
+function ChatPageInner() {
   const [jurisdiction, setJurisdiction] = useState<Jurisdiction | "ALL">("ALL");
   const [pendingQuery, setPendingQuery] = useState<string>("");
   const { turn, submit, reset } = useChat();
+  const searchParams = useSearchParams();
 
   const isLoading = turn.status === "loading";
+
+  // Pre-fill from ?q= URL param (used by landing page sample links)
+  useEffect(() => {
+    const q = searchParams.get("q");
+    if (q && turn.status === "idle") {
+      setPendingQuery(q);
+    }
+  }, [searchParams, turn.status]);
 
   const handleSampleClick = (query: string) => {
     setPendingQuery(query);
@@ -25,7 +35,7 @@ export default function ChatPage() {
   };
 
   const handleSubmit = (query: string) => {
-    setPendingQuery(""); // clear input after submit
+    setPendingQuery("");
     submit(query);
   };
 
@@ -36,7 +46,6 @@ export default function ChatPage() {
         onJurisdictionChange={setJurisdiction}
         onNewChat={handleNewChat}
       />
-
       <main className="flex-1 flex flex-col overflow-hidden">
         <div className="flex-1 overflow-y-auto">
           {turn.status === "idle" ? (
@@ -52,5 +61,13 @@ export default function ChatPage() {
         />
       </main>
     </div>
+  );
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense fallback={null}>
+      <ChatPageInner />
+    </Suspense>
   );
 }

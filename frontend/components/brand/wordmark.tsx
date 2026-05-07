@@ -17,7 +17,8 @@ export function Wordmark({ size = "md", className }: WordmarkProps) {
   return (
     <div
       className={cn(
-        "inline-flex items-baseline font-serif font-bold tracking-tight text-navy",
+        "inline-flex items-baseline font-serif font-bold tracking-tight",
+        "text-navy",
         s.text,
         className
       )}
