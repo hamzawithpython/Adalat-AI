@@ -8,6 +8,8 @@ import { ConfidenceIndicator } from "./confidence-indicator";
 import { RightsCards } from "./rights-cards";
 import { CitationCards } from "./citation-cards";
 import { Markdown } from "@/components/ui/markdown";
+import { SectionCards } from "./section-cards";
+import { JudgmentCards } from "./judgment-cards";
 
 interface AnswerViewProps {
   response: LegalResponse;
@@ -42,13 +44,17 @@ export function AnswerView({ response }: AnswerViewProps) {
           )}
       </Card>
 
-      {/* Main answer */}
-      <Card padding="lg">
-        <div className="text-[10px] font-mono uppercase tracking-widest text-gold-dark mb-3">
-          Answer
-        </div>
-        <Markdown content={response.answer} />
-      </Card>
+      {/* Main answer — sections take priority, fall back to flat answer */}
+      {response.sections && response.sections.length > 0 ? (
+        <SectionCards sections={response.sections} />
+      ) : (
+        <Card padding="lg">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-gold-dark mb-3">
+            Answer
+          </div>
+          <Markdown content={response.answer} />
+        </Card>
+      )}
 
       {/* Rights */}
       <Card padding="lg">
@@ -81,6 +87,33 @@ export function AnswerView({ response }: AnswerViewProps) {
         </div>
         <CitationCards citations={response.citations} />
       </Card>
+
+      {/* Illustrative Judgments */}
+      {response.judgments && response.judgments.length > 0 && (
+        <Card padding="lg">
+          <div className="flex items-start justify-between mb-4 gap-4 flex-wrap">
+            <div>
+              <div className="text-[10px] font-mono uppercase tracking-widest text-gold-dark mb-1">
+                Illustrative Judgments
+              </div>
+              <h3 className="font-serif text-xl font-bold text-navy">
+                {response.judgments.length} relevant case
+                {response.judgments.length !== 1 ? "s" : ""}
+              </h3>
+            </div>
+          </div>
+
+          {/* AI-generated disclaimer */}
+          {response.judgments_disclaimer && (
+            <div className="bg-amber-50 border border-amber-200 rounded-md px-3.5 py-2.5 mb-4 text-[12px] text-amber-900 leading-relaxed flex gap-2">
+              <span className="font-semibold shrink-0">⚠️ Note:</span>
+              <span>{response.judgments_disclaimer}</span>
+            </div>
+          )}
+
+          <JudgmentCards judgments={response.judgments} />
+        </Card>
+      )}
 
       {/* Disclaimer */}
       <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-xs text-amber-900 leading-relaxed">
