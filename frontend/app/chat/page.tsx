@@ -19,7 +19,14 @@ function ChatPageInner() {
   const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
   const [loadingSession, setLoadingSession] = useState(false);
 
-  const { turn, submit, reset, setAnswered } = useChat();
+  const {
+    completed,
+    active,
+    submit,
+    reset,
+    promoteActiveToCompleted,
+    loadSession,
+  } = useChat();
   const {
     sessions,
     loading: historyLoading,
@@ -29,22 +36,23 @@ function ChatPageInner() {
   } = useHistory();
   const searchParams = useSearchParams();
 
-  const isLoading = turn.status === "loading";
+  const isLoading = active.status === "loading";
+  const hasContent = completed.length > 0 || active.status !== "idle";
 
   useEffect(() => {
     const q = searchParams.get("q");
-    if (q && turn.status === "idle") {
+    if (q && !hasContent) {
       setPendingQuery(q);
     }
-  }, [searchParams, turn.status]);
+  }, [searchParams, hasContent]);
 
-  // Only re-run when status flips to "answered" — refreshHistory is stable
+  // Refresh history when a turn finishes
   useEffect(() => {
-    if (turn.status === "answered") {
+    if (active.status === "answered") {
       refreshHistory();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [turn.status]);
+  }, [active.status]);
 
   const handleSampleClick = (query: string) => {
     setPendingQuery(query);
@@ -58,6 +66,8 @@ function ChatPageInner() {
 
   const handleSubmit = (query: string) => {
     setPendingQuery("");
+    // Push the previous answered turn into completed history first
+    promoteActiveToCompleted();
     submit(query, activeSessionId ?? undefined).then((newSessionId) => {
       if (newSessionId) setActiveSessionId(newSessionId);
     });
@@ -68,29 +78,30 @@ function ChatPageInner() {
     setLoadingSession(true);
     try {
       const detail = await getSession(id);
-      const lastTurn = detail.turns[detail.turns.length - 1];
-      if (lastTurn) {
-        const response: LegalResponse = {
+      // Build CompletedTurn[] from all turns in the session
+      const turns = detail.turns.map((t) => ({
+        query: t.query,
+        response: {
           session_id: detail.id,
-          query: lastTurn.query,
-          translated_query: lastTurn.translated_query,
-          language: lastTurn.language,
-          jurisdiction: lastTurn.jurisdiction,
-          answer: lastTurn.answer,
-          rights: lastTurn.rights,
-          citations: lastTurn.citations,
-          sections: lastTurn.sections,
-          judgments: lastTurn.judgments,
-          confidence: lastTurn.confidence,
-          response_language: lastTurn.response_language,
-          follow_up_questions: lastTurn.follow_up_questions,
+          query: t.query,
+          translated_query: t.translated_query,
+          language: t.language,
+          jurisdiction: t.jurisdiction,
+          answer: t.answer,
+          rights: t.rights,
+          citations: t.citations,
+          sections: t.sections,
+          judgments: t.judgments,
+          confidence: t.confidence,
+          response_language: t.response_language,
+          follow_up_questions: t.follow_up_questions,
           disclaimer:
             "This is informational only. Consult a qualified lawyer for legal advice.",
           schema_valid: true,
-        };
-        setAnswered(lastTurn.query, response);
-        setActiveSessionId(id);
-      }
+        } satisfies LegalResponse,
+      }));
+      loadSession(turns);
+      setActiveSessionId(id);
     } catch (err) {
       console.error("Failed to load session:", err);
     } finally {
@@ -144,13 +155,17 @@ function ChatPageInner() {
 
         <div className="flex-1 overflow-y-auto">
           {loadingSession ? (
-            <div className="flex-1 flex items-center justify-center text-slate-500 text-sm">
+            <div className="flex items-center justify-center min-h-full text-slate-500 text-sm">
               Loading chat…
             </div>
-          ) : turn.status === "idle" ? (
+          ) : !hasContent ? (
             <EmptyState onSampleClick={handleSampleClick} />
           ) : (
-            <TurnView turn={turn} onFollowUp={handleSubmit} />
+            <ConversationView
+              completed={completed}
+              active={active}
+              onFollowUp={handleSubmit}
+            />
           )}
         </div>
         <QueryInput
@@ -161,6 +176,80 @@ function ChatPageInner() {
       </main>
     </div>
   );
+}
+
+import type { CompletedTurn, ActiveTurn } from "@/types/chat";
+
+function ConversationView({
+  completed,
+  active,
+  onFollowUp,
+}: {
+  completed: CompletedTurn[];
+  active: ActiveTurn;
+  onFollowUp: (q: string) => void;
+}) {
+  // Auto-scroll to bottom when a new turn arrives
+  useAutoScroll([completed.length, active.status]);
+
+  const isLast = (idx: number) =>
+    idx === completed.length - 1 && active.status === "idle";
+
+  return (
+    <div className="max-w-3xl mx-auto px-4 sm:px-8 py-6 sm:py-8 space-y-8">
+      {completed.map((t, i) => (
+        <CompletedTurnBlock
+          key={i}
+          turn={t}
+          // Only show follow-ups on the very last completed turn (when no active turn)
+          showFollowUps={isLast(i)}
+          onFollowUp={onFollowUp}
+        />
+      ))}
+      {active.status !== "idle" && (
+        <TurnView turn={active} onFollowUp={onFollowUp} />
+      )}
+    </div>
+  );
+}
+
+function CompletedTurnBlock({
+  turn,
+  showFollowUps,
+  onFollowUp,
+}: {
+  turn: CompletedTurn;
+  showFollowUps: boolean;
+  onFollowUp: (q: string) => void;
+}) {
+  // Reuse TurnView for visual consistency by faking an "answered" turn
+  return (
+    <TurnView
+      turn={{ status: "answered", query: turn.query, response: turn.response }}
+      onFollowUp={showFollowUps ? onFollowUp : undefined}
+    />
+  );
+}
+
+// Minimal auto-scroll hook
+function useAutoScroll(deps: unknown[]) {
+  // The container is the parent <div className="flex-1 overflow-y-auto"> in ChatPageInner.
+  // We scroll the document's scrolling container by querying the ref via getElementById not viable,
+  // so we just scroll the nearest scrollable ancestor by setTimeout to next frame.
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      // Find the scrollable parent — the main scroll container in our layout
+      const container = document.querySelector("main > div.flex-1.overflow-y-auto");
+      if (container) {
+        container.scrollTo({
+          top: container.scrollHeight,
+          behavior: "smooth",
+        });
+      }
+    });
+    return () => cancelAnimationFrame(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
 }
 
 export default function ChatPage() {

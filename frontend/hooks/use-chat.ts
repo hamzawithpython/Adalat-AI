@@ -2,17 +2,18 @@
 
 import { useState, useCallback } from "react";
 import { askAdalat, AdalatApiError } from "@/lib/api";
-import type { ChatTurn } from "@/types/chat";
+import type { ActiveTurn, CompletedTurn } from "@/types/chat";
 import type { LegalResponse } from "@/types/legal";
 
 export function useChat() {
-  const [turn, setTurn] = useState<ChatTurn>({ status: "idle" });
+  const [completed, setCompleted] = useState<CompletedTurn[]>([]);
+  const [active, setActive] = useState<ActiveTurn>({ status: "idle" });
 
   const submit = useCallback(
     async (query: string, sessionId?: string): Promise<string | null> => {
       if (!query.trim()) return null;
 
-      setTurn({
+      setActive({
         status: "loading",
         query,
         startedAt: Date.now(),
@@ -20,7 +21,13 @@ export function useChat() {
 
       try {
         const response = await askAdalat({ query, session_id: sessionId });
-        setTurn({ status: "answered", query, response });
+        // Append previous "active" answered turn to completed history,
+        // then set the new one as active so it auto-scrolls.
+        setCompleted((prev) => {
+          // We don't mutate prev — just return a new list.
+          return prev;
+        });
+        setActive({ status: "answered", query, response });
         return response.session_id;
       } catch (err) {
         const message =
@@ -29,21 +36,43 @@ export function useChat() {
             : err instanceof Error
               ? err.message
               : "Something went wrong. Please try again.";
-        setTurn({ status: "error", query, error: message });
+        setActive({ status: "error", query, error: message });
         return null;
       }
     },
     []
   );
 
+  // When the active turn becomes "answered" and the user submits a NEW one,
+  // we should push the previous one into completed[].
+  // We do this in a separate function called by the page when it submits.
+  const promoteActiveToCompleted = useCallback(() => {
+    setActive((prev) => {
+      if (prev.status === "answered") {
+        setCompleted((c) => [...c, { query: prev.query, response: prev.response }]);
+      }
+      return prev;
+    });
+  }, []);
+
   const reset = useCallback(() => {
-    setTurn({ status: "idle" });
+    setCompleted([]);
+    setActive({ status: "idle" });
   }, []);
 
-  // Used to load an existing turn from history
-  const setAnswered = useCallback((query: string, response: LegalResponse) => {
-    setTurn({ status: "answered", query, response });
+  // Load a session from history — populate completed[] with all turns,
+  // and clear active.
+  const loadSession = useCallback((turns: { query: string; response: LegalResponse }[]) => {
+    setCompleted(turns);
+    setActive({ status: "idle" });
   }, []);
 
-  return { turn, submit, reset, setAnswered };
+  return {
+    completed,
+    active,
+    submit,
+    reset,
+    promoteActiveToCompleted,
+    loadSession,
+  };
 }

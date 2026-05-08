@@ -1,12 +1,17 @@
 import type { LegalResponse } from "./legal";
 
-/**
- * The state of a single query/answer turn in the chat.
- * Real apps with multi-turn conversation would have an array of these,
- * but for v1 we only show one turn at a time (matching your hi-fi design).
- */
-export type ChatTurn =
+// One Q+A pair within the conversation
+export type CompletedTurn = {
+  query: string;
+  response: LegalResponse;
+};
+
+// The CURRENT in-flight or just-finished turn (the one in progress)
+export type ActiveTurn =
   | { status: "idle" }
   | { status: "loading"; query: string; startedAt: number }
   | { status: "answered"; query: string; response: LegalResponse }
   | { status: "error"; query: string; error: string };
+
+// Backwards-compat alias (Phase 3 code still uses this name)
+export type ChatTurn = ActiveTurn;
