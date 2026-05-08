@@ -25,18 +25,15 @@ class AgentState(TypedDict):
     citations: Optional[list]
     sections: Optional[list]
     judgments: Optional[list]
+    follow_up_questions: Optional[list]
     response_language: Optional[str]
     error: Optional[str]
 
 
 # ── LLM ──────────────────────────────────────────────────────
 def get_llm():
-    return ChatGroq(
-        api_key=os.getenv("GROQ_API_KEY"),
-        model_name="llama-3.1-8b-instant",
-        temperature=0,
-        max_tokens=512
-    )
+    from src.agents.llms import fast_llm
+    return fast_llm(max_tokens=512)
 
 
 # ── Node 1: Detect Language ───────────────────────────────────
@@ -194,7 +191,7 @@ def structure_response_node(state: AgentState) -> AgentState:
     from src.agents.structurer import structure_response
 
     if not state.get("answer") or state.get("error"):
-        return {**state, "sections": [], "judgments": []}
+        return {**state, "sections": [], "judgments": [], "follow_up_questions": []}
 
     try:
         result = structure_response(
@@ -203,10 +200,15 @@ def structure_response_node(state: AgentState) -> AgentState:
             jurisdiction=state["jurisdiction"],
             response_language=state.get("response_language") or "english",
         )
-        return {**state, "sections": result["sections"], "judgments": result["judgments"]}
+        return {
+            **state,
+            "sections": result["sections"],
+            "judgments": result["judgments"],
+            "follow_up_questions": result.get("follow_up_questions", []),
+        }
     except BaseException as e:
         logger.exception(f"Structurer error: {e}")
-        return {**state, "sections": [], "judgments": []}
+        return {**state, "sections": [], "judgments": [], "follow_up_questions": []}
 
 # ── Build LangGraph ───────────────────────────────────────────
 def build_router():

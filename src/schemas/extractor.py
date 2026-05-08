@@ -43,12 +43,8 @@ Rules:
 
 def extract_rights(answer: str) -> list[dict]:
     """Extract structured rights from LLM answer."""
-    llm = ChatGroq(
-        api_key=os.getenv("GROQ_API_KEY"),
-        model_name="llama-3.1-8b-instant",
-        temperature=0,
-        max_tokens=1024
-    )
+    from src.agents.llms import fast_llm
+    llm = fast_llm(max_tokens=1024)
 
     chain = EXTRACT_PROMPT | llm | StrOutputParser()
 

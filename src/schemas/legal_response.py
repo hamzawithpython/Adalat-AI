@@ -74,6 +74,10 @@ class LegalResponse(BaseModel):
         default_factory=list,
         description="Illustrative judgments (LLM-suggested, NOT verified retrievals)"
     )
+    follow_up_questions: list[str] = Field(
+        default_factory=list,
+        description="LLM-suggested follow-up questions in user's language"
+    )
     response_language: Optional[str] = Field(
         None,
         description="Language code the answer is written in (matches user's query language)"
@@ -150,5 +154,6 @@ def build_legal_response(router_result: dict, rights: list[dict]) -> LegalRespon
         # NEW
         sections=sections,
         judgments=judgments,
+        follow_up_questions=router_result.get("follow_up_questions", []),
         response_language=router_result.get("response_language", detected_lang),
     )

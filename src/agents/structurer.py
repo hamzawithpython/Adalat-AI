@@ -18,12 +18,8 @@ logger = logging.getLogger(__name__)
 
 
 def _llm():
-    return ChatGroq(
-        api_key=os.getenv("GROQ_API_KEY"),
-        model_name="llama-3.3-70b-versatile",
-        temperature=0.2,
-        max_tokens=3000,
-    )
+    from src.agents.llms import fast_llm
+    return fast_llm(max_tokens=3000, temperature=0.2)
 
 
 # Robust JSON-array extractor (handles markdown fences, prose preambles)
@@ -211,7 +207,66 @@ def generate_judgments(query: str, jurisdiction: str) -> list[dict]:
 
 # ── Combined ──────────────────────────────────────────────────────────
 def structure_response(answer: str, query: str, jurisdiction: str, response_language: str) -> dict:
-    """Run sections + judgments generation."""
+    """Run sections + judgments + follow-ups generation."""
     sections = generate_sections(answer, response_language=response_language)
     judgments = generate_judgments(query, jurisdiction)
-    return {"sections": sections, "judgments": judgments}
+    follow_ups = generate_followups(query, answer, jurisdiction, response_language)
+    return {
+        "sections": sections,
+        "judgments": judgments,
+        "follow_up_questions": follow_ups,
+    }
+
+# ── Follow-up Questions ───────────────────────────────────────────────
+FOLLOWUPS_PROMPT = ChatPromptTemplate.from_template("""You are suggesting 3-4 SHORT follow-up questions a user is likely to ask after reading a legal answer. These will be displayed as clickable suggestions.
+
+LANGUAGE: {response_language}
+- Questions MUST be in {response_language}.
+- For Roman-Urdu, use Pakistani Roman-Urdu words (koshish, qanoon, adalat, muqadma, haq), NOT Hindi-leaning ones.
+
+USER'S ORIGINAL QUERY:
+{query}
+
+THE ANSWER THEY JUST READ:
+{answer}
+
+JURISDICTION: {jurisdiction}
+
+Generate 3-4 follow-up questions that:
+1. Are SHORT (under 12 words each)
+2. Drill DEEPER into specifics not yet covered (deadlines, evidence, costs, edge cases)
+3. Anticipate the user's likely real-world situation
+4. Are CONCRETE, not vague ("How long does it take?" not "What else?")
+5. Each must explore a DIFFERENT angle — no two questions overlapping
+
+Examples of good follow-ups (deposit query):
+- "Kitna time lagta hai Rent Controller ka faisla aane mein?"
+- "Agar landlord court mein aaye hi nahi to kya hota hai?"
+- "Lawyer hire karna zaroori hai ya khud case kar sakta hoon?"
+
+Examples of BAD follow-ups (avoid):
+- "Kya aur kuch bata sakte hain?" (too vague)
+- "Yeh process kaisa hai?" (already covered)
+
+Return ONLY a JSON array of strings, no preamble, no markdown fence:
+["question 1", "question 2", "question 3"]
+""")
+
+
+def generate_followups(query: str, answer: str, jurisdiction: str, response_language: str) -> list[str]:
+    chain = FOLLOWUPS_PROMPT | _llm() | StrOutputParser()
+    try:
+        raw = chain.invoke({
+            "query": query,
+            "answer": answer,
+            "jurisdiction": jurisdiction,
+            "response_language": response_language,
+        })
+        items = _parse_json_array(raw)
+        # Filter to non-empty strings, max 4
+        valid = [s.strip() for s in items if isinstance(s, str) and s.strip()][:4]
+        logger.info(f"Generated {len(valid)} follow-up questions")
+        return valid
+    except Exception as e:
+        logger.error(f"Follow-up generation failed: {e}")
+        return []

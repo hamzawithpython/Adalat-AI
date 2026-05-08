@@ -122,12 +122,8 @@ def format_citations(results: list[dict]) -> list[dict]:
 
 
 def get_llm():
-    return ChatGroq(
-        api_key=GROQ_API_KEY,
-        model_name="llama-3.3-70b-versatile",
-        temperature=0.2,
-        max_tokens=2048,
-    )
+    from src.agents.llms import heavy_llm
+    return heavy_llm(max_tokens=2048, temperature=0.2)
 
 
 def run_rag(query: str, jurisdiction: str = None, top_k: int = 5, response_language: str = "english") -> dict:
