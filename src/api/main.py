@@ -13,7 +13,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 
-from src.api.database import get_db, create_tables, ChatSession, ChatTurn
+from src.api.database import get_db, create_tables, ChatSession, ChatTurn, Feedback
 from src.agents.router import ask
 from src.retrieval.embedder import get_embedding_model
 
@@ -58,6 +58,13 @@ def startup():
 class QueryRequest(BaseModel):
     query: str
     session_id: Optional[str] = None
+
+class FeedbackRequest(BaseModel):
+    name: Optional[str] = None
+    email: Optional[str] = None
+    category: str  # 'bug' | 'feature' | 'praise' | 'other'
+    message: str
+    rating: Optional[int] = None
 
 class HealthResponse(BaseModel):
     status: str
@@ -215,3 +222,60 @@ def delete_session(session_id: str, db: Session = Depends(get_db)):
     db.delete(session_obj)
     db.commit()
     return {"deleted": session_id}
+
+ADMIN_TOKEN = os.getenv("ADMIN_TOKEN", "")
+
+
+@app.post("/feedback")
+def submit_feedback(req: FeedbackRequest, db: Session = Depends(get_db)):
+    if not req.message.strip():
+        raise HTTPException(status_code=400, detail="Message cannot be empty")
+    if len(req.message) > 5000:
+        raise HTTPException(status_code=400, detail="Message too long (max 5000 chars)")
+    if req.category not in {"bug", "feature", "praise", "other"}:
+        raise HTTPException(status_code=400, detail="Invalid category")
+    if req.rating is not None and (req.rating < 1 or req.rating > 5):
+        raise HTTPException(status_code=400, detail="Rating must be 1-5")
+    if req.email and "@" not in req.email:
+        raise HTTPException(status_code=400, detail="Invalid email")
+
+    fb = Feedback(
+        name=(req.name or "").strip()[:100] or None,
+        email=(req.email or "").strip()[:200] or None,
+        category=req.category,
+        message=req.message.strip(),
+        rating=req.rating,
+    )
+    db.add(fb)
+    db.commit()
+    db.refresh(fb)
+    return {"id": fb.id, "ok": True}
+
+
+@app.get("/feedback/admin")
+def list_feedback(token: str = "", limit: int = 100, db: Session = Depends(get_db)):
+    """Admin-only endpoint to read all feedback. Pass ?token=YOUR_ADMIN_TOKEN."""
+    if not ADMIN_TOKEN or token != ADMIN_TOKEN:
+        raise HTTPException(status_code=403, detail="Forbidden")
+
+    rows = (
+        db.query(Feedback)
+        .order_by(Feedback.created_at.desc())
+        .limit(limit)
+        .all()
+    )
+    return {
+        "total": len(rows),
+        "items": [
+            {
+                "id": r.id,
+                "name": r.name,
+                "email": r.email,
+                "category": r.category,
+                "message": r.message,
+                "rating": r.rating,
+                "created_at": r.created_at.isoformat(),
+            }
+            for r in rows
+        ],
+    }

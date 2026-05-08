@@ -14,6 +14,7 @@ import {
   GavelIcon,
 } from "@/components/icons/legal-icons";
 import { HeroAnswerPreview } from "@/components/landing/hero-answer-preview";
+import { FeedbackForm } from "@/components/landing/feedback-form";
 
 export default function LandingPage() {
   return (
@@ -25,6 +26,7 @@ export default function LandingPage() {
       <WhyAdalat />
       <SampleQueries />
       <FinalCTA />
+      <FeedbackSection />
       <Footer />
     </div>
   );
@@ -39,6 +41,7 @@ function NavBar() {
           <a href="#how-it-works" className="hover:text-navy">How it works</a>
           <a href="#jurisdictions" className="hover:text-navy">Jurisdictions</a>
           <a href="#why" className="hover:text-navy">Why Adalat</a>
+          <a href="#feedback" className="hover:text-navy">Feedback</a>
         </div>
         <Link href="/chat">
           <Btn variant="primary" size="sm" iconRight={<span>→</span>}>
@@ -280,6 +283,27 @@ function FinalCTA() {
             Start asking
           </Btn>
         </Link>
+      </div>
+    </section>
+  );
+}
+
+function FeedbackSection() {
+  return (
+    <section id="feedback" className="px-6 lg:px-16 py-20 lg:py-24 bg-slate-50">
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <div className="text-[11px] font-mono font-semibold text-gold uppercase tracking-[0.2em] mb-3">
+            Feedback
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy tracking-tight mb-3">
+            Tell us what you think.
+          </h2>
+          <p className="text-slate-600">
+            Spotted a bug? Got a feature idea? Just want to say hi? We'd love to hear from you.
+          </p>
+        </div>
+        <FeedbackForm />
       </div>
     </section>
   );
