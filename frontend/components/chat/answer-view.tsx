@@ -10,12 +10,14 @@ import { CitationCards } from "./citation-cards";
 import { Markdown } from "@/components/ui/markdown";
 import { SectionCards } from "./section-cards";
 import { JudgmentCards } from "./judgment-cards";
+import { FollowUpQuestions } from "./follow-up-questions";
 
 interface AnswerViewProps {
   response: LegalResponse;
+  onFollowUp?: (query: string) => void;   // ← NEW
 }
 
-export function AnswerView({ response }: AnswerViewProps) {
+export function AnswerView({ response, onFollowUp }: AnswerViewProps) {
   const langLabel = response.language.replace("_", "-").toUpperCase();
 
   return (
@@ -115,11 +117,20 @@ export function AnswerView({ response }: AnswerViewProps) {
         </Card>
       )}
 
+      {/* Follow-up suggestions */}
+      {response.follow_up_questions && response.follow_up_questions.length > 0 && onFollowUp && (
+        <FollowUpQuestions
+          questions={response.follow_up_questions}
+          onSelect={onFollowUp}
+        />
+      )}
+
       {/* Disclaimer */}
       <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-xs text-amber-900 leading-relaxed">
         <span className="font-semibold mr-1">⚠️ Disclaimer:</span>
         {response.disclaimer}
       </div>
+
     </div>
   );
 }

@@ -1,4 +1,13 @@
-import type { LegalResponse, AskRequest, HistoryItem } from "@/types/legal";
+import type {
+  LegalResponse,
+  AskRequest,
+  Jurisdiction,
+  Language,
+  AnswerSection,
+  Judgment,
+  Right,
+  Citation,
+} from "@/types/legal";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -71,4 +80,62 @@ export async function getHealth(): Promise<{ status: string; version: string }> 
     throw new AdalatApiError(`Health check failed`, response.status);
   }
   return response.json();
+}
+
+// ── Sessions / history ──────────────────────────────────────────────
+
+export interface SessionListItem {
+  id: string;
+  title: string | null;
+  jurisdiction: Jurisdiction | null;
+  language: Language | null;
+  turn_count: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface SessionTurn {
+  id: number;
+  turn_index: number;
+  query: string;
+  translated_query: string | null;
+  language: Language;
+  jurisdiction: Jurisdiction;
+  answer: string;
+  sections: AnswerSection[];
+  judgments: Judgment[];
+  rights: Right[];
+  citations: Citation[];
+  confidence: number;
+  response_language: Language | null;
+  follow_up_questions: string[];
+  created_at: string;
+}
+
+export interface SessionDetail {
+  id: string;
+  title: string | null;
+  jurisdiction: Jurisdiction | null;
+  language: Language | null;
+  created_at: string;
+  updated_at: string;
+  turns: SessionTurn[];
+}
+
+export async function listSessions(limit = 30): Promise<SessionListItem[]> {
+  const res = await fetch(`${API_URL}/history?limit=${limit}`);
+  if (!res.ok) throw new AdalatApiError(`Failed to load history`, res.status);
+  const data = await res.json();
+  return data.sessions || [];
+}
+
+export async function getSession(id: string): Promise<SessionDetail> {
+  const res = await fetch(`${API_URL}/sessions/${id}`);
+  if (!res.ok) throw new AdalatApiError(`Failed to load session`, res.status);
+  return res.json();
+}
+
+export async function deleteSession(id: string): Promise<void> {
+  const res = await fetch(`${API_URL}/sessions/${id}`, { method: "DELETE" });
+  if (!res.ok) throw new AdalatApiError(`Failed to delete session`, res.status);
 }

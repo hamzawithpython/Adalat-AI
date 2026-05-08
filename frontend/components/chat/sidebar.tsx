@@ -5,6 +5,7 @@ import { Btn } from "@/components/ui/btn";
 import { Flag } from "@/components/brand/flag";
 import { JURISDICTIONS } from "@/lib/jurisdictions";
 import type { Jurisdiction } from "@/types/legal";
+import type { SessionListItem } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 interface SidebarProps {
@@ -13,6 +14,14 @@ interface SidebarProps {
   onNewChat: () => void;
   isOpen?: boolean;
   onClose?: () => void;
+  // History
+  sessions: SessionListItem[];
+  historyLoading: boolean;
+  historyError: string | null;
+  activeSessionId: string | null;
+  onSessionSelect: (id: string) => void;
+  onSessionDelete: (id: string) => void;
+  onHistoryRefresh: () => void;
 }
 
 export function Sidebar({
@@ -21,10 +30,16 @@ export function Sidebar({
   onNewChat,
   isOpen = false,
   onClose,
+  sessions,
+  historyLoading,
+  historyError,
+  activeSessionId,
+  onSessionSelect,
+  onSessionDelete,
+  onHistoryRefresh,
 }: SidebarProps) {
   return (
     <>
-      {/* Mobile backdrop */}
       {isOpen && (
         <div
           className="lg:hidden fixed inset-0 bg-black/40 z-30"
@@ -35,7 +50,7 @@ export function Sidebar({
 
       <aside
         className={cn(
-          "fixed lg:static inset-y-0 left-0 z-40 w-[280px] lg:w-[260px] h-screen bg-white border-r border-slate-200 flex flex-col transition-transform duration-200 ease-out",
+          "fixed lg:static inset-y-0 left-0 z-40 w-[280px] lg:w-[280px] h-screen bg-white border-r border-slate-200 flex flex-col transition-transform duration-200 ease-out",
           isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}
       >
@@ -43,7 +58,6 @@ export function Sidebar({
         <div className="p-5 border-b border-slate-100">
           <div className="flex items-center justify-between mb-5">
             <Wordmark size="md" />
-            {/* Close button (mobile only) */}
             <button
               onClick={onClose}
               className="lg:hidden text-slate-400 hover:text-navy text-xl leading-none px-2"
@@ -89,13 +103,47 @@ export function Sidebar({
           </div>
         </div>
 
-        {/* History (placeholder) */}
+        {/* History */}
         <div className="flex-1 overflow-y-auto p-5">
-          <div className="text-[11px] uppercase tracking-widest font-semibold text-slate-500 mb-3 font-mono">
-            Recent
+          <div className="flex items-center justify-between mb-3">
+            <div className="text-[11px] uppercase tracking-widest font-semibold text-slate-500 font-mono">
+              Recent
+            </div>
+            <button
+              onClick={onHistoryRefresh}
+              className="text-slate-400 hover:text-navy text-sm"
+              aria-label="Refresh"
+              title="Refresh"
+            >
+              ↻
+            </button>
           </div>
-          <div className="text-sm text-slate-400 italic">
-            Your past queries will appear here.
+
+          {historyLoading && sessions.length === 0 && (
+            <div className="text-sm text-slate-400 italic">Loading…</div>
+          )}
+          {historyError && (
+            <div className="text-xs text-red-600">{historyError}</div>
+          )}
+          {!historyLoading && !historyError && sessions.length === 0 && (
+            <div className="text-sm text-slate-400 italic">
+              Your past chats will appear here.
+            </div>
+          )}
+
+          <div className="flex flex-col gap-1">
+            {sessions.map((s) => (
+              <SessionRow
+                key={s.id}
+                session={s}
+                active={activeSessionId === s.id}
+                onClick={() => {
+                  onSessionSelect(s.id);
+                  onClose?.();
+                }}
+                onDelete={() => onSessionDelete(s.id)}
+              />
+            ))}
           </div>
         </div>
 
@@ -124,9 +172,7 @@ function JurisdictionPill({
       onClick={onClick}
       className={cn(
         "flex items-center gap-2.5 px-3 py-2 rounded-md text-sm text-left transition-colors",
-        active
-          ? "bg-navy text-white font-medium"
-          : "text-slate-700 hover:bg-slate-50"
+        active ? "bg-navy text-white font-medium" : "text-slate-700 hover:bg-slate-50"
       )}
     >
       {flag ?? (
@@ -135,4 +181,75 @@ function JurisdictionPill({
       <span>{label}</span>
     </button>
   );
+}
+
+function SessionRow({
+  session,
+  active,
+  onClick,
+  onDelete,
+}: {
+  session: SessionListItem;
+  active: boolean;
+  onClick: () => void;
+  onDelete: () => void;
+}) {
+  const handleDelete = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (confirm("Delete this chat?")) onDelete();
+  };
+
+  return (
+    <div
+      onClick={onClick}
+      className={cn(
+        "group relative px-3 py-2 rounded-md cursor-pointer transition-colors",
+        active ? "bg-gold-faint" : "hover:bg-slate-50"
+      )}
+    >
+      <div className="flex items-start gap-2">
+        {session.jurisdiction && (
+          <Flag code={session.jurisdiction} size={16} />
+        )}
+        <div className="flex-1 min-w-0">
+          <div
+            className={cn(
+              "text-[13px] leading-snug truncate",
+              active ? "text-navy font-medium" : "text-slate-700"
+            )}
+          >
+            {session.title || "Untitled chat"}
+          </div>
+          <div className="flex items-center gap-1.5 mt-0.5 text-[10px] font-mono text-slate-400">
+            <span>{session.turn_count} turn{session.turn_count !== 1 ? "s" : ""}</span>
+            <span>·</span>
+            <span>{formatDate(session.updated_at)}</span>
+          </div>
+        </div>
+      </div>
+      <button
+        onClick={handleDelete}
+        className="absolute top-1.5 right-1.5 opacity-0 group-hover:opacity-100 text-slate-400 hover:text-red-600 text-xs px-1.5 transition-opacity"
+        aria-label="Delete"
+        title="Delete"
+      >
+        ×
+      </button>
+    </div>
+  );
+}
+
+function formatDate(iso: string): string {
+  const d = new Date(iso);
+  const now = new Date();
+  const diffMs = now.getTime() - d.getTime();
+  const diffMin = Math.floor(diffMs / 60000);
+  const diffHr = Math.floor(diffMs / 3600000);
+  const diffDay = Math.floor(diffMs / 86400000);
+
+  if (diffMin < 1) return "now";
+  if (diffMin < 60) return `${diffMin}m`;
+  if (diffHr < 24) return `${diffHr}h`;
+  if (diffDay < 7) return `${diffDay}d`;
+  return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }

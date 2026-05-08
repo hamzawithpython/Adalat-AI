@@ -52,6 +52,7 @@ export interface LegalResponse {
   // NEW
   sections: AnswerSection[];
   judgments: Judgment[];
+  follow_up_questions: string[];
   response_language?: Language | null;
   judgments_disclaimer?: string;
   // existing

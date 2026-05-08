@@ -7,9 +7,10 @@ import { AnswerView } from "./answer-view";
 
 interface TurnViewProps {
   turn: ChatTurn;
+  onFollowUp?: (query: string) => void;
 }
 
-export function TurnView({ turn }: TurnViewProps) {
+export function TurnView({ turn, onFollowUp }: TurnViewProps) {
   if (turn.status === "idle") return null;
 
   return (
@@ -18,7 +19,9 @@ export function TurnView({ turn }: TurnViewProps) {
 
       {turn.status === "loading" && <LoadingState startedAt={turn.startedAt} />}
       {turn.status === "error" && <ErrorState error={turn.error} />}
-      {turn.status === "answered" && <AnswerView response={turn.response} />}
+      {turn.status === "answered" && (
+        <AnswerView response={turn.response} onFollowUp={onFollowUp} />
+      )}
     </div>
   );
 }
