@@ -13,13 +13,25 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 
-from src.api.database import get_db, create_tables, ChatHistory
+from src.api.database import get_db, create_tables, ChatSession, ChatTurn
 from src.agents.router import ask
 from src.retrieval.embedder import get_embedding_model
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+def _enum_value(v):
+    """Extract clean string from a Pydantic enum or already-stringified enum."""
+    if v is None:
+        return None
+    if hasattr(v, "value"):
+        return v.value
+    s = str(v)
+    # Handle case where it was already stringified as "Jurisdiction.PK"
+    if "." in s and s.split(".")[0] in ("Jurisdiction", "Language"):
+        return s.split(".", 1)[1].lower() if "Language" in s else s.split(".", 1)[1]
+    return s
 
 app = FastAPI(
     title="Adalat-AI API",
@@ -79,68 +91,127 @@ async def ask_question(request: QueryRequest, db: Session = Depends(get_db)):
         logger.exception(f"Router error: {e}")
         raise HTTPException(status_code=500, detail=f"Processing error: {str(e)}")
 
+    # Persist as ChatSession + ChatTurn (new schema)
     try:
-        chat_record = ChatHistory(
+        session_obj = db.query(ChatSession).filter(ChatSession.id == session_id).first()
+        if not session_obj:
+            # First turn — create the session, derive a title from the query
+            title = result["query"][:80]
+            session_obj = ChatSession(
+                id=session_id,
+                title=title,
+                jurisdiction=_enum_value(result["jurisdiction"]),
+                language=_enum_value(result["language"]),
+            )
+            db.add(session_obj)
+            db.flush()  # ensure session row exists before inserting turn
+            turn_index = 0
+        else:
+            # Subsequent turn — increment index, refresh updated_at via onupdate
+            turn_index = db.query(ChatTurn).filter(
+                ChatTurn.session_id == session_id
+            ).count()
+            session_obj.updated_at = datetime.utcnow()
+
+        turn = ChatTurn(
             session_id=session_id,
+            turn_index=turn_index,
             query=result["query"],
             translated_query=result.get("translated_query"),
-            language=str(result["language"]),
-            jurisdiction=str(result["jurisdiction"]),
+            language=_enum_value(result["language"]),
+            jurisdiction=_enum_value(result["jurisdiction"]),
             answer=result["answer"],
+            sections=result.get("sections", []),
+            judgments=result.get("judgments", []),
             rights=result.get("rights", []),
             citations=result.get("citations", []),
-            confidence=result.get("confidence", 0.0)
+            confidence=result.get("confidence", 0.0),
+            response_language=result.get("response_language"),
+            follow_up_questions=result.get("follow_up_questions", []),
         )
-        db.add(chat_record)
+        db.add(turn)
         db.commit()
-        db.refresh(chat_record)
     except Exception as e:
         logger.warning(f"DB save failed: {e}")
+        db.rollback()
 
     return {"session_id": session_id, **result}
 
-
 @app.get("/history")
-def get_history(
-    session_id: Optional[str] = None,
-    limit: int = 10,
-    db: Session = Depends(get_db)
-):
-    query = db.query(ChatHistory).order_by(ChatHistory.created_at.desc())
-    if session_id:
-        query = query.filter(ChatHistory.session_id == session_id)
-    records = query.limit(limit).all()
+def list_sessions(limit: int = 30, db: Session = Depends(get_db)):
+    """Return recent chat sessions, ordered by most recently updated."""
+    sessions = (
+        db.query(ChatSession)
+        .order_by(ChatSession.updated_at.desc())
+        .limit(limit)
+        .all()
+    )
     return {
-        "total": len(records),
-        "records": [
+        "total": len(sessions),
+        "sessions": [
             {
-                "id": r.id,
-                "session_id": r.session_id,
-                "query": r.query,
-                "jurisdiction": r.jurisdiction,
-                "language": r.language,
-                "confidence": r.confidence,
-                "created_at": r.created_at.isoformat()
+                "id": s.id,
+                "title": s.title,
+                "jurisdiction": s.jurisdiction,
+                "language": s.language,
+                "turn_count": len(s.turns),
+                "created_at": s.created_at.isoformat(),
+                "updated_at": s.updated_at.isoformat(),
             }
-            for r in records
-        ]
+            for s in sessions
+        ],
     }
 
-@app.get("/history/{record_id}")
-def get_record(record_id: int, db: Session = Depends(get_db)):
-    record = db.query(ChatHistory).filter(ChatHistory.id == record_id).first()
-    if not record:
-        raise HTTPException(status_code=404, detail="Record not found")
+
+@app.get("/sessions/{session_id}")
+def get_session(session_id: str, db: Session = Depends(get_db)):
+    """Return a full chat session with all turns in chronological order."""
+    session_obj = db.query(ChatSession).filter(ChatSession.id == session_id).first()
+    if not session_obj:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    turns = (
+        db.query(ChatTurn)
+        .filter(ChatTurn.session_id == session_id)
+        .order_by(ChatTurn.turn_index.asc())
+        .all()
+    )
     return {
-        "id": record.id,
-        "session_id": record.session_id,
-        "query": record.query,
-        "translated_query": record.translated_query,
-        "language": record.language,
-        "jurisdiction": record.jurisdiction,
-        "answer": record.answer,
-        "rights": record.rights,
-        "citations": record.citations,
-        "confidence": record.confidence,
-        "created_at": record.created_at.isoformat()
+        "id": session_obj.id,
+        "title": session_obj.title,
+        "jurisdiction": session_obj.jurisdiction,
+        "language": session_obj.language,
+        "created_at": session_obj.created_at.isoformat(),
+        "updated_at": session_obj.updated_at.isoformat(),
+        "turns": [
+            {
+                "id": t.id,
+                "turn_index": t.turn_index,
+                "query": t.query,
+                "translated_query": t.translated_query,
+                "language": t.language,
+                "jurisdiction": t.jurisdiction,
+                "answer": t.answer,
+                "sections": t.sections or [],
+                "judgments": t.judgments or [],
+                "rights": t.rights or [],
+                "citations": t.citations or [],
+                "confidence": t.confidence,
+                "response_language": t.response_language,
+                "follow_up_questions": t.follow_up_questions or [],
+                "created_at": t.created_at.isoformat(),
+            }
+            for t in turns
+        ],
     }
+
+
+@app.delete("/sessions/{session_id}")
+def delete_session(session_id: str, db: Session = Depends(get_db)):
+    """Delete a chat session and all its turns."""
+    session_obj = db.query(ChatSession).filter(ChatSession.id == session_id).first()
+    if not session_obj:
+        raise HTTPException(status_code=404, detail="Session not found")
+    db.delete(session_obj)
+    db.commit()
+    return {"deleted": session_id}
