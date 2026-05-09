@@ -80,7 +80,20 @@ def _parse_json_array(text: str) -> list:
 
 
 # ── Sections ──────────────────────────────────────────────────────────
-SECTIONS_PROMPT = ChatPromptTemplate.from_template("""You are restructuring a legal answer into 3-6 well-organized sections.
+SECTIONS_PROMPT = ChatPromptTemplate.from_template("""You are restructuring a legal answer into 3-6 well-organized sections.You are restructuring a legal answer into well-organized sections.
+
+═══════════════════════════════════════════════════
+HARD RULES — NON-NEGOTIABLE
+═══════════════════════════════════════════════════
+- You are REORGANIZING the input answer, NOT expanding it. The combined sections must not contain more information than the original answer.
+- SECTION COUNT scales to answer length:
+  - Short answer (under 200 words) → 2-3 sections.
+  - Medium answer (200-400 words) → 3-4 sections.
+  - Long answer (over 400 words) → 4-6 sections.
+- Each section's content must be DIFFERENT. Overlap is forbidden — if two sections would say similar things, merge them or drop one.
+- icon_hint is REQUIRED on every section. Pick the closest match from the list.
+- Section CONTENT must come from the input answer. Do not introduce new statutes, deadlines, or facts that the answer didn't mention.
+═══════════════════════════════════════════════════
 
 LANGUAGE: {response_language}
 - Section HEADINGS stay in English ("Statutory Framework", "Practical Strategy", etc.) — universal labels.
@@ -93,7 +106,7 @@ If response_language is "roman_urdu":
 INPUT ANSWER:
 {answer}
 
-Pick 3-6 of these section types that best fit (or invent similar):
+Pick the appropriate number of section types (per the HARD RULES above) from this list, or invent similar ones that fit the actual content:
 - "Legal Context" — background and applicable laws
 - "Statutory Framework" — specific statutes and provisions
 - "Key Legal Points" — bulleted analysis
@@ -227,10 +240,12 @@ JURISDICTION: {jurisdiction}
 
 Generate 3-4 follow-up questions that:
 1. Are SHORT (under 12 words each)
-2. Drill DEEPER into specifics not yet covered (deadlines, evidence, costs, edge cases)
-3. Anticipate the user's likely real-world situation
-4. Are CONCRETE, not vague ("How long does it take?" not "What else?")
-5. Each must explore a DIFFERENT angle — no two questions overlapping
+2. Drill DEEPER than the answer already went — into specifics like exact costs, timing variations, edge cases, what happens if a step fails, what if the other party is uncooperative, common complications, what to do AFTER the recommended action
+3. Are CONCRETE, not vague ("How long does it take?" not "What else?")
+4. Each explores a DIFFERENT angle — no two questions overlapping
+5. Prefer angles the answer didn't already cover, but it's fine to ask a deeper version of something the answer touched on. If the answer says "file with the Rent Controller", a good follow-up is "Kitna time lagta hai Rent Controller mein faisla aane mein?" — going deeper on something mentioned. NOT a banned repeat — just drilling down.
+
+YOU MUST RETURN AT LEAST 3 QUESTIONS. Even if the answer feels comprehensive, real users always have edge-case follow-ups: what if my documents are incomplete, what does it cost, what if the lawyer is too expensive, what happens if I lose, what if the deadline has already passed. Never return fewer than 3.
 
 Examples of good follow-ups (deposit query):
 - "Kitna time lagta hai Rent Controller ka faisla aane mein?"
