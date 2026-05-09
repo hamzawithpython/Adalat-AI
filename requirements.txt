@@ -21,3 +21,4 @@ httpx
 groq
 rank-bm25
 tiktoken
+langchain-cerebras==0.8.2
