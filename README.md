@@ -33,6 +33,12 @@ It is built as a portfolio capstone: every component is a real RAG pipeline rath
 - **Structured output** — Pydantic-validated response with sections, judgments, rights, citations, and confidence score.
 - **Pakistani Roman-Urdu vocabulary guidance** — explicit guard against Hindi-leaning vocabulary in answers.
 - **Anti-hallucination grounding rules** — citations limited to retrieved context, with honest framing for illustrative case law.
+- **Multi-turn conversation** — follow-up questions stack vertically within a session; full history persists in Postgres.
+- **Smart follow-up suggestions** — after every answer, the LLM proposes 3-4 contextual next questions clickable as new turns.
+- **Session history sidebar** — past chats shown with title, jurisdiction, turn count; click any to reload, or delete.
+- **User feedback form** — collects bug reports, feature requests, ratings; admin view at `/admin/feedback?token=...`.
+- **Bring your own API key** — reviewers can paste their own Groq/Cerebras/Gemini key to bypass shared rate limits.
+- **Provider fallback** — Groq primary, Cerebras automatic fallback when Groq is rate-limited.
 
 ---
 
@@ -70,14 +76,14 @@ The frontend renders this JSON as cards: section cards, expandable judgment card
 
 | Layer | Technology |
 |---|---|
-| **LLM** | `llama-3.3-70b-versatile` via Groq API |
+| **LLM** | llama-3.3-70b-versatile (answer) + llama-3.1-8b-instant (structuring) via Groq primary, Cerebras fallback |
 | **Embeddings** | `paraphrase-multilingual-MiniLM-L12-v2` via fastembed (ONNX runtime) |
 | **Vector DB** | Chroma (persistent, 8,322 vectors) |
 | **Agent framework** | LangChain + LangGraph |
 | **PDF parsing** | PyMuPDF + Tesseract OCR (for scanned documents) |
 | **Chunking** | Structural (article-based) + sliding window with breadcrumbs |
 | **Validation** | Pydantic v2 (`LegalResponse` schema) |
-| **API** | FastAPI + SQLite for chat history |
+| **API** | FastAPI + Postgres on Neon (chat history, feedback, sessions) |
 | **Frontend** | Next.js 16 (App Router) + TypeScript + TailwindCSS |
 | **Markdown** | react-markdown + remark-gfm |
 | **Hosting** | Railway (backend + frontend) |
@@ -101,10 +107,22 @@ The frontend renders this JSON as cards: section cards, expandable judgment card
 
 ## API
 
-GET  /health        → {"status": "ok", "version": "1.0.0"}
-POST /ask           → full LegalResponse JSON
-GET  /history       → list of past queries (SQLite-backed)
-GET  /docs          → Swagger UI
+GET  /health                    → {"status": "ok", "version": "1.0.0"}
+POST /ask                       → full LegalResponse JSON (multi-turn via session_id)
+GET  /history                   → list of chat sessions (most recent first)
+GET  /sessions/{id}             → full session with all turns
+DELETE /sessions/{id}           → delete a session and its turns
+POST /feedback                  → submit user feedback
+GET  /feedback/admin?token=...  → list all feedback (admin-protected)
+GET  /docs                      → Swagger UI
+
+### BYOK header
+
+Any request to `/ask` may include this optional header to use a user-supplied API key instead of the server's:
+
+X-Adalat-API-Keys: {"groq": "gsk_...", "cerebras": "csk-...", "gemini": "AIzaSy..."}
+
+When present, that key is used for the duration of that single request. Keys are not persisted server-side.
 
 ### Sample request
 
@@ -241,6 +259,39 @@ python scripts/ingest_documents.py
 ```
 
 CI/CD auto-runs ingestion when new PDFs are pushed to GitHub.
+
+---
+
+## Rate limits & API keys
+
+Adalat-AI uses [Groq](https://groq.com) for primary LLM inference (Llama 3.3-70B and 3.1-8B), with [Cerebras](https://cloud.cerebras.ai) as an automatic fallback when Groq is rate-limited. Both are running on free tiers, which means **shared daily token quotas across all users hitting the deployed app**.
+
+### What you might see
+
+If you submit a query and the response says *"An error occurred. Please consult a qualified lawyer"* with empty sections, the deployed app has hit its daily Groq + Cerebras quotas. The product itself is not broken — you're sharing a free-tier limit with everyone else trying it that day.
+
+### Bring your own API key (recommended)
+
+To bypass shared limits entirely, paste your own free API key into the app:
+
+1. Open the chat at [/chat](https://frontend-production-fde6.up.railway.app/chat)
+2. Click **🔑 API keys** in the sidebar footer
+3. Paste a key from any of:
+   - **Groq** — free tier, sign up at [console.groq.com/keys](https://console.groq.com/keys)
+   - **Cerebras** — generous free tier (~1M tokens/day), sign up at [cloud.cerebras.ai](https://cloud.cerebras.ai/)
+   - **Google Gemini** — free tier, sign up at [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+4. Save → you're now using your own quota
+
+Keys are stored only in your browser's `localStorage`. They're sent to Adalat-AI's backend only for your individual requests and are **never written to the database or logged**.
+
+### Architecture choice
+
+Each user query consumes ~6,000 tokens on the 70B model and ~9,000 on the 8B model. To extend free-tier runway, the system uses split-tier model selection:
+
+- **70B (Llama 3.3)** — only for the user-facing legal answer where output quality matters most
+- **8B (Llama 3.1)** — for routing, classification, structuring, judgment generation, and follow-up questions
+
+This cuts 70B token usage by ~60% with no visible quality difference to the user. The split is implemented in [`src/agents/llms.py`](src/agents/llms.py).
 
 ---
 
