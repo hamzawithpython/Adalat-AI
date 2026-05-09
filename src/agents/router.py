@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # ── State Schema ──────────────────────────────────────────────
-class AgentState(TypedDict):
+class AgentState(TypedDict, total=False):
     query: str
     language: Optional[str]
     jurisdiction: Optional[str]
@@ -28,6 +28,10 @@ class AgentState(TypedDict):
     follow_up_questions: Optional[list]
     response_language: Optional[str]
     error: Optional[str]
+    # Clarifier additions
+    clarification: Optional[dict]
+    is_clarification: Optional[bool]
+    conversation_history: Optional[list]
 
 
 # ── LLM ──────────────────────────────────────────────────────
@@ -210,6 +214,52 @@ def structure_response_node(state: AgentState) -> AgentState:
         logger.exception(f"Structurer error: {e}")
         return {**state, "sections": [], "judgments": [], "follow_up_questions": []}
 
+# ── Node: Assess (decides whether to clarify or answer) ─────────────
+def assess_node(state: AgentState) -> AgentState:
+    """Decides whether the query has enough facts for a real legal answer."""
+    from src.agents.clarifier import assess_completeness
+    decision = assess_completeness(
+        query=state.get("translated_query") or state["query"],
+        jurisdiction=state["jurisdiction"],
+        response_language=state.get("language") or "english",
+        conversation_history=state.get("conversation_history") or [],
+    )
+    return {**state, "clarification": decision}
+
+
+def route_after_assess(state: AgentState) -> str:
+    """Conditional edge: if clarification needed, skip RAG."""
+    if state.get("clarification", {}).get("decision") == "clarify":
+        return "clarify_only"
+    return "run_rag"
+
+
+# ── Node: Clarify Only (returns clarifying questions instead of answer) ─
+def clarify_only_node(state: AgentState) -> AgentState:
+    """Skips RAG. Returns a clarification message in user's language."""
+    questions = state["clarification"]["questions"]
+    lang = state.get("language") or "english"
+
+    if lang == "roman_urdu":
+        intro = "Aap ke maamlay ko theek se assess karne ke liye, mujhe kuch baatein clear karni hain:"
+    elif lang == "german":
+        intro = "Um Ihre Situation richtig einzuschätzen, brauche ich noch ein paar Angaben:"
+    else:
+        intro = "To assess your situation properly, I need a few clarifications:"
+
+    answer = intro + "\n\n" + "\n".join(f"• {q}" for q in questions)
+
+    return {
+        **state,
+        "answer": answer,
+        "citations": [],
+        "sections": [],
+        "judgments": [],
+        "follow_up_questions": questions,  # so the UI can render them as clickable chips
+        "response_language": lang,
+        "is_clarification": True,
+    }
+
 # ── Build LangGraph ───────────────────────────────────────────
 def build_router():
     graph = StateGraph(AgentState)
@@ -217,42 +267,63 @@ def build_router():
     graph.add_node("detect_language", detect_language)
     graph.add_node("detect_jurisdiction", detect_jurisdiction)
     graph.add_node("translate_query", translate_query)
+    graph.add_node("assess", assess_node)
+    graph.add_node("clarify_only", clarify_only_node)
     graph.add_node("run_rag", run_rag_node)
     graph.add_node("structure_response", structure_response_node)
 
     graph.set_entry_point("detect_language")
     graph.add_edge("detect_language", "detect_jurisdiction")
     graph.add_edge("detect_jurisdiction", "translate_query")
-    graph.add_edge("translate_query", "run_rag")
+    graph.add_edge("translate_query", "assess")
+    graph.add_conditional_edges("assess", route_after_assess, {
+        "clarify_only": "clarify_only",
+        "run_rag": "run_rag",
+    })
+    graph.add_edge("clarify_only", END)
     graph.add_edge("run_rag", "structure_response")
     graph.add_edge("structure_response", END)
 
     return graph.compile()
 
 
-def ask(query: str) -> dict:
-    """Main entry point — just pass any query, router handles everything."""
+def ask(query: str, conversation_history: list = None) -> dict:
+    """Main entry point — just pass any query, router handles everything.
+    
+    Optional `conversation_history` is a list of prior turns:
+        [{"query": "...", "answer": "..."}, ...]
+    Used to skip clarification when the user is already iterating in a session.
+    """
     from src.schemas.extractor import extract_rights
     from src.schemas.legal_response import build_legal_response
 
     router = build_router()
-    result = router.invoke({"query": query})
+    result = router.invoke({
+        "query": query,
+        "conversation_history": conversation_history or [],
+    })
 
-    # Extract structured rights from answer
-    rights = extract_rights(result.get("answer", ""))
+    # If this is a clarification response, skip rights extraction (no real answer to extract from)
+    if result.get("is_clarification"):
+        rights = []
+    else:
+        rights = extract_rights(result.get("answer", ""))
 
     # Build validated Pydantic response
     response = build_legal_response(result, rights)
 
-    return response.model_dump()
+    # Surface the clarification flag and questions to the API consumer
+    response_dict = response.model_dump()
+    response_dict["is_clarification"] = result.get("is_clarification", False)
+    return response_dict
 
 
 if __name__ == "__main__":
     test_queries = [
-        "What fees can my landlord charge me in the UK?",
-        "mera landlord deposit wapas nahi de raha",
-        "Mein Vermieter gibt meine Kaution nicht zurück",
-        "Can police detain me without charge in Pakistan?",
+        "What fees can my landlord charge me in the UK?",          # answer
+        "mera landlord deposit wapas nahi de raha",                 # answer
+        "Police ne mujhe roka",                                     # CLARIFY — vague police interaction
+        "I have a problem",                                         # CLARIFY — way too vague
     ]
 
     for q in test_queries:
