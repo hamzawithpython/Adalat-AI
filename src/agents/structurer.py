@@ -247,14 +247,33 @@ Generate 3-4 follow-up questions that:
 
 YOU MUST RETURN AT LEAST 3 QUESTIONS. Even if the answer feels comprehensive, real users always have edge-case follow-ups: what if my documents are incomplete, what does it cost, what if the lawyer is too expensive, what happens if I lose, what if the deadline has already passed. Never return fewer than 3.
 
-Examples of good follow-ups (deposit query):
+═══════════════════════════════════════════════════
+HARD LANGUAGE RULE
+═══════════════════════════════════════════════════
+Every question MUST be in {response_language}. NOT a mix. NOT translated. Match the user's language exactly.
+- response_language = "english"   → all questions in English
+- response_language = "roman_urdu" → all questions in Pakistani Roman-Urdu
+- response_language = "german"    → all questions in German
+
+Examples of good follow-ups for an English query about UK landlord fees:
+- "How long does Trading Standards take to act?"
+- "What if the landlord ignores the 14-day demand?"
+- "Is there a fee to file at the First-tier Tribunal?"
+- "What evidence do I need to recover the payment?"
+
+Examples of good follow-ups for a Roman-Urdu query about deposit recovery (Pakistan):
 - "Kitna time lagta hai Rent Controller ka faisla aane mein?"
 - "Agar landlord court mein aaye hi nahi to kya hota hai?"
 - "Lawyer hire karna zaroori hai ya khud case kar sakta hoon?"
 
-Examples of BAD follow-ups (avoid):
-- "Kya aur kuch bata sakte hain?" (too vague)
-- "Yeh process kaisa hai?" (already covered)
+Examples of good follow-ups for a German query about deposit recovery:
+- "Wie lange dauert ein Verfahren beim Amtsgericht?"
+- "Was kostet eine Klage gegen den Vermieter?"
+- "Welche Beweise brauche ich für die Klage?"
+
+Examples of BAD follow-ups (avoid in any language):
+- "Can you tell me more?" / "Aur kuch bata sakte hain?" (too vague)
+- "What is the process?" / "Yeh process kaisa hai?" (covered by the answer already)
 
 Return ONLY a JSON array of strings, no preamble, no markdown fence:
 ["question 1", "question 2", "question 3"]
