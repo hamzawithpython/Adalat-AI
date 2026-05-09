@@ -142,41 +142,37 @@ def generate_sections(answer: str, response_language: str = "english") -> list[d
         return []
 
 
-# ── Judgments ──────────────────────────────────────────────────────────
-JUDGMENTS_PROMPT = ChatPromptTemplate.from_template("""You are providing 3-5 ILLUSTRATIVE judgments showing how courts in {jurisdiction} have approached issues similar to the user's query. These are educational examples from your training knowledge — they will be displayed with a clear "illustrative only, verify before relying" disclaimer.
+# ── Judicial Principles (NOT fabricated case citations) ───────────────
+JUDGMENTS_PROMPT = ChatPromptTemplate.from_template("""You are summarizing how courts in {jurisdiction} have GENERALLY approached issues similar to the user's query.
+
+You are NOT inventing specific case names, citations (PLD, SCMR, EWCA, BGH, etc.), party names, or court dates. Those will mislead users who try to verify them. Instead, you are extracting the underlying JUDICIAL PRINCIPLE that courts apply.
 
 USER QUERY: {query}
 JURISDICTION: {jurisdiction}
 
-CRITICAL — RELEVANCE:
-Every judgment you suggest MUST be directly relevant to the legal issue in the user's query.
-- A query about deposit recovery → judgments about tenancy deposits, rent recovery, landlord-tenant disputes
-- A query about divorce dowry → judgments about dowry, gifts to bride, matrimonial property
-- DO NOT suggest unrelated cases just to fill the list. If you cannot find 3 relevant cases, return fewer (minimum 2).
+RELEVANCE:
+Every principle you suggest MUST be directly relevant to the legal issue in the user's query.
+- A query about deposit recovery → principles about burden of proof, wrongful retention, evidence requirements
+- A query about police checking → principles about reasonable cause, scope of police authority, abuse of power
+- DO NOT pad the list. If you have 2 strong principles, return 2. Minimum 2, maximum 4.
+
+For each principle, provide:
+- principle: short title naming the legal principle (e.g. "Burden of proof in deposit recovery", "Limits on warrantless search")
+- summary: 2-3 sentences in neutral English describing how courts in {jurisdiction} typically reason about this issue. Frame as a principle, not a specific case. Example: "Courts in {jurisdiction} generally hold that the landlord bears the burden of proving lawful retention of a deposit. Mere allegations of damages without itemized evidence are typically insufficient."
+- typical_outcome: what kind of decision usually results when these facts are present (e.g. "Recovery ordered with interest where landlord cannot itemize damages", "Petition dismissed where claimant cannot establish a registered tenancy")
+- relevant_sections: list of statutory sections that would apply (max 3, can be empty if not jurisdiction-specific)
 
 Return ONLY a JSON array, no preamble, no markdown fence:
 [
   {{
-    "case_title": "Realistic case naming for the jurisdiction",
-    "citation": "Realistic citation format",
-    "court": "Actual court name",
-    "outcome": "Brief outcome",
-    "sections": ["Statutory section invoked"],
-    "summary": "2-4 sentence factual neutral summary of the case and its holding",
-    "cited_cases": ["Other case 1", "Other case 2"]
+    "principle": "Short title of the principle",
+    "summary": "2-3 sentences on how courts generally treat this issue",
+    "typical_outcome": "What kind of decision usually results",
+    "relevant_sections": ["Section X of Act Y"]
   }}
 ]
 
-Citation conventions for {jurisdiction}:
-- PK: "X v. Y" with citations like "PLD 1980 SC 9", "2025 SCMR 1142", "2018 CLC 100"
-- UK: "Smith v Jones [2020] EWCA Civ 123", "Re X (1995) 1 WLR 100"
-- DE: "BGH VIII ZR 71/05", "OLG München 5 U 123/22"
-
-- summary: 2-4 sentences, factual and neutral
-- sections: list of statutory sections invoked (max 4)
-- cited_cases: list of other cases referenced (max 5, can be empty)
-- outcome: brief, e.g. "Appeal Allowed", "Petition Dismissed", "Eviction Upheld"
-- court must be the actual court relevant to the issue
+If you do not have reliable knowledge of how {jurisdiction} courts approach this, return [].
 """)
 
 
@@ -188,20 +184,17 @@ def generate_judgments(query: str, jurisdiction: str) -> list[dict]:
         valid = [
             j for j in judgments
             if isinstance(j, dict)
-            and j.get("case_title")
-            and j.get("citation")
+            and j.get("principle")
             and j.get("summary")
         ]
         # Ensure list fields exist even if LLM omitted them
         for j in valid:
-            j.setdefault("sections", [])
-            j.setdefault("cited_cases", [])
-            j.setdefault("court", "")
-            j.setdefault("outcome", "")
-        logger.info(f"Generated {len(valid)} judgments")
+            j.setdefault("relevant_sections", [])
+            j.setdefault("typical_outcome", "")
+        logger.info(f"Generated {len(valid)} judicial principles")
         return valid
     except Exception as e:
-        logger.error(f"Judgment generation failed: {e}")
+        logger.error(f"Judicial principle generation failed: {e}")
         return []
 
 
