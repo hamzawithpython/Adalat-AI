@@ -47,13 +47,21 @@ export function useChat() {
   // we should push the previous one into completed[].
   // We do this in a separate function called by the page when it submits.
   const promoteActiveToCompleted = useCallback(() => {
-    setActive((prev) => {
-      if (prev.status === "answered") {
-        setCompleted((c) => [...c, { query: prev.query, response: prev.response }]);
-      }
-      return prev;
-    });
-  }, []);
+  setActive((prev) => {
+    if (prev.status === "answered") {
+      // Use functional setCompleted with a guard against double-append
+      setCompleted((c) => {
+        // Guard against React strict-mode double invocation
+        const last = c[c.length - 1];
+        if (last && last.query === prev.query && last.response === prev.response) {
+          return c;
+        }
+        return [...c, { query: prev.query, response: prev.response }];
+      });
+    }
+    return { status: "idle" };
+  });
+}, []);
 
   const reset = useCallback(() => {
     setCompleted([]);
