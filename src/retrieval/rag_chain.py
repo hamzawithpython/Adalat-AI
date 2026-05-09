@@ -9,6 +9,25 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from src.retrieval.embedder import search
+from src.retrieval.hybrid_search import hybrid_search
+
+
+def build_retrieval_query(query: str, conversation_history: list = None) -> str:
+    """Enrich the current query with prior turn keywords so embeddings retrieve
+    contextually-relevant chunks on follow-ups. Without this, a follow-up like
+    'aur agar woh court mein nahi aaye?' embeds as generic court procedure
+    and pulls the wrong statutes.
+    """
+    if not conversation_history:
+        return query
+    # Take the most recent user query as anchor — that's where the topic lives.
+    last_user_query = conversation_history[-1].get("query", "")
+    if not last_user_query:
+        return query
+    # Concatenate. The embedder will average the meaning, so the topic of
+    # the prior turn pulls retrieval toward the right corpus area.
+    enriched = f"{last_user_query} {query}"
+    return enriched
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -189,15 +208,27 @@ def get_llm():
     return heavy_llm(max_tokens=2048, temperature=0.2)
 
 
-def run_rag(query: str, jurisdiction: str = None, top_k: int = 5, response_language: str = "english") -> dict:
+def run_rag(query: str, jurisdiction: str = None, top_k: int = 5,
+            response_language: str = "english",
+            conversation_history: list = None) -> dict:
     """
     Full RAG pipeline:
     query → retrieve → format context → LLM → answer + citations
+    
+    `conversation_history` is an optional list of prior turns used to resolve
+    references like "iss case mein", "phir kya?", "us situation mein".
+    Format: [{"query": "...", "answer": "..."}, ...]
     """
     logger.info(f"Query: {query} | Jurisdiction: {jurisdiction}")
 
     # Step 1: Retrieve relevant chunks
-    results = search(query, country=jurisdiction, top_k=top_k)
+    # On follow-up turns, enrich the search query with the prior turn so
+    # the embedder finds chunks for the right legal topic, not the generic
+    # meaning of the follow-up alone.
+    retrieval_query = build_retrieval_query(query, conversation_history)
+    if retrieval_query != query:
+        logger.info(f"Enriched retrieval query (multi-turn): {retrieval_query[:120]}")
+    results = hybrid_search(retrieval_query, country=jurisdiction, top_k=top_k)
 
     if not results:
         return {
@@ -211,13 +242,24 @@ def run_rag(query: str, jurisdiction: str = None, top_k: int = 5, response_langu
     context = format_context(results)
     citations = format_citations(results)
 
+    # Step 2b: Build conversation history block (last 2 turns max)
+    history_block = ""
+    if conversation_history:
+        recent = conversation_history[-2:]
+        history_block = "\n\n═══ PREVIOUS CONVERSATION ═══\n"
+        for turn in recent:
+            prior_q = turn.get("query", "")
+            prior_a = turn.get("answer", "")[:400]  # cap to keep prompt tight
+            history_block += f"USER: {prior_q}\nADALAT: {prior_a}...\n\n"
+        history_block += "═══ CURRENT QUESTION (resolve any references like 'iss case mein', 'phir kya', 'us situation mein' using above context) ═══\n"
+
     # Step 3: Run LLM
     llm = get_llm()
     prompt = LEGAL_PROMPT
     chain = prompt | llm | StrOutputParser()
 
     answer = chain.invoke({
-        "context": context,
+        "context": history_block + context,
         "question": query,
         "response_language": response_language,
     })
