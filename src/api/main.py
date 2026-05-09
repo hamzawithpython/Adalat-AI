@@ -9,6 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import Header
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
@@ -16,6 +17,10 @@ from dotenv import load_dotenv
 from src.api.database import get_db, create_tables, ChatSession, ChatTurn, Feedback
 from src.agents.router import ask
 from src.retrieval.embedder import get_embedding_model
+
+import json
+from src.agents.llms import set_user_keys
+
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -83,9 +88,30 @@ import asyncio
 from fastapi.concurrency import run_in_threadpool
 
 @app.post("/ask")
-async def ask_question(request: QueryRequest, db: Session = Depends(get_db)):
+async def ask_question(
+    request: QueryRequest,
+    db: Session = Depends(get_db),
+    x_adalat_api_keys: Optional[str] = Header(None, alias="X-Adalat-API-Keys"),
+):  
     if not request.query.strip():
         raise HTTPException(status_code=400, detail="Query cannot be empty")
+    
+    # Parse user-supplied API keys from header (JSON: {"groq": "...", "cerebras": "...", "gemini": "..."})
+    if x_adalat_api_keys:
+        try:
+            user_keys = json.loads(x_adalat_api_keys)
+            if isinstance(user_keys, dict):
+                # Whitelist accepted providers + minimum length sanity check
+                clean = {
+                    k: v for k, v in user_keys.items()
+                    if k in ("groq", "cerebras", "gemini") and isinstance(v, str) and len(v) >= 16
+                }
+                if clean:
+                    set_user_keys(clean)
+                    logger.info(f"Using user-supplied keys: {list(clean.keys())}")
+        except json.JSONDecodeError:
+            logger.warning("Invalid X-Adalat-API-Keys header — ignoring")
+
     if len(request.query) > 1000:
         raise HTTPException(status_code=400, detail="Query too long (max 1000 chars)")
 

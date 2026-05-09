@@ -33,53 +33,58 @@ export class AdalatApiError extends Error {
 /**
  * Ask Adalat-AI a legal question.
  * Calls POST /ask on the FastAPI backend.
- *
- * Note: Queries can take 10–30s due to LLM generation.
- * The caller should show a loading state.
  */
-export async function askAdalat(request: AskRequest): Promise<LegalResponse> {
-  const response = await fetch(`${API_URL}/ask`, {
+export async function askAdalat(req: AskRequest): Promise<LegalResponse> {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+
+  // BYOK: send user-supplied keys from localStorage if present
+  if (typeof window !== "undefined") {
+    const stored = window.localStorage.getItem("adalat_api_keys");
+    if (stored) {
+      try {
+        const keys = JSON.parse(stored);
+        const clean: Record<string, string> = {};
+        for (const k of ["groq", "cerebras", "gemini"]) {
+          if (keys[k] && typeof keys[k] === "string" && keys[k].length >= 16) {
+            clean[k] = keys[k];
+          }
+        }
+        if (Object.keys(clean).length > 0) {
+          headers["X-Adalat-API-Keys"] = JSON.stringify(clean);
+        }
+      } catch {
+        // ignore malformed JSON
+      }
+    }
+  }
+
+  const res = await fetch(`${API_URL}/ask`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(request),
+    headers,
+    body: JSON.stringify(req),
   });
 
-  if (!response.ok) {
-    const text = await response.text().catch(() => "");
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
     throw new AdalatApiError(
-      `Request failed (${response.status})`,
-      response.status,
+      `Request failed (${res.status})`,
+      res.status,
       text
     );
   }
 
-  return response.json() as Promise<LegalResponse>;
-}
-
-/**
- * Fetch list of past queries.
- * Calls GET /history on the FastAPI backend.
- */
-export async function getHistory(): Promise<HistoryItem[]> {
-  const response = await fetch(`${API_URL}/history`);
-  if (!response.ok) {
-    throw new AdalatApiError(
-      `Failed to fetch history (${response.status})`,
-      response.status
-    );
-  }
-  return response.json() as Promise<HistoryItem[]>;
+  return res.json() as Promise<LegalResponse>;
 }
 
 /**
  * Health check — useful for showing API status in dev.
  */
 export async function getHealth(): Promise<{ status: string; version: string }> {
-  const response = await fetch(`${API_URL}/health`);
-  if (!response.ok) {
-    throw new AdalatApiError(`Health check failed`, response.status);
+  const res = await fetch(`${API_URL}/health`);
+  if (!res.ok) {
+    throw new AdalatApiError(`Health check failed`, res.status);
   }
-  return response.json();
+  return res.json();
 }
 
 // ── Sessions / history ──────────────────────────────────────────────

@@ -11,6 +11,7 @@ import { useChat } from "@/hooks/use-chat";
 import { useHistory } from "@/hooks/use-history";
 import { getSession } from "@/lib/api";
 import type { Jurisdiction, LegalResponse } from "@/types/legal";
+import { ApiKeysPanel } from "@/components/chat/api-keys-panel";
 
 function ChatPageInner() {
   const [jurisdiction, setJurisdiction] = useState<Jurisdiction | "ALL">("ALL");
@@ -18,6 +19,7 @@ function ChatPageInner() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
   const [loadingSession, setLoadingSession] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const {
     completed,
@@ -129,6 +131,7 @@ function ChatPageInner() {
         onSessionSelect={handleSessionSelect}
         onSessionDelete={handleSessionDelete}
         onHistoryRefresh={refreshHistory}
+        onOpenSettings={() => setSettingsOpen(true)}
       />
 
       <main className="flex-1 flex flex-col overflow-hidden">
@@ -174,6 +177,8 @@ function ChatPageInner() {
           disabled={isLoading}
         />
       </main>
+
+      <ApiKeysPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
     </div>
   );
 }

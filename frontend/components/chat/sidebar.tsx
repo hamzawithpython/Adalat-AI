@@ -22,6 +22,7 @@ interface SidebarProps {
   onSessionSelect: (id: string) => void;
   onSessionDelete: (id: string) => void;
   onHistoryRefresh: () => void;
+  onOpenSettings?: () => void;
 }
 
 export function Sidebar({
@@ -37,7 +38,9 @@ export function Sidebar({
   onSessionSelect,
   onSessionDelete,
   onHistoryRefresh,
+  onOpenSettings,
 }: SidebarProps) {
+
   return (
     <>
       {isOpen && (
@@ -148,8 +151,15 @@ export function Sidebar({
         </div>
 
         {/* Footer */}
-        <div className="p-5 border-t border-slate-100 text-xs text-slate-400 font-mono">
-          Adalat-AI · v1.0
+        <div className="p-5 border-t border-slate-100 flex items-center justify-between">
+          <button
+            onClick={onOpenSettings}
+            className="text-xs text-slate-500 hover:text-navy font-medium flex items-center gap-1.5"
+          >
+            <span>🔑</span>
+            <span>API keys</span>
+          </button>
+          <span className="text-xs text-slate-400 font-mono">v1.0</span>
         </div>
       </aside>
     </>
