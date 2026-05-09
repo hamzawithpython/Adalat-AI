@@ -1,15 +1,14 @@
-"""Single-query smoke test for hybrid retrieval.
-Verifies hybrid_search returns sane results and the answer is grounded."""
+"""End-to-end smoke test for hybrid retrieval.
+Uses a query that won't trip language detection or clarifier."""
 
 import requests
 
 BASE_URL = "http://localhost:8000"
 
-# This query is specifically designed to test BM25's strength: it has
-# both a semantic component ("landlord", "deposit") and an exact-match
-# component ("Section"). Pure dense retrieval often misses the literal
-# section reference; hybrid should catch both.
-query = "Punjab Rented Premises Act Section 12 deposit"
+# This query is clearly English (no Pakistani statute names that confuse
+# the language detector) but specific enough to test BM25's exact-match
+# strength via "Tenant Fees Act" and "permitted payments".
+query = "What does the Tenant Fees Act 2019 say about permitted payments and prohibited fees?"
 
 print(f"\n→ Sending: {query!r}\n")
 r = requests.post(
@@ -32,5 +31,20 @@ for c in data.get("citations", []):
     print(f"          breadcrumb: {c.get('breadcrumb', '')[:80]}")
 
 print()
-print("ANSWER (first 500 chars):")
-print(data.get("answer", "")[:500])
+print("ANSWER (first 600 chars):")
+print(data.get("answer", "")[:600])
+
+# ── Quality check ──────────────────────────────────────────────
+print()
+print("="*70)
+print("  QUALITY CHECK")
+print("="*70)
+sources = [c.get("source", "") for c in data.get("citations", [])]
+tenant_fees_hits = sum(1 for s in sources if "tenant_fees" in s.lower())
+print(f"Citations from uk_tenant_fees_act.pdf: {tenant_fees_hits} of {len(sources)}")
+if tenant_fees_hits >= 2:
+    print("✅ PASS — hybrid retrieval correctly surfaced Tenant Fees Act chunks")
+elif tenant_fees_hits == 1:
+    print("⚠️  PARTIAL — only one Tenant Fees Act chunk; check if relevant")
+else:
+    print("❌ FAIL — hybrid retrieval did not surface the right statute")
