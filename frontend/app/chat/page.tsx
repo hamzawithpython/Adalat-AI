@@ -20,6 +20,7 @@ function ChatPageInner() {
   const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
   const [loadingSession, setLoadingSession] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [inputKey, setInputKey] = useState(0);
 
   const {
     completed,
@@ -61,10 +62,11 @@ function ChatPageInner() {
   };
 
   const handleNewChat = () => {
-    reset();
-    setPendingQuery("");
-    setActiveSessionId(null);
-  };
+  reset();
+  setPendingQuery("");
+  setActiveSessionId(null);
+  setInputKey((k) => k + 1);  // force QueryInput to remount with empty state
+};
 
   const handleSubmit = (query: string) => {
     setPendingQuery("");
@@ -78,6 +80,8 @@ function ChatPageInner() {
   const handleSessionSelect = async (id: string) => {
     if (id === activeSessionId) return;
     setLoadingSession(true);
+    setPendingQuery("");
+    setInputKey((k) => k + 1);
     try {
       const detail = await getSession(id);
       // Build CompletedTurn[] from all turns in the session
@@ -172,6 +176,7 @@ function ChatPageInner() {
           )}
         </div>
         <QueryInput
+          key={inputKey}
           initialValue={pendingQuery}
           onSubmit={handleSubmit}
           disabled={isLoading}
