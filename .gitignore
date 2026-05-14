@@ -21,8 +21,6 @@ data/raw/
 # Chroma DB
 .chroma/
 *.db
-*.sqlite3
-data/embeddings/
 
 # Logs
 logs/*.log
