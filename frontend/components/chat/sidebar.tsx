@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Wordmark } from "@/components/brand/wordmark";
 import { Btn } from "@/components/ui/btn";
 import { Flag } from "@/components/brand/flag";
@@ -65,7 +66,13 @@ export function Sidebar({
         {/* Wordmark + New chat */}
         <div className="p-5 border-b border-slate-100">
           <div className="flex items-center justify-between mb-5">
-            <Wordmark size="md" />
+            <Link
+              href="/"
+              className="inline-block hover:opacity-80 transition-opacity"
+              aria-label="Go to home page"
+            >
+              <Wordmark size="md" />
+            </Link>
             <button
               onClick={onClose}
               className="lg:hidden text-slate-400 hover:text-navy text-xl leading-none px-2"

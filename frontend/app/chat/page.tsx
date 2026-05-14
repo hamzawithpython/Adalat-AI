@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { Sidebar } from "@/components/chat/sidebar";
 import { EmptyState } from "@/components/chat/empty-state";
 import { QueryInput } from "@/components/chat/query-input";
@@ -163,7 +164,13 @@ function ChatPageInner() {
               <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </button>
-          <Wordmark size="sm" />
+          <Link
+            href="/"
+            className="inline-block hover:opacity-80 transition-opacity"
+            aria-label="Go to home page"
+          >
+            <Wordmark size="sm" />
+          </Link>
           <button
             onClick={handleNewChat}
             className="text-xs font-mono uppercase tracking-wider text-slate-500 hover:text-navy"
