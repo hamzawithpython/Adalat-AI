@@ -118,8 +118,30 @@ async def ask_question(
     session_id = request.session_id or str(uuid.uuid4())
     logger.info(f"Query received: {request.query[:50]}...")
 
+    # Fetch the last 3 turns of this session (if session exists) so the
+    # router can resolve references like "iss case mein" and skip the
+    # clarifier on follow-ups.
+    conversation_history = []
+    if request.session_id:
+        try:
+            prior_turns = (
+                db.query(ChatTurn)
+                .filter(ChatTurn.session_id == session_id)
+                .order_by(ChatTurn.turn_index.desc())
+                .limit(3)
+                .all()
+            )
+            conversation_history = [
+                {"query": t.query, "answer": t.answer}
+                for t in reversed(prior_turns)  # oldest-first
+            ]
+            if conversation_history:
+                logger.info(f"Loaded {len(conversation_history)} prior turns for session {session_id[:8]}")
+        except Exception as e:
+            logger.warning(f"Failed to load conversation history: {e}")
+
     try:
-        result = await run_in_threadpool(ask, request.query)
+        result = await run_in_threadpool(ask, request.query, conversation_history)
     except BaseException as e:
         logger.exception(f"Router error: {e}")
         raise HTTPException(status_code=500, detail=f"Processing error: {str(e)}")

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { Sidebar } from "@/components/chat/sidebar";
 import { EmptyState } from "@/components/chat/empty-state";
 import { QueryInput } from "@/components/chat/query-input";
@@ -20,6 +21,7 @@ function ChatPageInner() {
   const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
   const [loadingSession, setLoadingSession] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [inputKey, setInputKey] = useState(0);
 
   const {
     completed,
@@ -30,11 +32,13 @@ function ChatPageInner() {
     loadSession,
   } = useChat();
   const {
-    sessions,
-    loading: historyLoading,
-    error: historyError,
-    refresh: refreshHistory,
-    remove: removeSession,
+  sessions,
+  loading: historyLoading,
+  error: historyError,
+  refresh: refreshHistory,
+  remove: removeSession,
+  clearAll: clearAllSessions,
+  clearing,
   } = useHistory();
   const searchParams = useSearchParams();
 
@@ -61,10 +65,11 @@ function ChatPageInner() {
   };
 
   const handleNewChat = () => {
-    reset();
-    setPendingQuery("");
-    setActiveSessionId(null);
-  };
+  reset();
+  setPendingQuery("");
+  setActiveSessionId(null);
+  setInputKey((k) => k + 1);  // force QueryInput to remount with empty state
+};
 
   const handleSubmit = (query: string) => {
     setPendingQuery("");
@@ -78,6 +83,8 @@ function ChatPageInner() {
   const handleSessionSelect = async (id: string) => {
     if (id === activeSessionId) return;
     setLoadingSession(true);
+    setPendingQuery("");
+    setInputKey((k) => k + 1);
     try {
       const detail = await getSession(id);
       // Build CompletedTurn[] from all turns in the session
@@ -116,6 +123,14 @@ function ChatPageInner() {
     if (id === activeSessionId) handleNewChat();
   };
 
+  const handleClearAll = async () => {
+    const deletedIds = await clearAllSessions();
+    // If the active session was wiped, reset the view
+    if (activeSessionId && deletedIds.includes(activeSessionId)) {
+      handleNewChat();
+    }
+  };
+
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
       <Sidebar
@@ -131,6 +146,8 @@ function ChatPageInner() {
         onSessionSelect={handleSessionSelect}
         onSessionDelete={handleSessionDelete}
         onHistoryRefresh={refreshHistory}
+        onClearAll={handleClearAll}
+        clearing={clearing}
         onOpenSettings={() => setSettingsOpen(true)}
       />
 
@@ -147,7 +164,13 @@ function ChatPageInner() {
               <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </button>
-          <Wordmark size="sm" />
+          <Link
+            href="/"
+            className="inline-block hover:opacity-80 transition-opacity"
+            aria-label="Go to home page"
+          >
+            <Wordmark size="sm" />
+          </Link>
           <button
             onClick={handleNewChat}
             className="text-xs font-mono uppercase tracking-wider text-slate-500 hover:text-navy"
@@ -172,6 +195,7 @@ function ChatPageInner() {
           )}
         </div>
         <QueryInput
+          key={inputKey}
           initialValue={pendingQuery}
           onSubmit={handleSubmit}
           disabled={isLoading}

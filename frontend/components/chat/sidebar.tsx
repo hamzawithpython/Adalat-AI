@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Wordmark } from "@/components/brand/wordmark";
 import { Btn } from "@/components/ui/btn";
 import { Flag } from "@/components/brand/flag";
@@ -22,6 +24,8 @@ interface SidebarProps {
   onSessionSelect: (id: string) => void;
   onSessionDelete: (id: string) => void;
   onHistoryRefresh: () => void;
+  onClearAll: () => void;
+  clearing?: boolean;
   onOpenSettings?: () => void;
 }
 
@@ -38,6 +42,8 @@ export function Sidebar({
   onSessionSelect,
   onSessionDelete,
   onHistoryRefresh,
+  onClearAll,
+  clearing = false,
   onOpenSettings,
 }: SidebarProps) {
 
@@ -60,7 +66,13 @@ export function Sidebar({
         {/* Wordmark + New chat */}
         <div className="p-5 border-b border-slate-100">
           <div className="flex items-center justify-between mb-5">
-            <Wordmark size="md" />
+            <Link
+              href="/"
+              className="inline-block hover:opacity-80 transition-opacity"
+              aria-label="Go to home page"
+            >
+              <Wordmark size="md" />
+            </Link>
             <button
               onClick={onClose}
               className="lg:hidden text-slate-400 hover:text-navy text-xl leading-none px-2"
@@ -112,14 +124,23 @@ export function Sidebar({
             <div className="text-[11px] uppercase tracking-widest font-semibold text-slate-500 font-mono">
               Recent
             </div>
-            <button
-              onClick={onHistoryRefresh}
-              className="text-slate-400 hover:text-navy text-sm"
-              aria-label="Refresh"
-              title="Refresh"
-            >
-              ↻
-            </button>
+            <div className="flex items-center gap-1">
+              {sessions.length > 0 && (
+                <ClearAllButton
+                  onConfirm={onClearAll}
+                  disabled={clearing}
+                  count={sessions.length}
+                />
+              )}
+              <button
+                onClick={onHistoryRefresh}
+                className="text-slate-400 hover:text-navy text-sm px-1.5"
+                aria-label="Refresh"
+                title="Refresh"
+              >
+                ↻
+              </button>
+            </div>
           </div>
 
           {historyLoading && sessions.length === 0 && (
@@ -246,6 +267,58 @@ function SessionRow({
         ×
       </button>
     </div>
+  );
+}
+
+function ClearAllButton({
+  onConfirm,
+  disabled,
+  count,
+}: {
+  onConfirm: () => void;
+  disabled: boolean;
+  count: number;
+}) {
+  const [armed, setArmed] = useState(false);
+
+  // Auto-disarm after 4 seconds
+  useEffect(() => {
+    if (!armed) return;
+    const id = setTimeout(() => setArmed(false), 4000);
+    return () => clearTimeout(id);
+  }, [armed]);
+
+  if (disabled) {
+    return (
+      <span className="text-[10px] font-mono text-slate-400 px-2">
+        Clearing…
+      </span>
+    );
+  }
+
+  if (armed) {
+    return (
+      <button
+        onClick={() => {
+          onConfirm();
+          setArmed(false);
+        }}
+        className="text-[10px] font-mono uppercase tracking-wider text-red-600 hover:text-red-700 font-semibold px-2 py-1 rounded border border-red-200 bg-red-50 hover:bg-red-100 transition-colors"
+        title={`Confirm: delete all ${count} chats`}
+      >
+        Confirm
+      </button>
+    );
+  }
+
+  return (
+    <button
+      onClick={() => setArmed(true)}
+      className="text-[10px] font-mono uppercase tracking-wider text-slate-400 hover:text-red-600 px-1.5 py-1 transition-colors"
+      title={`Clear all ${count} recent chats`}
+    >
+      Clear all
+    </button>
   );
 }
 

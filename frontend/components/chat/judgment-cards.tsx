@@ -16,7 +16,7 @@ export function JudgmentCards({ judgments }: JudgmentCardsProps) {
   return (
     <div className="space-y-2.5">
       {judgments.map((j, i) => (
-        <JudgmentCard key={`${j.citation}-${i}`} judgment={j} index={i} />
+        <JudgmentCard key={`${j.principle}-${i}`} judgment={j} index={i} />
       ))}
     </div>
   );
@@ -24,14 +24,6 @@ export function JudgmentCards({ judgments }: JudgmentCardsProps) {
 
 function JudgmentCard({ judgment, index }: { judgment: Judgment; index: number }) {
   const [open, setOpen] = useState(false);
-
-  const outcomeLower = judgment.outcome.toLowerCase();
-  const outcomeColor =
-    outcomeLower.includes("allowed") || outcomeLower.includes("granted")
-      ? "bg-green-50 text-green-700 border-green-200"
-      : outcomeLower.includes("dismissed") || outcomeLower.includes("rejected")
-        ? "bg-red-50 text-red-700 border-red-200"
-        : "bg-slate-50 text-slate-700 border-slate-200";
 
   return (
     <div
@@ -58,32 +50,18 @@ function JudgmentCard({ judgment, index }: { judgment: Judgment; index: number }
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-0.5">
             <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500">
-              Judgment {String(index + 1).padStart(2, "0")}
-            </span>
-            <span className="text-slate-300">·</span>
-            <span className="text-[11px] font-mono text-slate-500 truncate">
-              {judgment.citation}
+              Principle {String(index + 1).padStart(2, "0")}
             </span>
           </div>
-          <h4 className="font-serif font-bold text-[16px] text-navy leading-snug truncate">
-            {judgment.case_title}
+          <h4 className="font-serif font-bold text-[16px] text-navy leading-snug">
+            {judgment.principle}
           </h4>
-          <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-            <span className="text-[11px] text-slate-600">{judgment.court}</span>
-            {judgment.outcome && (
-              <>
-                <span className="text-slate-300">·</span>
-                <span
-                  className={cn(
-                    "text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border",
-                    outcomeColor
-                  )}
-                >
-                  {judgment.outcome}
-                </span>
-              </>
-            )}
-          </div>
+          {judgment.typical_outcome && (
+            <div className="text-[12px] text-slate-600 mt-1.5 line-clamp-2">
+              <span className="font-semibold text-slate-700">Typical outcome:</span>{" "}
+              {judgment.typical_outcome}
+            </div>
+          )}
         </div>
 
         <span
@@ -99,10 +77,22 @@ function JudgmentCard({ judgment, index }: { judgment: Judgment; index: number }
 
       {open && (
         <div className="px-3 sm:px-4 pb-3 sm:pb-4 pt-1 border-t border-slate-100 space-y-3">
-          {judgment.sections && judgment.sections.length > 0 && (
-            <JudgmentField label="Sections invoked">
+          <JudgmentField label="Summary">
+            <Markdown content={judgment.summary} />
+          </JudgmentField>
+
+          {judgment.typical_outcome && (
+            <JudgmentField label="Typical outcome">
+              <p className="text-sm text-slate-700 leading-relaxed">
+                {judgment.typical_outcome}
+              </p>
+            </JudgmentField>
+          )}
+
+          {judgment.relevant_sections && judgment.relevant_sections.length > 0 && (
+            <JudgmentField label="Relevant sections">
               <div className="flex flex-wrap gap-1.5">
-                {judgment.sections.map((s, i) => (
+                {judgment.relevant_sections.map((s, i) => (
                   <span
                     key={i}
                     className="inline-block px-2 py-1 text-[11px] font-mono bg-slate-100 text-slate-700 rounded border border-slate-200"
@@ -111,25 +101,6 @@ function JudgmentCard({ judgment, index }: { judgment: Judgment; index: number }
                   </span>
                 ))}
               </div>
-            </JudgmentField>
-          )}
-
-          <JudgmentField label="Summary">
-            <Markdown content={judgment.summary} />
-          </JudgmentField>
-
-          {judgment.cited_cases && judgment.cited_cases.length > 0 && (
-            <JudgmentField label="Cited cases">
-              <ul className="space-y-1">
-                {judgment.cited_cases.map((c, i) => (
-                  <li
-                    key={i}
-                    className="text-[12px] font-mono text-slate-600 leading-relaxed"
-                  >
-                    · {c}
-                  </li>
-                ))}
-              </ul>
             </JudgmentField>
           )}
         </div>

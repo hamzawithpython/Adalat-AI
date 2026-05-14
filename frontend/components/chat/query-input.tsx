@@ -26,9 +26,11 @@ export function QueryInput({
   const maxChars = 4000;
 
   const handleSubmit = () => {
-    if (!value.trim() || disabled) return;
-    onSubmit?.(value.trim());
-  };
+  if (!value.trim() || disabled) return;
+  const trimmed = value.trim();
+  setValue("");  // clear immediately, regardless of parent state
+  onSubmit?.(trimmed);
+};
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     // Cmd/Ctrl + Enter submits

@@ -80,7 +80,20 @@ def _parse_json_array(text: str) -> list:
 
 
 # ── Sections ──────────────────────────────────────────────────────────
-SECTIONS_PROMPT = ChatPromptTemplate.from_template("""You are restructuring a legal answer into 3-6 well-organized sections.
+SECTIONS_PROMPT = ChatPromptTemplate.from_template("""You are restructuring a legal answer into 3-6 well-organized sections.You are restructuring a legal answer into well-organized sections.
+
+═══════════════════════════════════════════════════
+HARD RULES — NON-NEGOTIABLE
+═══════════════════════════════════════════════════
+- You are REORGANIZING the input answer, NOT expanding it. The combined sections must not contain more information than the original answer.
+- SECTION COUNT scales to answer length:
+  - Short answer (under 200 words) → 2-3 sections.
+  - Medium answer (200-400 words) → 3-4 sections.
+  - Long answer (over 400 words) → 4-6 sections.
+- Each section's content must be DIFFERENT. Overlap is forbidden — if two sections would say similar things, merge them or drop one.
+- icon_hint is REQUIRED on every section. Pick the closest match from the list.
+- Section CONTENT must come from the input answer. Do not introduce new statutes, deadlines, or facts that the answer didn't mention.
+═══════════════════════════════════════════════════
 
 LANGUAGE: {response_language}
 - Section HEADINGS stay in English ("Statutory Framework", "Practical Strategy", etc.) — universal labels.
@@ -93,7 +106,7 @@ If response_language is "roman_urdu":
 INPUT ANSWER:
 {answer}
 
-Pick 3-6 of these section types that best fit (or invent similar):
+Pick the appropriate number of section types (per the HARD RULES above) from this list, or invent similar ones that fit the actual content:
 - "Legal Context" — background and applicable laws
 - "Statutory Framework" — specific statutes and provisions
 - "Key Legal Points" — bulleted analysis
@@ -142,41 +155,37 @@ def generate_sections(answer: str, response_language: str = "english") -> list[d
         return []
 
 
-# ── Judgments ──────────────────────────────────────────────────────────
-JUDGMENTS_PROMPT = ChatPromptTemplate.from_template("""You are providing 3-5 ILLUSTRATIVE judgments showing how courts in {jurisdiction} have approached issues similar to the user's query. These are educational examples from your training knowledge — they will be displayed with a clear "illustrative only, verify before relying" disclaimer.
+# ── Judicial Principles (NOT fabricated case citations) ───────────────
+JUDGMENTS_PROMPT = ChatPromptTemplate.from_template("""You are summarizing how courts in {jurisdiction} have GENERALLY approached issues similar to the user's query.
+
+You are NOT inventing specific case names, citations (PLD, SCMR, EWCA, BGH, etc.), party names, or court dates. Those will mislead users who try to verify them. Instead, you are extracting the underlying JUDICIAL PRINCIPLE that courts apply.
 
 USER QUERY: {query}
 JURISDICTION: {jurisdiction}
 
-CRITICAL — RELEVANCE:
-Every judgment you suggest MUST be directly relevant to the legal issue in the user's query.
-- A query about deposit recovery → judgments about tenancy deposits, rent recovery, landlord-tenant disputes
-- A query about divorce dowry → judgments about dowry, gifts to bride, matrimonial property
-- DO NOT suggest unrelated cases just to fill the list. If you cannot find 3 relevant cases, return fewer (minimum 2).
+RELEVANCE:
+Every principle you suggest MUST be directly relevant to the legal issue in the user's query.
+- A query about deposit recovery → principles about burden of proof, wrongful retention, evidence requirements
+- A query about police checking → principles about reasonable cause, scope of police authority, abuse of power
+- DO NOT pad the list. If you have 2 strong principles, return 2. Minimum 2, maximum 4.
+
+For each principle, provide:
+- principle: short title naming the legal principle (e.g. "Burden of proof in deposit recovery", "Limits on warrantless search")
+- summary: 2-3 sentences in neutral English describing how courts in {jurisdiction} typically reason about this issue. Frame as a principle, not a specific case. Example: "Courts in {jurisdiction} generally hold that the landlord bears the burden of proving lawful retention of a deposit. Mere allegations of damages without itemized evidence are typically insufficient."
+- typical_outcome: what kind of decision usually results when these facts are present (e.g. "Recovery ordered with interest where landlord cannot itemize damages", "Petition dismissed where claimant cannot establish a registered tenancy")
+- relevant_sections: list of statutory sections that would apply (max 3, can be empty if not jurisdiction-specific)
 
 Return ONLY a JSON array, no preamble, no markdown fence:
 [
   {{
-    "case_title": "Realistic case naming for the jurisdiction",
-    "citation": "Realistic citation format",
-    "court": "Actual court name",
-    "outcome": "Brief outcome",
-    "sections": ["Statutory section invoked"],
-    "summary": "2-4 sentence factual neutral summary of the case and its holding",
-    "cited_cases": ["Other case 1", "Other case 2"]
+    "principle": "Short title of the principle",
+    "summary": "2-3 sentences on how courts generally treat this issue",
+    "typical_outcome": "What kind of decision usually results",
+    "relevant_sections": ["Section X of Act Y"]
   }}
 ]
 
-Citation conventions for {jurisdiction}:
-- PK: "X v. Y" with citations like "PLD 1980 SC 9", "2025 SCMR 1142", "2018 CLC 100"
-- UK: "Smith v Jones [2020] EWCA Civ 123", "Re X (1995) 1 WLR 100"
-- DE: "BGH VIII ZR 71/05", "OLG München 5 U 123/22"
-
-- summary: 2-4 sentences, factual and neutral
-- sections: list of statutory sections invoked (max 4)
-- cited_cases: list of other cases referenced (max 5, can be empty)
-- outcome: brief, e.g. "Appeal Allowed", "Petition Dismissed", "Eviction Upheld"
-- court must be the actual court relevant to the issue
+If you do not have reliable knowledge of how {jurisdiction} courts approach this, return [].
 """)
 
 
@@ -188,20 +197,17 @@ def generate_judgments(query: str, jurisdiction: str) -> list[dict]:
         valid = [
             j for j in judgments
             if isinstance(j, dict)
-            and j.get("case_title")
-            and j.get("citation")
+            and j.get("principle")
             and j.get("summary")
         ]
         # Ensure list fields exist even if LLM omitted them
         for j in valid:
-            j.setdefault("sections", [])
-            j.setdefault("cited_cases", [])
-            j.setdefault("court", "")
-            j.setdefault("outcome", "")
-        logger.info(f"Generated {len(valid)} judgments")
+            j.setdefault("relevant_sections", [])
+            j.setdefault("typical_outcome", "")
+        logger.info(f"Generated {len(valid)} judicial principles")
         return valid
     except Exception as e:
-        logger.error(f"Judgment generation failed: {e}")
+        logger.error(f"Judicial principle generation failed: {e}")
         return []
 
 
@@ -234,19 +240,40 @@ JURISDICTION: {jurisdiction}
 
 Generate 3-4 follow-up questions that:
 1. Are SHORT (under 12 words each)
-2. Drill DEEPER into specifics not yet covered (deadlines, evidence, costs, edge cases)
-3. Anticipate the user's likely real-world situation
-4. Are CONCRETE, not vague ("How long does it take?" not "What else?")
-5. Each must explore a DIFFERENT angle — no two questions overlapping
+2. Drill DEEPER than the answer already went — into specifics like exact costs, timing variations, edge cases, what happens if a step fails, what if the other party is uncooperative, common complications, what to do AFTER the recommended action
+3. Are CONCRETE, not vague ("How long does it take?" not "What else?")
+4. Each explores a DIFFERENT angle — no two questions overlapping
+5. Prefer angles the answer didn't already cover, but it's fine to ask a deeper version of something the answer touched on. If the answer says "file with the Rent Controller", a good follow-up is "Kitna time lagta hai Rent Controller mein faisla aane mein?" — going deeper on something mentioned. NOT a banned repeat — just drilling down.
 
-Examples of good follow-ups (deposit query):
+YOU MUST RETURN AT LEAST 3 QUESTIONS. Even if the answer feels comprehensive, real users always have edge-case follow-ups: what if my documents are incomplete, what does it cost, what if the lawyer is too expensive, what happens if I lose, what if the deadline has already passed. Never return fewer than 3.
+
+═══════════════════════════════════════════════════
+HARD LANGUAGE RULE
+═══════════════════════════════════════════════════
+Every question MUST be in {response_language}. NOT a mix. NOT translated. Match the user's language exactly.
+- response_language = "english"   → all questions in English
+- response_language = "roman_urdu" → all questions in Pakistani Roman-Urdu
+- response_language = "german"    → all questions in German
+
+Examples of good follow-ups for an English query about UK landlord fees:
+- "How long does Trading Standards take to act?"
+- "What if the landlord ignores the 14-day demand?"
+- "Is there a fee to file at the First-tier Tribunal?"
+- "What evidence do I need to recover the payment?"
+
+Examples of good follow-ups for a Roman-Urdu query about deposit recovery (Pakistan):
 - "Kitna time lagta hai Rent Controller ka faisla aane mein?"
 - "Agar landlord court mein aaye hi nahi to kya hota hai?"
 - "Lawyer hire karna zaroori hai ya khud case kar sakta hoon?"
 
-Examples of BAD follow-ups (avoid):
-- "Kya aur kuch bata sakte hain?" (too vague)
-- "Yeh process kaisa hai?" (already covered)
+Examples of good follow-ups for a German query about deposit recovery:
+- "Wie lange dauert ein Verfahren beim Amtsgericht?"
+- "Was kostet eine Klage gegen den Vermieter?"
+- "Welche Beweise brauche ich für die Klage?"
+
+Examples of BAD follow-ups (avoid in any language):
+- "Can you tell me more?" / "Aur kuch bata sakte hain?" (too vague)
+- "What is the process?" / "Yeh process kaisa hai?" (covered by the answer already)
 
 Return ONLY a JSON array of strings, no preamble, no markdown fence:
 ["question 1", "question 2", "question 3"]
