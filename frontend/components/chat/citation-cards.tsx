@@ -15,9 +15,9 @@ export function CitationCards({ citations }: CitationCardsProps) {
     );
   }
 
-  const sorted = [...citations].sort(
-    (a, b) => b.relevance_score - a.relevance_score
-  );
+  // NOTE: keep original order so [^1], [^2] in the answer match visual #1, #2.
+  // The order returned by hybrid_search is already by fused score (most relevant first).
+  const sorted = citations;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
@@ -38,7 +38,10 @@ function CitationCard({ citation, index }: { citation: Citation; index: number }
         : "bg-slate-400";
 
   return (
-    <div className="border border-slate-200 rounded-lg bg-white p-3.5 hover:border-navy hover:shadow-brand-sm transition-all">
+    <div
+      id={`citation-${index + 1}`}
+      className="border border-slate-200 rounded-lg bg-white p-3.5 hover:border-navy hover:shadow-brand-sm transition-all scroll-mt-24"
+    >
       <div className="flex items-start justify-between gap-2 mb-2">
         <div className="flex items-center gap-2 min-w-0">
           <Flag code={citation.jurisdiction} size={20} />
