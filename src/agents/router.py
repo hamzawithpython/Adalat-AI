@@ -166,14 +166,15 @@ def run_rag_node(state: AgentState) -> AgentState:
 
     query_to_use = state.get("translated_query") or state["query"]
     jurisdiction = state["jurisdiction"]
-
     response_language = state.get("language") or "english"
+    conversation_history = state.get("conversation_history") or []
 
     try:
         result = run_rag(
             query_to_use,
             jurisdiction=jurisdiction,
             response_language=response_language,
+            conversation_history=conversation_history,
         )
         return {
             **state,
