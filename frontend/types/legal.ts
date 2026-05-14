@@ -28,15 +28,13 @@ export interface AnswerSection {
   icon_hint?: IconHint | null;
 }
 
-// NEW: illustrative judgment (LLM-suggested, not verified retrieval)
+// Judicial principle (LLM-generated, NOT a fabricated case citation).
+// Renamed from the earlier "Judgment" shape — we no longer fabricate case names.
 export interface Judgment {
-  case_title: string;
-  citation: string;
-  court: string;
-  outcome: string;
-  sections: string[];
+  principle: string;
   summary: string;
-  cited_cases: string[];
+  typical_outcome: string;
+  relevant_sections: string[];
 }
 
 export interface LegalResponse {
@@ -49,15 +47,16 @@ export interface LegalResponse {
   rights: Right[];
   citations: Citation[];
   confidence: number;
-  // NEW
   sections: AnswerSection[];
   judgments: Judgment[];
   follow_up_questions: string[];
   response_language?: Language | null;
   judgments_disclaimer?: string;
-  // existing
   disclaimer: string;
   schema_valid: boolean;
+  // Set to true when the assistant decided to ask clarifying questions
+  // instead of producing a substantive answer.
+  is_clarification?: boolean;
 }
 
 export interface AskRequest {
