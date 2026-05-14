@@ -31,11 +31,13 @@ function ChatPageInner() {
     loadSession,
   } = useChat();
   const {
-    sessions,
-    loading: historyLoading,
-    error: historyError,
-    refresh: refreshHistory,
-    remove: removeSession,
+  sessions,
+  loading: historyLoading,
+  error: historyError,
+  refresh: refreshHistory,
+  remove: removeSession,
+  clearAll: clearAllSessions,
+  clearing,
   } = useHistory();
   const searchParams = useSearchParams();
 
@@ -120,6 +122,14 @@ function ChatPageInner() {
     if (id === activeSessionId) handleNewChat();
   };
 
+  const handleClearAll = async () => {
+    const deletedIds = await clearAllSessions();
+    // If the active session was wiped, reset the view
+    if (activeSessionId && deletedIds.includes(activeSessionId)) {
+      handleNewChat();
+    }
+  };
+
   return (
     <div className="flex h-screen overflow-hidden bg-slate-50">
       <Sidebar
@@ -135,6 +145,8 @@ function ChatPageInner() {
         onSessionSelect={handleSessionSelect}
         onSessionDelete={handleSessionDelete}
         onHistoryRefresh={refreshHistory}
+        onClearAll={handleClearAll}
+        clearing={clearing}
         onOpenSettings={() => setSettingsOpen(true)}
       />
 
