@@ -30,6 +30,7 @@ Base = declarative_base()
 class ChatSession(Base):
     __tablename__ = "chat_sessions"
     id = Column(String, primary_key=True)  # UUID string
+    visitor_id = Column(String, nullable=True, index=True)
     title = Column(String, nullable=True)  # auto-generated from first query
     jurisdiction = Column(String, nullable=True)
     language = Column(String, nullable=True)

@@ -87,11 +87,43 @@ def health_check():
 import asyncio
 from fastapi.concurrency import run_in_threadpool
 
+@app.get("/history")
+def list_sessions(
+    limit: int = 30,
+    db: Session = Depends(get_db),
+    x_visitor_id: Optional[str] = Header(None, alias="X-Visitor-Id"),
+):
+    """Return recent chat sessions for this visitor, most recently updated first."""
+    query = db.query(ChatSession)
+    if x_visitor_id:
+        query = query.filter(ChatSession.visitor_id == x_visitor_id)
+    else:
+        # No visitor id → return nothing rather than everyone's chats
+        return {"total": 0, "sessions": []}
+
+    sessions = query.order_by(ChatSession.updated_at.desc()).limit(limit).all()
+    return {
+        "total": len(sessions),
+        "sessions": [
+            {
+                "id": s.id,
+                "title": s.title,
+                "jurisdiction": s.jurisdiction,
+                "language": s.language,
+                "turn_count": len(s.turns),
+                "created_at": s.created_at.isoformat(),
+                "updated_at": s.updated_at.isoformat(),
+            }
+            for s in sessions
+        ],
+    }
+
 @app.post("/ask")
 async def ask_question(
     request: QueryRequest,
     db: Session = Depends(get_db),
     x_adalat_api_keys: Optional[str] = Header(None, alias="X-Adalat-API-Keys"),
+    x_visitor_id: Optional[str] = Header(None, alias="X-Visitor-Id"),
 ):  
     if not request.query.strip():
         raise HTTPException(status_code=400, detail="Query cannot be empty")
@@ -154,6 +186,7 @@ async def ask_question(
             title = result["query"][:80]
             session_obj = ChatSession(
                 id=session_id,
+                visitor_id=x_visitor_id,
                 title=title,
                 jurisdiction=_enum_value(result["jurisdiction"]),
                 language=_enum_value(result["language"]),

@@ -15,6 +15,16 @@ if (!API_URL) {
   throw new Error("NEXT_PUBLIC_API_URL is not set in .env.local");
 }
 
+function getVisitorId(): string {
+  if (typeof window === "undefined") return "";
+  let id = window.localStorage.getItem("adalat_visitor_id");
+  if (!id) {
+    id = crypto.randomUUID();
+    window.localStorage.setItem("adalat_visitor_id", id);
+  }
+  return id;
+}
+
 /**
  * Custom error class so UI components can distinguish API errors
  * from generic JS errors and show appropriate messages.
@@ -36,6 +46,7 @@ export class AdalatApiError extends Error {
  */
 export async function askAdalat(req: AskRequest): Promise<LegalResponse> {
   const headers: Record<string, string> = { "Content-Type": "application/json" };
+  headers["X-Visitor-Id"] = getVisitorId();
 
   // BYOK: send user-supplied keys from localStorage if present
   if (typeof window !== "undefined") {
@@ -128,19 +139,26 @@ export interface SessionDetail {
 }
 
 export async function listSessions(limit = 30): Promise<SessionListItem[]> {
-  const res = await fetch(`${API_URL}/history?limit=${limit}`);
+  const res = await fetch(`${API_URL}/history?limit=${limit}`, {
+    headers: { "X-Visitor-Id": getVisitorId() },
+  });
   if (!res.ok) throw new AdalatApiError(`Failed to load history`, res.status);
   const data = await res.json();
   return data.sessions || [];
 }
 
 export async function getSession(id: string): Promise<SessionDetail> {
-  const res = await fetch(`${API_URL}/sessions/${id}`);
+  const res = await fetch(`${API_URL}/sessions/${id}`, {
+    headers: { "X-Visitor-Id": getVisitorId() },
+  });
   if (!res.ok) throw new AdalatApiError(`Failed to load session`, res.status);
   return res.json();
 }
 
 export async function deleteSession(id: string): Promise<void> {
-  const res = await fetch(`${API_URL}/sessions/${id}`, { method: "DELETE" });
+  const res = await fetch(`${API_URL}/sessions/${id}`, {
+    method: "DELETE",
+    headers: { "X-Visitor-Id": getVisitorId() },
+  });
   if (!res.ok) throw new AdalatApiError(`Failed to delete session`, res.status);
 }
