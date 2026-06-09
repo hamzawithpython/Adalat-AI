@@ -3,19 +3,19 @@
 > **Your Rights. In Your Language.**
 > A bilingual legal assistant for Pakistan, the UK, and Germany — ask in Roman-Urdu, English, or German and get a structured, citation-anchored answer.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://frontend-production-fde6.up.railway.app)
-[![API](https://img.shields.io/badge/API-FastAPI-009688)](https://backend-production-f61e7.up.railway.app/docs)
+[![Demo](https://img.shields.io/badge/demo-available%20on%20request-blue)](#live-demo)
+[![API](https://img.shields.io/badge/API-FastAPI-009688)](#tech-stack)
 [![Built with](https://img.shields.io/badge/built%20with-Next.js%20%2B%20FastAPI-000000)](#tech-stack)
 
 ---
 
 ## Live Demo
 
-- **App:** https://frontend-production-fde6.up.railway.app
-- **API docs:** https://backend-production-f61e7.up.railway.app/docs
-- **Health:** https://backend-production-f61e7.up.railway.app/health
+A fully deployed instance (Next.js frontend + FastAPI backend on Railway, Postgres on Neon) is **available on request** — reach out and I'll share the live URL.
 
-Try a query in Roman-Urdu: *"Mera landlord deposit wapas nahi de raha, kya karoon?"*
+> **Note:** The hosted instance runs entirely on free-tier LLM inference (Groq + Cerebras), which means a shared daily token quota. To keep the public demo reliable, the URL is shared on request rather than posted openly. Reviewers can also paste their own free API key in-app to use their own quota (see [Rate limits & API keys](#rate-limits--api-keys)).
+
+Example query (Roman-Urdu): *"Mera landlord deposit wapas nahi de raha, kya karoon?"*
 
 ---
 
@@ -36,6 +36,8 @@ It is built as a portfolio capstone: every component is a real RAG pipeline rath
 - **Multi-turn conversation** — follow-up questions stack vertically within a session; full history persists in Postgres.
 - **Smart follow-up suggestions** — after every answer, the LLM proposes 3-4 contextual next questions clickable as new turns.
 - **Session history sidebar** — past chats shown with title, jurisdiction, turn count; click any to reload, or delete.
+- **Per-visitor history isolation** — each browser gets an anonymous visitor ID (stored in `localStorage`); the history sidebar is scoped per visitor, so users only ever see their own conversations.
+- **Mobile-responsive UI** — full layouts for mobile and desktop.
 - **User feedback form** — collects bug reports, feature requests, ratings; admin view at `/admin/feedback?token=...`.
 - **Bring your own API key** — reviewers can paste their own Groq/Cerebras/Gemini key to bypass shared rate limits.
 - **Provider fallback** — Groq primary, Cerebras automatic fallback when Groq is rate-limited.
@@ -127,7 +129,7 @@ When present, that key is used for the duration of that single request. Keys are
 ### Sample request
 
 ```bash
-curl -X POST https://backend-production-f61e7.up.railway.app/ask \
+curl -X POST https://<your-backend-host>/ask \
   -H "Content-Type: application/json" \
   -d '{"query": "Mera landlord deposit wapas nahi de raha, kya karoon?"}'
 ```
@@ -233,7 +235,7 @@ adalat-ai/
 │   │   └── structurer.py          # Sections + judgments generator
 │   ├── api/
 │   │   ├── main.py                # FastAPI app
-│   │   └── database.py            # SQLAlchemy + SQLite
+│   │   └── database.py            # SQLAlchemy models (Postgres/Neon; SQLite fallback for local dev)
 │   ├── ingestion/                 # PDF loader, chunker, metadata
 │   ├── retrieval/
 │   │   ├── embedder.py            # fastembed + Chroma
@@ -274,7 +276,7 @@ If you submit a query and the response says *"An error occurred. Please consult 
 
 To bypass shared limits entirely, paste your own free API key into the app:
 
-1. Open the chat at [/chat](https://frontend-production-fde6.up.railway.app/chat)
+1. Open the chat at `/chat`
 2. Click **🔑 API keys** in the sidebar footer
 3. Paste a key from any of:
    - **Groq** — free tier, sign up at [console.groq.com/keys](https://console.groq.com/keys)
@@ -305,14 +307,19 @@ This cuts 70B token usage by ~60% with no visible quality difference to the user
 
 ## Roadmap (v2+)
 
-- Replace LLM-suggested judgments with grounded retrieval from a real case-law dataset (Pakistan Code, BAILII, openJur)
+**Retrieval quality**
+- Upgrade embeddings from `paraphrase-multilingual-MiniLM-L12-v2` to `multilingual-e5-large` (on GPU) for stronger multilingual retrieval
+- Add BGE-reranker-v2-m3 for hybrid reranking on top of vector search
 - Fine-tune embeddings on legal Roman-Urdu pairs
-- Upgrade to `multilingual-e5-large` on GPU (target retrieval score 0.80+)
-- Add BGE-reranker-v2-m3 for hybrid reranking
-- RAGAS evaluation suite
-- Multi-turn conversation
-- Chat history sidebar wired to `/history`
-- Mobile-responsive layouts (the hi-fi designs exist, just not yet built)
+
+**Grounding**
+- Replace LLM-suggested illustrative judgments with grounded retrieval from a real case-law dataset (Pakistan Code, BAILII, openJur). *The current corpus is statutes only — see [Honest disclaimers](#honest-disclaimers).*
+
+**Evaluation**
+- Add a RAGAS evaluation suite (faithfulness, context recall, answer relevance) with a versioned test set, and publish the scores here
+
+**Coverage**
+- Expand thinner areas of the corpus (notably Pakistani labour/employment law, where retrieval relevance is currently weaker than tenancy and constitutional coverage)
 
 ---
 
