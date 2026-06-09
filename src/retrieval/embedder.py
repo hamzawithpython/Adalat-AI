@@ -137,7 +137,7 @@ def search(query: str, jurisdiction: str = None,
     where_filter = None
     conditions = []
     if jurisdiction:
-        conditions.append({"jurisdiction": jurisdiction})
+        conditions.append({"country": jurisdiction})   # PK/UK/DE lives in the `country` metadata field
     if country:
         conditions.append({"country": country})
     if category:
