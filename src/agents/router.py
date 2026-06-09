@@ -45,14 +45,24 @@ def detect_language(state: AgentState) -> AgentState:
     query = state["query"]
 
     prompt = ChatPromptTemplate.from_template("""
-You are a language detector. Analyze the text and return ONLY a JSON object.
+You are a language detector for legal queries. Determine the language the user actually WROTE IN. Return ONLY a JSON object.
 
 Text: "{query}"
 
-Detection Rules (apply in order):
-1. If text contains German words (Vermieter, Kaution, Miete, nicht, zurück, gibt, mein, ist, das, der, die) → language = "german"
-2. If text contains Roman-Urdu words (mera, meri, kya, hai, nahi, wapas, nahi, karo, landlord ke saath, deposit, ghar, rent) → language = "roman_urdu"
-3. Otherwise → language = "english"
+CRITICAL RULE: Judge by the SENTENCE STRUCTURE and connecting words, NOT by individual nouns. English loanwords like "landlord", "deposit", "rent", "tenancy", "police", "contract" appear in ALL THREE languages and must be IGNORED for detection — they are NOT evidence of any particular language.
+
+Decide using the GRAMMAR and FUNCTION WORDS (verbs, pronouns, connectors):
+
+1. GERMAN — if the sentence is built with German grammar/function words: ist, der, die, das, mein, nicht, und, wenn, kann, möchte, wird, Vermieter, Kaution, Miete, zurück.
+   Example: "Mein Vermieter erhöht die Miete." → german
+
+2. ROMAN_URDU — ONLY if the sentence uses Roman-Urdu grammar and connecting words: mera/meri/mujhe, hai/hain, nahi, kya, karoon/karna, raha/rahi, ke/ka/ki, ko, mein, sakta, agar, toh, wapas.
+   Example: "Mera landlord deposit wapas nahi de raha" → roman_urdu (note: "landlord" and "deposit" are English words, but "Mera...wapas nahi de raha" is Roman-Urdu grammar)
+
+3. ENGLISH — if the sentence is built with English grammar and function words: my, is, are, the, what, can, should, was, were, my landlord, I want, what are my rights.
+   Example: "My landlord in Germany wants to increase my rent" → english (it is English grammar — the words "landlord" and "rent" do NOT make it Roman-Urdu)
+
+Default to "english" if the sentence structure is English, regardless of which legal nouns appear.
 
 Return ONLY one of these three exact JSON objects:
 {{"language": "german"}}
