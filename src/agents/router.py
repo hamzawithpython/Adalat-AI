@@ -45,30 +45,30 @@ def detect_language(state: AgentState) -> AgentState:
     query = state["query"]
 
     prompt = ChatPromptTemplate.from_template("""
-You are a language detector for legal queries. Determine the language the user actually WROTE IN. Return ONLY a JSON object.
+    You are a language detector for legal queries. Determine the language the user actually WROTE IN. Return ONLY a JSON object.
 
-Text: "{query}"
+    Text: "{query}"
 
-CRITICAL RULE: Judge by the SENTENCE STRUCTURE and connecting words, NOT by individual nouns. English loanwords like "landlord", "deposit", "rent", "tenancy", "police", "contract" appear in ALL THREE languages and must be IGNORED for detection — they are NOT evidence of any particular language.
+    CRITICAL RULE: Judge by SENTENCE STRUCTURE and connecting words, NOT by individual nouns. English loanwords like "landlord", "deposit", "rent", "tenancy", "police", "contract" appear in ALL THREE languages and must be IGNORED for detection — they are NOT evidence of any language.
 
-Decide using the GRAMMAR and FUNCTION WORDS (verbs, pronouns, connectors):
+    Decide using GRAMMAR and FUNCTION WORDS (verbs, pronouns, connectors):
 
-1. GERMAN — if the sentence is built with German grammar/function words: ist, der, die, das, mein, nicht, und, wenn, kann, möchte, wird, Vermieter, Kaution, Miete, zurück.
-   Example: "Mein Vermieter erhöht die Miete." → german
+    1. GERMAN — German grammar/function words: ist, der, die, das, mein, nicht, und, wenn, kann, möchte, wird, zurück.
+    "Mein Vermieter erhöht die Miete." → german
 
-2. ROMAN_URDU — ONLY if the sentence uses Roman-Urdu grammar and connecting words: mera/meri/mujhe, hai/hain, nahi, kya, karoon/karna, raha/rahi, ke/ka/ki, ko, mein, sakta, agar, toh, wapas.
-   Example: "Mera landlord deposit wapas nahi de raha" → roman_urdu (note: "landlord" and "deposit" are English words, but "Mera...wapas nahi de raha" is Roman-Urdu grammar)
+    2. ROMAN_URDU — ONLY if Roman-Urdu grammar/connecting words are present: mera/meri/mujhe, hai/hain, nahi, kya, karoon/karna, raha/rahi, ke/ka/ki, ko, sakta, agar, toh, wapas.
+    "Mera landlord deposit wapas nahi de raha" → roman_urdu (the nouns are English, but "Mera...wapas nahi de raha" is Roman-Urdu grammar)
 
-3. ENGLISH — if the sentence is built with English grammar and function words: my, is, are, the, what, can, should, was, were, my landlord, I want, what are my rights.
-   Example: "My landlord in Germany wants to increase my rent" → english (it is English grammar — the words "landlord" and "rent" do NOT make it Roman-Urdu)
+    3. ENGLISH — English grammar/function words: my, is, are, the, what, can, should, was, were, "I want", "what are my rights".
+    "My landlord in Germany wants to increase my rent" → english (the words "landlord"/"rent" do NOT make it Roman-Urdu)
 
-Default to "english" if the sentence structure is English, regardless of which legal nouns appear.
+    Default to "english" if the sentence structure is English, regardless of which legal nouns appear.
 
-Return ONLY one of these three exact JSON objects:
-{{"language": "german"}}
-{{"language": "roman_urdu"}}
-{{"language": "english"}}
-""")
+    Return ONLY one of these three exact JSON objects:
+    {{"language": "german"}}
+    {{"language": "roman_urdu"}}
+    {{"language": "english"}}
+    """)
 
     llm = get_llm()
     chain = prompt | llm | StrOutputParser()
