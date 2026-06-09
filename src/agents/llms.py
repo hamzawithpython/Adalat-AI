@@ -45,13 +45,13 @@ def _get_key(provider: str) -> Optional[str]:
 # ── Per-provider model registry ─────────────────────────────────────
 HEAVY_MODELS = {
     "groq": "llama-3.3-70b-versatile",
-    "cerebras": "llama3.1-8b",
+    "cerebras": "gpt-oss-120b",
     "gemini": "gemini-1.5-pro",
 }
 
 FAST_MODELS = {
     "groq": "llama-3.1-8b-instant",
-    "cerebras": "llama3.1-8b",
+    "cerebras": "gpt-oss-120b",
     "gemini": "gemini-1.5-flash",
 }
 
