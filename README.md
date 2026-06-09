@@ -44,6 +44,26 @@ It is built as a portfolio capstone: every component is a real RAG pipeline rath
 
 ---
 
+## Screenshots
+
+**Multi-jurisdiction routing in a single conversation** — three consecutive questions across Germany, the UK, and Pakistan. The system re-detects language and jurisdiction on every turn, with no context bleed between topics.
+
+![Multi-jurisdiction routing](docs/screenshots/adalat-multijurisdiction-routing.png)
+
+**Structured, citation-anchored answer** — a German tenancy query returns expandable sections, extracted rights with legal basis and recourse, and citation cards with relevance scores sourced from the BGB.
+
+![Structured answer with citations](docs/screenshots/adalat-structured-answer-german.png)
+
+**Roman-Urdu in, Roman-Urdu out** — the system detects Roman-Urdu input and responds in the user's language.
+
+![Roman-Urdu query](docs/screenshots/adalat-roman-urdu-query.png)
+
+**Honest grounding** — LLM-suggested judicial principles are clearly labelled as illustrative, not passed off as verified case-law retrieval.
+
+![Honest grounding disclaimer](docs/screenshots/adalat-honest-grounding-disclaimer.png)
+
+---
+
 ## Architecture
 
 User Query (Roman-Urdu / English / German)
